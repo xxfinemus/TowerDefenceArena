@@ -49,7 +49,9 @@
      <Compile Include="Assets\Scripts\Bullet\BulletDestroyScript.cs" />
      <Compile Include="Assets\Scripts\Bullet\BulletFireScript.cs" />
      <Compile Include="Assets\Scripts\Bullet\BulletScript.cs" />
+     <Compile Include="Assets\Scripts\ButtonSpriteControl.cs" />
      <Compile Include="Assets\Scripts\GenericObjectPoolScript.cs" />
+     <Compile Include="Assets\Scripts\WaveControl.cs" />
      <Compile Include="Assets\Scripts\test script.cs" />
      <None Include="Assets\Shader\test shader.shader" />
  <Reference Include="UnityEngine.UI">
