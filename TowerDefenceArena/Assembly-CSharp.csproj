@@ -52,7 +52,9 @@
      <Compile Include="Assets\Scripts\GenericObjectPoolScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu_Script.cs" />
      <Compile Include="Assets\Scripts\WaveControl.cs" />
+     <Compile Include="Assets\pathTest\EntranceScript.cs" />
      <Compile Include="Assets\pathTest\finger.cs" />
+     <Compile Include="Assets\pathTest\moveTo.cs" />
      <Compile Include="Assets\pathTest\obstest.cs" />
      <Compile Include="Assets\pathTest\test script.cs" />
      <None Include="Assets\Shader\test shader.shader" />
