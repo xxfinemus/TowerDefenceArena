@@ -1,18 +1,31 @@
-# Ignore everything
-/*
-/*/
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Library/
 
-# Inverse ignore some stuff
-!/Assets/
-!/ProjectSettings/
-!.gitignore
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+obj/
+*.svd
+*.userprefs
+/*.csproj
+*.pidb
+*.suo
+/*.sln
+*.user
+*.unityproj
+*.booproj
 
-# OS Stuff
+# ============ #
+# OS generated #
+# ============ #
 .DS_Store
+.DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
 Thumbs.db
-$RECYCLE.BIN/
-Desktop.ini
