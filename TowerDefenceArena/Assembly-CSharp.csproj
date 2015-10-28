@@ -46,6 +46,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\MainMenu_Script.cs" />
+     <Compile Include="Assets\Scripts\Bullet\BulletDestroyScript.cs" />
+     <Compile Include="Assets\Scripts\Bullet\BulletFireScript.cs" />
+     <Compile Include="Assets\Scripts\Bullet\BulletScript.cs" />
+     <Compile Include="Assets\Scripts\GenericObjectPoolScript.cs" />
+     <Compile Include="Assets\Scripts\test script.cs" />
+     <None Include="Assets\Shader\test shader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
