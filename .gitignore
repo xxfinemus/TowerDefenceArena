@@ -20,8 +20,21 @@
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
-#ignore everything
-*
+# Ignore everything
+/*
+/*/
 
-#whitelist
-!TowerDefenceArena/Assets/
+# Inverse ignore some stuff
+!/Assets/
+!/ProjectSettings/
+!.gitignore
+
+# OS Stuff
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+$RECYCLE.BIN/
+Desktop.ini
