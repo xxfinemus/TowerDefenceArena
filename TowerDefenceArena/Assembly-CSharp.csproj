@@ -45,20 +45,22 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Bullet\BulletDestroyScript.cs" />
-     <Compile Include="Assets\Scripts\Bullet\BulletFireScript.cs" />
-     <Compile Include="Assets\Scripts\Bullet\BulletScript.cs" />
+     <Compile Include="Assets\MainMenu_Script.cs" />
      <Compile Include="Assets\Scripts\ButtonSpriteControl.cs" />
-     <Compile Include="Assets\Scripts\GenericObjectPoolScript.cs" />
-     <Compile Include="Assets\Scripts\MainMenu_Script.cs" />
      <Compile Include="Assets\Scripts\WaveControl.cs" />
      <Compile Include="Assets\Scripts\test script.cs" />
      <None Include="Assets\Shader\test shader.shader" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
