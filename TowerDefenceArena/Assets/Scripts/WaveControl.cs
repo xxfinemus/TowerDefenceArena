@@ -46,7 +46,6 @@ public class WaveControl : MonoBehaviour
         waveCanStart = true;
         waveRunning = false;
         enemiesRemaning = 0;
-        StartNextWave();
 	}
 	
 	// Update is called once per frame
