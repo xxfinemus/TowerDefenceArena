@@ -73,7 +73,13 @@ public class WaveControl : MonoBehaviour
         if (enemiesToSpawn.Count > 0 && timeToSpawn <= 0)
         {
             timeToSpawn = spawnFrequency;
-            Instantiate(enemiesToSpawn[0], transform.position, Quaternion.identity);
+            GameObject obj = GenericObjectPoolScript.current.GetPooledObject();
+            if (obj == null)
+            {
+                return;
+            }
+            obj.transform.position = transform.position;
+            obj.SetActive(true);
             enemiesRemaning++;
             enemiesToSpawn.RemoveAt(0);
         }
