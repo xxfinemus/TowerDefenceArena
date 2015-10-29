@@ -15,7 +15,7 @@ public class BulletFireScript : MonoBehaviour
     void Fire()
     {
         //Gets a bullet from the object pool.
-        GameObject obj = GenericObjectPoolScript.current.GetPooledObject();
+        GameObject obj = BulletObjectPoolScript.current.GetPooledObject();
         
         //If there is not an object in the object pool and willGrow is not true,
         //it will return null and we will not get a bullet.
