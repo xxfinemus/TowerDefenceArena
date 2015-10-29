@@ -1,5 +1,4 @@
-﻿// The object this script is attached to must have a child with a text component
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -8,27 +7,31 @@ public class ButtonMute : MonoBehaviour
     [SerializeField]
     private Camera myCamera;
     private AudioListener listener;
-    private Text buttonText;
+
+    private Image buttonImage;
+
+    [SerializeField]
+    private Sprite notMutedSprite;
+    [SerializeField]
+    private Sprite mutedSprite;
 
     // Use this for initialization
     void Start()
     {
         listener = myCamera.GetComponent<AudioListener>();
-        buttonText = GetComponentInChildren<Text>();
+        buttonImage = GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (listener.enabled)
+        if (listener.enabled && buttonImage.sprite != notMutedSprite)
         {
-            buttonText.text = "Mute";
-            Debug.Log("Currently not muted");
+            buttonImage.sprite = notMutedSprite;
         }
-        else
+        else if (!listener.enabled && buttonImage.sprite != mutedSprite)
         {
-            buttonText.text = "Unmute";
-            Debug.Log("Currently muted");
+            buttonImage.sprite = mutedSprite;
         }
     }
 
