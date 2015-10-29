@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class finger : MonoBehaviour
+public class TouchInput : MonoBehaviour
 {
     RaycastHit hit;
     public GameObject obj;
-    public EntranceScript entrance;
+    private Pathfinding path;
 
     // Use this for initialization
     void Start()
     {
-
+        path = GetComponent<Pathfinding>();
     }
 
 
@@ -25,7 +25,7 @@ public class finger : MonoBehaviour
             Ray rayt = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             if (Physics.Raycast(rayt, out hit))
             {
-                if (hit.collider.tag == "floor")
+                if (hit.collider.tag == "floor" && path.CheckIfPathIsValid(hit.point))
                 {
                     Instantiate(obj, hit.point, transform.rotation);
                 }
@@ -38,18 +38,18 @@ public class finger : MonoBehaviour
         //bool test = EntranceScript.Instance.CheckIfPathIsValid();
 
         #region mouse
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Ray raym = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(raym, out hit))
             {
-                if (hit.collider.tag == "floor" && entrance.CheckIfPathIsValid(hit.point))
+                if (hit.collider.tag == "floor" && path.CheckIfPathIsValid(hit.point))
                 {
-                    Debug.Log("spawned wall");
-                    Instantiate(obj, hit.point, transform.rotation);
+                    //Debug.Log("spawned wall");
+                    //Instantiate(obj, hit.point, transform.rotation);
                 }
             }
         }
         #endregion
-    }   
+    }
 }

@@ -1,17 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class testscript : MonoBehaviour {
+public class obstacleCarve : MonoBehaviour {
 
 	// Use this for initialization
     NavMeshObstacle obs;
-	void Start () {
+    void Start()
+    {
         obs = GetComponent<NavMeshObstacle>();
         obs.carving = true;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+        obs.carvingTimeToStationary = 0.0f;
+    }
 }
