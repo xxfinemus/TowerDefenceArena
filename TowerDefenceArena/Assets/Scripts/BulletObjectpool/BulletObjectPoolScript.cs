@@ -2,16 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GenericObjectPoolScript : MonoBehaviour
+public class BulletObjectPoolScript : MonoBehaviour
 {
-    public static GenericObjectPoolScript current;
+    public static BulletObjectPoolScript current;
     public GameObject pooledObject;
     public int pooledAmount = 20; //size of the pool.
 
     //Makes the size of the pool grow as needed. It remains that size, it does not become smaller.
     public bool WillGrow = true;
 
-    List<GameObject> pooledObjects;
+    List<GameObject> pooledObjects;//This list can be made public to view the size of the growing pool.
 
     void Awake()
     {
