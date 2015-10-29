@@ -22,11 +22,13 @@ public class moveTo : MonoBehaviour
         if (!IsPathFree())
         {
             agent.Stop();
+            canFindPath = false;
             
         }
         if(IsPathFree())
         {
             agent.Resume();
+            canFindPath = true;
         }
 
         if (Input.GetKeyDown(KeyCode.Q))

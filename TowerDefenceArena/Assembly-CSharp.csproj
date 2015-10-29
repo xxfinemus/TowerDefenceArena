@@ -48,16 +48,18 @@
      <Compile Include="Assets\Scripts\Bullet\BulletDestroyScript.cs" />
      <Compile Include="Assets\Scripts\Bullet\BulletFireScript.cs" />
      <Compile Include="Assets\Scripts\Bullet\BulletScript.cs" />
-     <Compile Include="Assets\Scripts\ButtonMute.cs" />
-     <Compile Include="Assets\Scripts\ButtonSpriteControl.cs" />
+     <Compile Include="Assets\Scripts\Button\ButtonMute.cs" />
+     <Compile Include="Assets\Scripts\Button\ButtonSound.cs" />
+     <Compile Include="Assets\Scripts\Button\ButtonSpriteControl.cs" />
      <Compile Include="Assets\Scripts\GenericObjectPoolScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu_Script.cs" />
      <Compile Include="Assets\Scripts\WaveControl.cs" />
-     <Compile Include="Assets\pathTest\EntranceScript.cs" />
-     <Compile Include="Assets\pathTest\finger.cs" />
+     <Compile Include="Assets\pathTest\Grid.cs" />
+     <Compile Include="Assets\pathTest\Node.cs" />
+     <Compile Include="Assets\pathTest\Pathfinding.cs" />
+     <Compile Include="Assets\pathTest\TouchInput.cs" />
      <Compile Include="Assets\pathTest\moveTo.cs" />
-     <Compile Include="Assets\pathTest\obstest.cs" />
-     <Compile Include="Assets\pathTest\test script.cs" />
+     <Compile Include="Assets\pathTest\obstacleCarve.cs" />
      <None Include="Assets\Shader\test shader.shader" />
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
