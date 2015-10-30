@@ -19,6 +19,9 @@ public class WaveControl : MonoBehaviour
     private int enemiesRemaning;
     private bool waveCanStart;
     private float timeToSpawn;
+    [SerializeField]
+    private GameObject spawnPosition;
+
 
     public int EnemiesRemaning
     {
@@ -46,6 +49,7 @@ public class WaveControl : MonoBehaviour
         waveCanStart = true;
         waveRunning = false;
         enemiesRemaning = 0;
+        StartNextWave();
 	}
 	
 	// Update is called once per frame
@@ -73,12 +77,13 @@ public class WaveControl : MonoBehaviour
         if (enemiesToSpawn.Count > 0 && timeToSpawn <= 0)
         {
             timeToSpawn = spawnFrequency;
-            GameObject obj = GenericObjectPoolScript.current.GetPooledObject();
+            
+            GameObject obj = EnemyObjectPoolScript.current.GetPooledObject();
             if (obj == null)
             {
                 return;
             }
-            obj.transform.position = transform.position;
+            obj.transform.position = spawnPosition.transform.position;
             obj.SetActive(true);
             enemiesRemaning++;
             enemiesToSpawn.RemoveAt(0);
