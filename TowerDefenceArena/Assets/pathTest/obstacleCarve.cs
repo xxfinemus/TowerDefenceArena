@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class obstacleCarve : MonoBehaviour {
+public class ObstacleCarve : MonoBehaviour {
 
 	// Use this for initialization
-    NavMeshObstacle obs;
+    private NavMeshObstacle obs;
     void Start()
     {
         obs = GetComponent<NavMeshObstacle>();

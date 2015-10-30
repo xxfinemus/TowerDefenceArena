@@ -23,6 +23,8 @@ public class BulletObjectPoolScript : MonoBehaviour
     /// </summary>
     void Start()
     {
+        //The pool is created, and objects equal to the pooledAmount are instatiated.
+        //The objects are set to be inactive.
         pooledObjects = new List<GameObject>();
         for (int i = 0; i < pooledAmount; i++)
         {
@@ -42,6 +44,8 @@ public class BulletObjectPoolScript : MonoBehaviour
             }
         }
 
+        //If an obejct is instatiated but the object pool is empty,
+        //a new object will be added to the pool, and the object pool will become bigger.
         if (WillGrow)
         {
             GameObject obj = (GameObject)Instantiate(pooledObject);
