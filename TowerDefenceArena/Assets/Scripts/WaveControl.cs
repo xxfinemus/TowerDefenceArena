@@ -73,7 +73,7 @@ public class WaveControl : MonoBehaviour
         if (enemiesToSpawn.Count > 0 && timeToSpawn <= 0)
         {
             timeToSpawn = spawnFrequency;
-            GameObject obj = GenericObjectPoolScript.current.GetPooledObject();
+            GameObject obj = EnemyObjectPoolScript.current.GetPooledObject();
             if (obj == null)
             {
                 return;

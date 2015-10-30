@@ -8,11 +8,11 @@ public class Grid : MonoBehaviour
     public LayerMask unwalkableMask;
     public Vector2 gridWorldSize;
     public float nodeRadius;
-    Node[,] grid;
+    private Node[,] grid;
     public bool ShowGrid = false;
 
-    float nodeDiameter;
-    int gridSizeX, gridSizeY;
+    private float nodeDiameter;
+    private int gridSizeX, gridSizeY;
 
     void Start()
     {

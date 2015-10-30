@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TouchInput : MonoBehaviour
 {
-    RaycastHit hit;
+    private RaycastHit hit;
     public GameObject obj;
     private Pathfinding path;
 

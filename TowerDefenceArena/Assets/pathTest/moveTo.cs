@@ -1,20 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class moveTo : MonoBehaviour
+public class MoveTo : MonoBehaviour
 {
 
     // MoveTo.cs
-    public Transform goal1;
-    public Transform goal2;
-    NavMeshAgent agent;
-    public bool canFindPath;
-    
+    public Transform startObj;
+    public Transform endObj;
+    private NavMeshAgent agent;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.destination = goal1.position;
+        agent.destination = startObj.position;
     }
 
     void Update()
@@ -22,23 +20,21 @@ public class moveTo : MonoBehaviour
         if (!IsPathFree())
         {
             agent.Stop();
-            canFindPath = false;
             
         }
         if(IsPathFree())
         {
             agent.Resume();
-            canFindPath = true;
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            agent.destination = goal1.position;
+            agent.destination = startObj.position;
             
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            agent.destination = goal2.position;
+            agent.destination = endObj.position;
         }
         
     }
