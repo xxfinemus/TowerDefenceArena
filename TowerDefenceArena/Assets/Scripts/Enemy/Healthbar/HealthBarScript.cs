@@ -31,15 +31,15 @@ public class HealthBarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetSize();
+
     }
 
     //Gets the parent enemy's current and max health and sets the scale of the healthbar to be equal to them divided
-    public void SetSize()
+    public void SetSize(float size)
     {
         if (parent != null)
         {
-            bar.transform.localScale = new Vector3(parent.Currenthealth / parent.MaxHealth, transform.localScale.y);
+            bar.transform.localScale = new Vector3(size, transform.localScale.y);
         }
     }
 

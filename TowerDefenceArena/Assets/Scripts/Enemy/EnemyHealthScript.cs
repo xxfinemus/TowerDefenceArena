@@ -21,10 +21,14 @@ public class EnemyHealthScript : MonoBehaviour
         set { currenthealth = value; }
     }
 
+    HealthBarScript healthBar;
+
     // Use this for initialization
     void Start()
     {
         currenthealth = maxHealth;
+
+        healthBar = GetComponentInChildren<HealthBarScript>();
     }
 
     // Update is called once per frame
@@ -37,7 +41,7 @@ public class EnemyHealthScript : MonoBehaviour
     {
         if (other.tag == "bullet")
         {
-            
+
             //Insert code to get the bullets script and get the damage then call the TakeDamage function
         }
     }
@@ -45,5 +49,7 @@ public class EnemyHealthScript : MonoBehaviour
     void TakeDamage(float dmg)
     {
         currenthealth -= dmg;
+
+        healthBar.SetSize(currenthealth / maxHealth);
     }
 }
