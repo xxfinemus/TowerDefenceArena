@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Enemy\Healthbar\CameraFacingBillboard_Script.cs" />
      <Compile Include="Assets\Scripts\Enemy\Healthbar\HealthBarScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu_Script.cs" />
+     <Compile Include="Assets\Scripts\Tower\TowerBehavior.cs" />
      <Compile Include="Assets\Scripts\WaveControl.cs" />
      <Compile Include="Assets\pathTest\Grid.cs" />
      <Compile Include="Assets\pathTest\Node.cs" />
