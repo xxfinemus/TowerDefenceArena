@@ -45,6 +45,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Database\dbscript.cs" />
      <Compile Include="Assets\Scripts\BulletObjectpool\BulletDestroyScript.cs" />
      <Compile Include="Assets\Scripts\BulletObjectpool\BulletFireScript.cs" />
      <Compile Include="Assets\Scripts\BulletObjectpool\BulletObjectPoolScript.cs" />
@@ -53,8 +54,13 @@
      <Compile Include="Assets\Scripts\Button\ButtonSound.cs" />
      <Compile Include="Assets\Scripts\Button\ButtonSpriteControl.cs" />
      <Compile Include="Assets\Scripts\EnemiesObjectPool\EnemyObjectPoolScript.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyHealthScript.cs" />
+     <Compile Include="Assets\Scripts\Enemy\Healthbar\CameraFacingBillboard_Script.cs" />
+     <Compile Include="Assets\Scripts\Enemy\Healthbar\HealthBarScript.cs" />
+     <Compile Include="Assets\Scripts\HighScoreScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu_Script.cs" />
      <Compile Include="Assets\Scripts\Tower\MoveEnemy.cs" />
+     <Compile Include="Assets\Scripts\Stats\StatScript.cs" />
      <Compile Include="Assets\Scripts\Tower\TowerBehavior.cs" />
      <Compile Include="Assets\Scripts\Wall\WallBehaviorAgent.cs" />
      <Compile Include="Assets\Scripts\WaveControl.cs" />
