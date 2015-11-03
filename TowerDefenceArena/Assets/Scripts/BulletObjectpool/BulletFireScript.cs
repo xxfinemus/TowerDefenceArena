@@ -4,12 +4,21 @@ using System.Collections;
 public class BulletFireScript : MonoBehaviour
 {
     //Time between bullet is fired.
-    public float fireTime = .05f;
+    public float fireTime = 5f;
 
     void Start()
     {
         //Creates the bullet with interval of fireTime; 
-        InvokeRepeating("Fire", fireTime, fireTime);
+        //InvokeRepeating("Fire", 0, 3);
+
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Fire();
+        }
     }
 
     void Fire()
