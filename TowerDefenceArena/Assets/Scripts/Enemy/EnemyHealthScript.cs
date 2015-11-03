@@ -46,10 +46,17 @@ public class EnemyHealthScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Takes a float and reduces health by it and updates the size of the healthbar
+    /// </summary>
+    /// <param name="dmg"></param>
     void TakeDamage(float dmg)
     {
         currenthealth -= dmg;
 
-        healthBar.SetSize(currenthealth / maxHealth);
+        if (healthBar != null)
+        {
+            healthBar.SetSize(currenthealth / maxHealth);
+        }
     }
 }

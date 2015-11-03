@@ -6,8 +6,6 @@ public class HealthBarScript : MonoBehaviour
 {
     Image bar;
 
-    EnemyHealthScript parent;
-
     [SerializeField]
     Vector2 size;
     // Use this for initialization
@@ -21,11 +19,6 @@ public class HealthBarScript : MonoBehaviour
         {
             bar = GetComponent<Image>();
         }
-
-        if (parent == null)
-        {
-            parent = GetComponentInParent<EnemyHealthScript>();
-        }
     }
 
     // Update is called once per frame
@@ -34,13 +27,13 @@ public class HealthBarScript : MonoBehaviour
 
     }
 
-    //Gets the parent enemy's current and max health and sets the scale of the healthbar to be equal to them divided
+    /// <summary>
+    /// Takes a scale and sets the size of the healthbar to be equal to that (Remember to divide current health with max health)
+    /// </summary>
+    /// <param name="size">The scale of the health bar</param>
     public void SetSize(float size)
     {
-        if (parent != null)
-        {
             bar.transform.localScale = new Vector3(size, transform.localScale.y);
-        }
     }
 
 }
