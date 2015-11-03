@@ -75,12 +75,6 @@
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
- <Reference Include="System.Data">
- <HintPath>C:/Users/mikke/Documents/Repository TowerDefenseArena/TowerDefenceArena/Assets/Plugins/System.Data.dll</HintPath>
- </Reference>
- <Reference Include="Mono.Data.Sqlite">
- <HintPath>C:/Users/mikke/Documents/Repository TowerDefenseArena/TowerDefenceArena/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
- </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
  </Reference>

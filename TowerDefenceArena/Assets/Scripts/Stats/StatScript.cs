@@ -36,12 +36,13 @@ public class StatScript : MonoBehaviour
 
     public void LoadStats()
     {
-        if (PlayerPrefs.HasKey("exp") && PlayerPrefs.HasKey("gold") && PlayerPrefs.HasKey("points"))
-        {
-            PlayerPrefs.GetFloat("exp", exp);
-            PlayerPrefs.GetFloat("gold", gold);
-            PlayerPrefs.GetFloat("points", points);
-        }
+
+        exp = PlayerPrefs.GetFloat("exp", exp);
+        gold = PlayerPrefs.GetFloat("gold", gold);
+        points = PlayerPrefs.GetFloat("points", points);
+
+        Debug.Log(PlayerPrefs.GetFloat("exp") + PlayerPrefs.GetFloat("gold") + PlayerPrefs.GetFloat("points"));
+
     }
 
     public void SaveStats()
@@ -53,6 +54,8 @@ public class StatScript : MonoBehaviour
         PlayerPrefs.SetFloat("points", points);
 
         PlayerPrefs.Save();
+
+        Debug.Log(PlayerPrefs.GetFloat("exp") + PlayerPrefs.GetFloat("gold") + PlayerPrefs.GetFloat("points"));
     }
 
     /// <summary>
