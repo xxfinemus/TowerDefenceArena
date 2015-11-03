@@ -5,31 +5,19 @@ using System.Collections;
 public class ButtonMute : MonoBehaviour
 {
     [SerializeField]
-    private Camera myCamera;
-    private AudioListener listener;
-
-    [SerializeField]
     private Button myButton;
 
-    void Start()
+    public void ToggleMute()
     {
-        listener = myCamera.GetComponent<AudioListener>();
-    }
-
-    void Update()
-    {
-        if (listener.enabled)
+        if (AudioListener.volume == 0)
         {
+            AudioListener.volume = 1;
             myButton.image.sprite = myButton.spriteState.highlightedSprite;
         }
         else
         {
+            AudioListener.volume = 0;
             myButton.image.sprite = myButton.spriteState.pressedSprite;
         }
-    }
-
-    public void ToggleMute()
-    {
-        listener.enabled = !listener.enabled;
     }
 }
