@@ -71,7 +71,6 @@
      <Compile Include="Assets\pathTest\Pathfinding.cs" />
      <Compile Include="Assets\pathTest\TouchInput.cs" />
      <Compile Include="Assets\pathTest\moveTo.cs" />
-     <Compile Include="Assets\pathTest\obstacleCarve.cs" />
      <None Include="Assets\Shader\test shader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
