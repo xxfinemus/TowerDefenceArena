@@ -3,6 +3,7 @@ using System.Collections;
 
 public class StatScript : MonoBehaviour
 {
+<<<<<<< HEAD
     private int exp;
     private int gold;
     private int points;
@@ -13,6 +14,12 @@ public class StatScript : MonoBehaviour
 
     #region Properties
     public int Points
+=======
+    float exp, gold, points, enemiesLeaked, bossHealth;
+
+
+    public float Points
+>>>>>>> 739382bfb6b3559e007f2571d90ee42df7b0beaf
     {
         get { return points; }
     }
@@ -25,6 +32,14 @@ public class StatScript : MonoBehaviour
     public int Exp
     {
         get { return exp; }
+    }
+    public float EnemiesLeaked
+    {
+        get { return enemiesLeaked; }
+    }
+    public float BossHealth
+    {
+        get { return bossHealth; }
     }
 
     public int Strength
@@ -56,6 +71,7 @@ public class StatScript : MonoBehaviour
     public void LoadStats()
     {
 
+<<<<<<< HEAD
         exp = PlayerPrefs.GetInt("exp", exp);
         gold = PlayerPrefs.GetInt("gold", gold);
         points = PlayerPrefs.GetInt("points", points);
@@ -65,6 +81,19 @@ public class StatScript : MonoBehaviour
         speed = PlayerPrefs.GetInt("speed", speed);
 
         //Debug.Log("Exp: " + PlayerPrefs.GetInt("exp") + "; Gold: " + PlayerPrefs.GetInt("gold") + "; Points: " + PlayerPrefs.GetInt("points") + "; Strength: " + PlayerPrefs.GetInt("strength"));
+=======
+        exp = PlayerPrefs.GetFloat("exp");
+        gold = PlayerPrefs.GetFloat("gold");
+        points = PlayerPrefs.GetFloat("points");
+        enemiesLeaked = PlayerPrefs.GetFloat("enemiesLeaked");
+        bossHealth = PlayerPrefs.GetFloat("bossHealth");
+
+        Debug.Log("Exp loaded: " + PlayerPrefs.GetFloat("exp") +
+            "Gold loaded: " + PlayerPrefs.GetFloat("gold") +
+            "Points loaded: " + PlayerPrefs.GetFloat("points") +
+            "Enemies leaked loaded: " + PlayerPrefs.GetFloat("enemiesLeaked") +
+            "Boss health loaded: " + PlayerPrefs.GetFloat("bossHealth"));
+>>>>>>> 739382bfb6b3559e007f2571d90ee42df7b0beaf
 
     }
 
@@ -84,15 +113,28 @@ public class StatScript : MonoBehaviour
 
         PlayerPrefs.SetInt("speed", speed);
 
+        PlayerPrefs.SetFloat("enemiesLeaked", enemiesLeaked);
+
+        PlayerPrefs.SetFloat("bossHealth", bossHealth);
+
+
         PlayerPrefs.Save();
 
+<<<<<<< HEAD
         //Debug.Log("Exp: " + PlayerPrefs.GetInt("exp") + "; Gold: " + PlayerPrefs.GetInt("gold") + "; Points: " + PlayerPrefs.GetInt("points") + "; Strength: " + PlayerPrefs.GetInt("strength"));
+=======
+        Debug.Log("Exp saved: " + PlayerPrefs.GetFloat("exp") +
+            "Gold saved: " + PlayerPrefs.GetFloat("gold") +
+            "Points saved: " + PlayerPrefs.GetFloat("points") +
+            "Enemies leaked saved: " + PlayerPrefs.GetFloat("enemiesLeaked") +
+            "Boss health saved: " + PlayerPrefs.GetFloat("bossHealth"));
+>>>>>>> 739382bfb6b3559e007f2571d90ee42df7b0beaf
     }
 
     /// <summary>
     /// Increases or decreases the selected stat by the given value (To decrease give a negative number)
     /// </summary>
-    /// <param name="stat">The name of the stat "exp", "gold", "points"</param>
+    /// <param name="stat">The name of the stat "exp", "gold", "points", "enemy", "enemyhealth"</param>
     /// <param name="value">The numerical value to change the stat by</param>
     public void ChangeStat(string stat, int value)
     {
@@ -110,6 +152,7 @@ public class StatScript : MonoBehaviour
                 points += value;
                 break;
 
+<<<<<<< HEAD
             case "strength":
                 strength += value;
                 break;
@@ -162,6 +205,14 @@ public class StatScript : MonoBehaviour
 
             default:
                 value = 0;
+=======
+            case "enemy":
+                enemiesLeaked += value;
+                break;
+
+            case "enemyHealth":
+                bossHealth += value;
+>>>>>>> 739382bfb6b3559e007f2571d90ee42df7b0beaf
                 break;
         }
         return value;
@@ -170,7 +221,7 @@ public class StatScript : MonoBehaviour
     /// <summary>
     /// Sets the chosen stat to be equal to the given value
     /// </summary>
-    /// <param name="stat">"exp", "gold", "points"</param>
+    /// <param name="stat">"exp", "gold", "points", "enemy", "enemyhealth"</param>
     /// <param name="value">The value you want the stat to be</param>
     public void SetStat(string stat, int value)
     {
@@ -188,6 +239,7 @@ public class StatScript : MonoBehaviour
                 points = value;
                 break;
 
+<<<<<<< HEAD
             case "strength":
                 strength = value;
                 break;
@@ -201,6 +253,16 @@ public class StatScript : MonoBehaviour
                 break;
 
 
+=======
+            case "enemy":
+                enemiesLeaked = value;
+                break;
+
+            case "enemyHealth":
+                bossHealth = value;
+                break;
+
+>>>>>>> 739382bfb6b3559e007f2571d90ee42df7b0beaf
             default:
                 Debug.Log(stat + "does not exist");
                 break;
@@ -221,5 +283,23 @@ public class StatScript : MonoBehaviour
         speed = 0;
 
         SaveStats();
+    }
+
+    /// <summary>
+    /// Resets all saved stats to 0. Use with caution
+    /// </summary>
+    public void ResetStats()
+    {
+        PlayerPrefs.SetFloat("exp", 0);
+
+        PlayerPrefs.SetFloat("gold", 0);
+
+        PlayerPrefs.SetFloat("points", 0);
+
+        PlayerPrefs.SetFloat("enemiesLeaked", 0);
+
+        PlayerPrefs.SetFloat("bossHealth", 0);
+
+        PlayerPrefs.Save();
     }
 }
