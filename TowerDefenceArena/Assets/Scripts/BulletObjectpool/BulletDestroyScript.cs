@@ -6,11 +6,20 @@ public class BulletDestroyScript : MonoBehaviour
     /// <summary>
     /// Sends the bullet back in the object pool after it is used.
     /// </summary>
-    
-    void OnEnable()
+
+    //void OnEnable()
+    //{
+
+    //    //For now it is set to be set to Inactive after 2 seconds.
+    //    Invoke("Destroy", 3f);
+    //}
+
+    void OnTriggerEnter(Collider collider)
     {
-        //For now it is set to be set to Inactive after 2 seconds.
-        Invoke("Destroy", 2f);
+        if (collider.gameObject.tag == "enemy")
+        {
+            Destroy();
+        }
     }
 
     //Set the bullet to Inactive = sends it back in the object pool.
