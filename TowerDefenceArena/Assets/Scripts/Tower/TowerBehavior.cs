@@ -61,7 +61,7 @@ public class TowerBehavior : MonoBehaviour {
     // Add enemy to queue
     private void AddToQueue()
     {
-        GameObject[] _enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] _enemies = GameObject.FindGameObjectsWithTag("enemy");
         foreach (GameObject enemy in _enemies)
         {
             if (!enemies.Contains(enemy))
@@ -115,5 +115,17 @@ public class TowerBehavior : MonoBehaviour {
         //bullet.transform.position = transform.position;
         // bullet.GetComponent<FireScript>().Target(enemy);
         // bullet.GetComponent<FireScript>().Fire();
+        //Gets a bullet from the object pool.
+        GameObject obj = BulletObjectPoolScript.current.GetPooledObject();
+
+        //If there is not an object in the object pool and willGrow is not true,
+        //it will return null and we will not get a bullet.
+        if (obj == null) return;
+
+        //Creates the bullet at the transforms position.
+        obj.transform.position = transform.position;
+        obj.GetComponent<SecondBulletScript>().StartPosition = transform.position;
+        obj.GetComponent<SecondBulletScript>().Target = target.transform;
+        obj.SetActive(true);
     }
 }

@@ -23,6 +23,10 @@ public class WaveControl : MonoBehaviour
     private GameObject spawnPosition;
 
 
+    //test
+    public bool forceStartWave;
+
+
     public int EnemiesRemaning
     {
         set { enemiesRemaning = value; }
@@ -49,12 +53,18 @@ public class WaveControl : MonoBehaviour
         waveCanStart = true;
         waveRunning = false;
         enemiesRemaning = 0;
-        StartNextWave();
+        forceStartWave = false;
+        
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
+        if (forceStartWave)
+        {
+            StartNextWave();
+            forceStartWave = false;
+        }
         if (IsWaveDone())
         {
             WaveComplete();

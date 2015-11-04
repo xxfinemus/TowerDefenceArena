@@ -88,23 +88,26 @@ public class Pathfinding : MonoBehaviour
             return 14 * dstY + 10 * (dstX - dstY);
         return 14 * dstX + 10 * (dstY - dstX);
     }
-    public bool CheckIfPathIsValid(Vector3 hit)
+    public bool CheckIfPathIsValid(Node node)
     {
+        bool walkabletemp = node.walkable;
         path = new List<Node>();
-        Node node = grid.NodeFromWorldPoint(hit);
         node.walkable = false;
         FindPath(seeker.position, target.position);
+        node.walkable = walkabletemp;
         //Debug.Log(path.Count);
         if (path.Count == 0)
         {
-            node.walkable = true;
             return false;
         }
         else
         {
             return true;
         }
+        
     }
+
+
     void OnDrawGizmos()
     {
         Node[] array = null;
@@ -122,8 +125,6 @@ public class Pathfinding : MonoBehaviour
                 Debug.DrawLine(array[i].worldPosition, array[i + 1].worldPosition);
             }
         }
-
-
         RaycastHit hit;
         Ray raym = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(raym, out hit))
@@ -131,10 +132,5 @@ public class Pathfinding : MonoBehaviour
             Node node = grid.NodeFromWorldPoint(hit.point);
             Gizmos.DrawSphere(node.worldPosition, 1); 
         }
-
-
-
-
-
     }
 }

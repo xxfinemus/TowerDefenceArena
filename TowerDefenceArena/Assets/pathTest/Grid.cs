@@ -21,7 +21,6 @@ public class Grid : MonoBehaviour
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
         CreateGrid();
     }
-
     void CreateGrid()
     {
         grid = new Node[gridSizeX, gridSizeY];
@@ -37,7 +36,6 @@ public class Grid : MonoBehaviour
             }
         }
     }
-
     public List<Node> GetNeighbours(Node node)
     {
         List<Node> neighbours = new List<Node>();
@@ -61,8 +59,6 @@ public class Grid : MonoBehaviour
 
         return neighbours;
     }
-
-
     public Node NodeFromWorldPoint(Vector3 worldPosition)
     {
         float percentX = (worldPosition.x + gridWorldSize.x / 2) / gridWorldSize.x;
@@ -74,8 +70,6 @@ public class Grid : MonoBehaviour
         int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
         return grid[x, y];
     }
-
-
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));

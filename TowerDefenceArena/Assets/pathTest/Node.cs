@@ -11,6 +11,13 @@ public class Node {
     public int gCost;
     public int hCost;
     public Node parent;
+    private GameObject tower;
+
+    public GameObject Tower
+    {
+        get { return tower; }
+        set { tower = value; }
+    }
 
     public Node(bool _walkable, Vector3 _worldPos, int _gridX, int _gridY)
     {
@@ -25,5 +32,10 @@ public class Node {
         get{
             return gCost + hCost;  
         }
+    }
+    public void DestroyTower()
+    {
+        GameObject.Destroy(tower);
+        tower = null;
     }
 }
