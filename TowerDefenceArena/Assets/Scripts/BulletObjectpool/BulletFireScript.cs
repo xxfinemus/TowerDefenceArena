@@ -32,6 +32,7 @@ public class BulletFireScript : MonoBehaviour
 
         //Creates the bullet at the transforms position.
         obj.transform.position = transform.position;
+        obj.GetComponent<SecondBulletScript>().StartPosition = transform.position;
         obj.transform.rotation = transform.rotation;
         obj.SetActive(true);
 
