@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\BulletObjectpool\BulletFireScript.cs" />
      <Compile Include="Assets\Scripts\BulletObjectpool\BulletObjectPoolScript.cs" />
      <Compile Include="Assets\Scripts\BulletObjectpool\BulletScript.cs" />
+     <Compile Include="Assets\Scripts\BulletObjectpool\SecondBulletScript.cs" />
      <Compile Include="Assets\Scripts\Button\ButtonMute.cs" />
      <Compile Include="Assets\Scripts\Button\ButtonSound.cs" />
      <Compile Include="Assets\Scripts\Button\ButtonSpriteControl.cs" />

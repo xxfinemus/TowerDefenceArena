@@ -31,7 +31,10 @@ public class TowerBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-	    
+        if (!objectPool)
+        {
+            objectPool = BulletObjectPoolScript.current;
+        }
 	}
 	
 	// Update is called once per frame
