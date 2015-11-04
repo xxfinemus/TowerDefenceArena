@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Button\ButtonSound.cs" />
     <Compile Include="Assets\Scripts\Button\ButtonSpriteControl.cs" />
     <Compile Include="Assets\Scripts\Button\UpgradeHero.cs" />
+    <Compile Include="Assets\Scripts\CameraFade_Script.cs" />
     <Compile Include="Assets\Scripts\EnemiesObjectPool\EnemyObjectPoolScript.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyHealthScript.cs" />
     <Compile Include="Assets\Scripts\Enemy\Healthbar\CameraFacingBillboard_Script.cs" />
