@@ -67,22 +67,28 @@
      <Compile Include="Assets\Scripts\WaveControl.cs" />
      <Compile Include="Assets\pathTest\Grid.cs" />
      <Compile Include="Assets\pathTest\Node.cs" />
-     <Compile Include="Assets\pathTest\ObstacleCarve.cs" />
      <Compile Include="Assets\pathTest\Pathfinding.cs" />
      <Compile Include="Assets\pathTest\TouchInput.cs" />
      <Compile Include="Assets\pathTest\moveTo.cs" />
+     <Compile Include="Assets\pathTest\obstacleCarve.cs" />
      <None Include="Assets\Shader\test shader.shader" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
- <Reference Include="System.Data">
- <HintPath>C:/Users/Valdemar/Desktop/TowerDefenceArena/TowerDefenceArena/Assets/Plugins/System.Data.dll</HintPath>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.Sqlite">
- <HintPath>C:/Users/Valdemar/Desktop/TowerDefenceArena/TowerDefenceArena/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+ <HintPath>C:/Users/frede_000/Desktop/ArenaTD/TowerDefenceArena/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Data">
+ <HintPath>C:/Users/frede_000/Desktop/ArenaTD/TowerDefenceArena/Assets/Plugins/System.Data.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
