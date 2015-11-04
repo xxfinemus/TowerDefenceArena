@@ -58,9 +58,9 @@ public class SecondBulletScript : MonoBehaviour
         Vector3 targetPos = target.position;
         targetPos.y = startPosition.y;
         distance = Vector3.Distance(startPosition, targetPos);
-        //targetPos = startPosition;
-        //targetPos.y = transform.position.y;
-        //distanceTraveled = Vector3.Distance(targetPos, transform.position);
+        targetPos = startPosition;
+        targetPos.y = transform.position.y;
+        distanceTraveled = Vector3.Distance(targetPos, transform.position);
      
 
     }
@@ -87,24 +87,12 @@ public class SecondBulletScript : MonoBehaviour
         {
             TurnTowardsTarget();            
             transform.Translate(0, 0, speed * Time.deltaTime);
-            distanceTraveled += speed * Time.deltaTime;
             BetterPath();
         }
-        //FireAngle();
-        //BulletHeight();
+
    
     }
 
-    void BulletHeight()
-    {
-        float tempHeight = (float)(startPosition.y + distanceTraveled * Mathf.Tan(angle) - (gravity * Mathf.Pow(distanceTraveled, 2) / (2 * Mathf.Pow(((speed * Mathf.Cos(angle))), 2))));
-        Vector3 heightToBe = new Vector3(transform.position.x, tempHeight, transform.position.z);
-        transform.position = heightToBe;
-    }
-    void FireAngle()
-    {
-        angle = (float)(Mathf.Atan((Mathf.Pow(speed, 2) + Mathf.Sqrt(Mathf.Pow(speed, 4) - gravity * (gravity * Mathf.Pow(distance, 2) + 2 * hight * Mathf.Pow(speed, 2)))) / (gravity * distance)));
-    }
 
     void TurnTowardsTarget()
     {
@@ -117,8 +105,8 @@ public class SecondBulletScript : MonoBehaviour
     {
 
         
-        if (Vector3.Distance(target.position, oldTargetPos) >= 1)
-        {
+        //if (Vector3.Distance(target.position, oldTargetPos) >= 1)
+        //{
             oldTargetPos = target.position;
             start = new Vector2(0, startPosition.y);
             end = new Vector2(distance, target.position.y);
@@ -135,9 +123,9 @@ public class SecondBulletScript : MonoBehaviour
             a = DDD / AAA;
             b = (D - A * a) / B;
             c = start.y - a * Mathf.Pow(start.x, 2) - b * start.x;
-        }
-        float tempHeight = (float)(a*Mathf.Pow(distanceTraveled, 2) + b * distanceTraveled + c);
-        Debug.Log("TempHeight" + tempHeight);
+        //}
+        float tempHeight = (float)(a * Mathf.Pow(distanceTraveled, 2) + b * distanceTraveled + c);
+        //float tempHeight = 0;
         Vector3 heightToBe = new Vector3(transform.position.x, tempHeight, transform.position.z);
         transform.position = heightToBe;
 

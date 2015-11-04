@@ -8,12 +8,12 @@ public class MoveEnemy : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        speed *= Time.deltaTime;
+        
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        transform.position += Vector3.left * speed;
+        transform.position += Vector3.left * (speed *Time.deltaTime);
 	}
 }
