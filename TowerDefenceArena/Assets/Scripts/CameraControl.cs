@@ -6,12 +6,15 @@ public class CameraControl : MonoBehaviour
     [SerializeField]
     private float top, bottom, left, right, front, back;
     [SerializeField]
+    public static CameraControl current;
     private GameObject plane;
     private float zoomDistance;
     private Vector3 startPos;
+    private Vector2 touchStartPos;
 	// Use this for initialization
 	void Start () 
     {
+        current = this;
         startPos = transform.position;
         left += startPos.z;
         right += startPos.z;
@@ -59,6 +62,27 @@ public class CameraControl : MonoBehaviour
             transform.position += new Vector3(dir.x, 0, dir.z) * Time.deltaTime * 8;
             Debug.Log(dir);
         }
+    }
+    public bool TouchThreshold(Touch touch, float delta)
+    {
+        float distance = (Vector2.Distance(touch.position, touchStartPos));
+        if (touch.phase == TouchPhase.Began)
+        {
+            touchStartPos = touch.position;  
+        }
+        else if (touch.phase == TouchPhase.Moved)
+        {
+            if (distance > delta)
+            {
+                Move();
+                return false;
+            }
+        }
+        else if (touch.phase == TouchPhase.Ended)
+        {
+            return (distance < delta);
+        }
+        return false;
     }
     private Vector3[] GetVertices(GameObject obj)
     {
