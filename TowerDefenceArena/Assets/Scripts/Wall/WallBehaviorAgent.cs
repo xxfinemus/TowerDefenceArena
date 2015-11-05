@@ -4,14 +4,19 @@ using System.Collections.Generic;
 
 public class WallBehaviorAgent : MonoBehaviour {
 
+    static public WallBehaviorAgent WallAgent;
     // Field
+    [SerializeField]
+    private GameObject wallModel;
     [SerializeField]
     private GameObject[] walls;
 
-    private Transform[][] corners;
+    //private Transform[][] corners;
 	// Use this for initialization
 	void Start ()
     {
+        WallAgent = this;
+
         walls = GameObject.FindGameObjectsWithTag("Wall");
         for (int i = 0; i < walls.Length; i++)
         {
@@ -23,8 +28,65 @@ public class WallBehaviorAgent : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            InstantiateWall(new Vector3(-3, 0, -3));
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            InstantiateWall(new Vector3(0, 0, -3));
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            InstantiateWall(new Vector3(3, 0, -3));
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            InstantiateWall(new Vector3(-3, 0, 0));
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            InstantiateWall(new Vector3(0, 0, 0));
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad6))
+        {
+            InstantiateWall(new Vector3(3, 0, 0));
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad7))
+        {
+            InstantiateWall(new Vector3(-3, 0, 3));
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad8))
+        {
+            InstantiateWall(new Vector3(0, 0, 3));
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad9))
+        {
+            InstantiateWall(new Vector3(3, 0, 3));
+        }
 	}
+    // When instantiating a new wall
+    private void InstantiateWall(Vector3 pos)
+    {
+        GameObject _wall = Instantiate(wallModel, pos, Quaternion.identity) as GameObject;
+        GameObject[] _neighbours = GetNeighbours(_wall);    // Neighbours of the wall
+        Transform[] _corners = GetCornersInWall(_wall);     // Corners of the wall
+        // Get all neighbours from wall individualy
+        foreach (GameObject neighbour in _neighbours)
+        {
+            Transform[] n_corners = GetCornersInWall(neighbour);
+            foreach (Transform n_corner in n_corners)
+            {
+                foreach (Transform t_corner in _corners)
+                {
+                    if (Vector3.Distance(t_corner.position, n_corner.position) < 0.5f)
+                    {
+                        Destroy(t_corner.gameObject);
+                    }
+                }
+            }
+        }
+    }
     // Get all corners from all walls
     private Transform[][] GetAllCorners()
     {
