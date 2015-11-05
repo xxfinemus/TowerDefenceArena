@@ -57,6 +57,7 @@ public class UpgradeHero : MonoBehaviour
     public void OpenHeroUpgrade()
     {
         // Pause the game here
+        Pause.StartPause();
 
         heroMenu.SetActive(true);
 
@@ -75,6 +76,7 @@ public class UpgradeHero : MonoBehaviour
     public void CloseHeroUpgrade()
     {
         // Unpause the game here
+        Pause.EndPause();
 
         heroMenu.SetActive(false);
     }
@@ -86,7 +88,7 @@ public class UpgradeHero : MonoBehaviour
         stats.SetStat("vitality", Convert.ToInt32(vitalityText.text));
         stats.SetStat("speed", Convert.ToInt32(speedText.text));
 
-        heroMenu.SetActive(false);
+        CloseHeroUpgrade();
     }
 
     public void AddOneLevel(string stat)
