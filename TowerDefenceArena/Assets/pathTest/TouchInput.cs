@@ -36,36 +36,14 @@ public class TouchInput : MonoBehaviour
     void Update()
     {
         #region touch
-        //ShowPointerPosition();
-        //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-        //{
-        //    Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-        //    RaycastHit hit;
-        //    if (Physics.Raycast(ray, out hit, 100, mask.value))
-        //    {
-        //        _node = _grid.NodeFromWorldPoint(hit.point);
-        //        ShowCanvasItems(_node);
-        //    }
-        //    else
-        //    {
-        //        dontShowPointer = false;
-        //        buildMenu.SetActive(false);
-        //    }
-        //}
-        #endregion
-
-        #region mouse
-        ShowPointerPositionMouse();
-
-
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        ShowPointerPosition();
+        if (CameraControl.current.TouchThreshold(Input.GetTouch(0), 5) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100, mask.value))
             {
                 _node = grid.NodeFromWorldPoint(hit.point);
-                Debug.Log(_node.worldPosition + " click");
                 ShowCanvasItems(_node);
             }
             else
@@ -75,6 +53,28 @@ public class TouchInput : MonoBehaviour
             }
         }
         #endregion
+
+        //#region mouse
+        //ShowPointerPositionMouse();
+
+
+        //if (Input.GetKeyDown(KeyCode.Mouse0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        //{
+        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //    RaycastHit hit;
+        //    if (Physics.Raycast(ray, out hit, 100, mask.value))
+        //    {
+        //        _node = grid.NodeFromWorldPoint(hit.point);
+        //        Debug.Log(_node.worldPosition + " click");
+        //        ShowCanvasItems(_node);
+        //    }
+        //    else
+        //    {
+        //        dontShowPointer = false;
+        //        buildMenu.SetActive(false);
+        //    }
+        //}
+        //#endregion
 
     }
     private void ShowCanvasItems(Node _node)
