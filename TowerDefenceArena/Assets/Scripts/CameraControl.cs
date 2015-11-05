@@ -5,64 +5,72 @@ public class CameraControl : MonoBehaviour
 {
     [SerializeField]
     private float top, bottom, left, right, front, back;
-    private Vector3 zoom1, zoom2;
+    [SerializeField]
+    private GameObject plane;
+    private float zoomDistance;
+    private Vector3 startPos;
 	// Use this for initialization
 	void Start () 
     {
-	    
+        startPos = transform.position;
+        left += startPos.z;
+        right += startPos.z;
+        front += startPos.x;
+        back += startPos.x;
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-	
+        Move();
+        Zoom();
+        ConfineToBounds();
 	}
-
+    void OnGUI()
+    {
+        Vector3[] p_corners = GetVertices(plane);
+        for (int i = 0; i < p_corners.Length; i++)
+        {
+            //Debug.Log("Corner " + (i + 1) + " position: " + p_corners[i]);
+            Vector3 w_point = Camera.main.WorldToScreenPoint(p_corners[i]);
+            //GUI.Label(new Rect(new Vector2(w_point.x, w_point + Screen.height), new Vector2(10, 10)), p_corners[i].ToString());
+        }
+    }
     private void Zoom()
     {
         Touch[] myTouches = Input.touches;
-        if (myTouches.Length == 2)
+        if (myTouches.Length == 2 && (myTouches[0].phase == TouchPhase.Moved || myTouches[1].phase == TouchPhase.Moved))
         {
-            
+            zoomDistance = Vector2.Distance(myTouches[0].position, myTouches[1].position);
+            float newDistance = Vector2.Distance((myTouches[0].position - myTouches[0].deltaPosition), (myTouches[1].position - myTouches[1].deltaPosition));
+            float changeZoom = zoomDistance - newDistance;
+            Debug.Log("Touch inputs: " + myTouches.Length);
+            transform.Translate(new Vector3(0, 0, changeZoom) * Time.deltaTime * 5);
         }
-        else
-        {
-
-        }
-
     }
 
     private void Move()
     {
+        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+            Vector2 newPos = Input.GetTouch(0).deltaPosition;
 
+            Vector3 dir = Quaternion.AngleAxis(45, transform.forward) * new Vector3(newPos.y, 0, -newPos.x);
+            transform.position += new Vector3(dir.x, 0, dir.z) * Time.deltaTime * 8;
+            Debug.Log(dir);
+        }
     }
-
+    private Vector3[] GetVertices(GameObject obj)
+    {
+        if (obj.GetComponent<MeshFilter>())
+        {
+            return obj.GetComponent<MeshFilter>().mesh.vertices;
+        }
+        return null;
+    }
     private void ConfineToBounds()
     {
-        Vector3 confineVecter = transform.position;
-        if (transform.position.y < bottom)
-        {
-            confineVecter.y = bottom;
-        }
-        else if (transform.position.y > top)
-        {
-            confineVecter.y = top;
-        }
-        if (transform.position.x < back)
-        {
-            confineVecter.x = back;
-        }
-        else if (transform.position.x > front)
-        {
-            confineVecter.x = front;
-        }
-        if (transform.position.z < left)
-        {
-            confineVecter.z = left;
-        }
-        else if (transform.position.z > right)
-        {
-            confineVecter.z = right;
-        }
+        Vector3 pos = transform.position;
+        transform.position = new Vector3(Mathf.Clamp(pos.x, back, front), Mathf.Clamp(pos.y, bottom, top), Mathf.Clamp(pos.z, left, right));
     }
 }

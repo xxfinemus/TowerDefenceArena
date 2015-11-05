@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Button\ButtonSound.cs" />
      <Compile Include="Assets\Scripts\Button\ButtonSpriteControl.cs" />
      <Compile Include="Assets\Scripts\Button\UpgradeHero.cs" />
+     <Compile Include="Assets\Scripts\CameraControl.cs" />
      <Compile Include="Assets\Scripts\CameraFade_Script.cs" />
      <Compile Include="Assets\Scripts\EnemiesObjectPool\EnemyObjectPoolScript.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyHealthScript.cs" />
@@ -62,6 +63,7 @@
      <Compile Include="Assets\Scripts\Enemy\Healthbar\HealthBarScript.cs" />
      <Compile Include="Assets\Scripts\HighScoreScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu_Script.cs" />
+     <Compile Include="Assets\Scripts\Pause.cs" />
      <Compile Include="Assets\Scripts\Stats\DisplayStats.cs" />
      <Compile Include="Assets\Scripts\Stats\StatScript.cs" />
      <Compile Include="Assets\Scripts\Tower\MoveEnemy.cs" />
@@ -74,17 +76,11 @@
      <Compile Include="Assets\pathTest\TouchInput.cs" />
      <Compile Include="Assets\pathTest\moveTo.cs" />
      <None Include="Assets\Shader\test shader.shader" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.Sqlite">
  <HintPath>C:/Users/thom441c/Desktop/Dania/TowerDefenceArena/TowerDefenceArena/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
