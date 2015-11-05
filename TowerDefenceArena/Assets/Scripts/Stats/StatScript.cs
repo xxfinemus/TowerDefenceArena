@@ -11,12 +11,11 @@ public class StatScript : MonoBehaviour
     private int vitality;
     private int speed;
 
+    int enemiesLeaked;
+    float bossHealth;
     #region Properties
+
     public int Points
-    float exp, gold, points, enemiesLeaked, bossHealth;
-
-
-    public float Points
     {
         get { return points; }
     }
@@ -30,10 +29,12 @@ public class StatScript : MonoBehaviour
     {
         get { return exp; }
     }
-    public float EnemiesLeaked
+
+    public int EnemiesLeaked
     {
         get { return enemiesLeaked; }
     }
+
     public float BossHealth
     {
         get { return bossHealth; }
@@ -43,10 +44,12 @@ public class StatScript : MonoBehaviour
     {
         get { return strength; }
     }
+
     public int Vitality
     {
         get { return vitality; }
     }
+
     public int Speed
     {
         get { return speed; }
@@ -67,30 +70,21 @@ public class StatScript : MonoBehaviour
 
     public void LoadStats()
     {
-
-<<<<<<< HEAD
-        exp = PlayerPrefs.GetInt("exp", exp);
-        gold = PlayerPrefs.GetInt("gold", gold);
-        points = PlayerPrefs.GetInt("points", points);
+        exp = PlayerPrefs.GetInt("exp");
+        gold = PlayerPrefs.GetInt("gold");
+        points = PlayerPrefs.GetInt("points");
+        enemiesLeaked = PlayerPrefs.GetInt("enemiesLeaked");
+        bossHealth = PlayerPrefs.GetFloat("bossHealth");
 
         strength = PlayerPrefs.GetInt("strength", strength);
         vitality = PlayerPrefs.GetInt("vitality", vitality);
         speed = PlayerPrefs.GetInt("speed", speed);
-
-        //Debug.Log("Exp: " + PlayerPrefs.GetInt("exp") + "; Gold: " + PlayerPrefs.GetInt("gold") + "; Points: " + PlayerPrefs.GetInt("points") + "; Strength: " + PlayerPrefs.GetInt("strength"));
-=======
-        exp = PlayerPrefs.GetFloat("exp");
-        gold = PlayerPrefs.GetFloat("gold");
-        points = PlayerPrefs.GetFloat("points");
-        enemiesLeaked = PlayerPrefs.GetFloat("enemiesLeaked");
-        bossHealth = PlayerPrefs.GetFloat("bossHealth");
 
         Debug.Log("Exp loaded: " + PlayerPrefs.GetFloat("exp") +
             "Gold loaded: " + PlayerPrefs.GetFloat("gold") +
             "Points loaded: " + PlayerPrefs.GetFloat("points") +
             "Enemies leaked loaded: " + PlayerPrefs.GetFloat("enemiesLeaked") +
             "Boss health loaded: " + PlayerPrefs.GetFloat("bossHealth"));
->>>>>>> 739382bfb6b3559e007f2571d90ee42df7b0beaf
 
     }
 
@@ -117,15 +111,11 @@ public class StatScript : MonoBehaviour
 
         PlayerPrefs.Save();
 
-<<<<<<< HEAD
-        //Debug.Log("Exp: " + PlayerPrefs.GetInt("exp") + "; Gold: " + PlayerPrefs.GetInt("gold") + "; Points: " + PlayerPrefs.GetInt("points") + "; Strength: " + PlayerPrefs.GetInt("strength"));
-=======
         Debug.Log("Exp saved: " + PlayerPrefs.GetFloat("exp") +
             "Gold saved: " + PlayerPrefs.GetFloat("gold") +
             "Points saved: " + PlayerPrefs.GetFloat("points") +
             "Enemies leaked saved: " + PlayerPrefs.GetFloat("enemiesLeaked") +
             "Boss health saved: " + PlayerPrefs.GetFloat("bossHealth"));
->>>>>>> 739382bfb6b3559e007f2571d90ee42df7b0beaf
     }
 
     /// <summary>
@@ -149,7 +139,14 @@ public class StatScript : MonoBehaviour
                 points += value;
                 break;
 
-<<<<<<< HEAD
+            case "enemy":
+                enemiesLeaked += value;
+                break;
+
+            case "enemyHealth":
+                bossHealth += value;
+                break;
+
             case "strength":
                 strength += value;
                 break;
@@ -171,9 +168,9 @@ public class StatScript : MonoBehaviour
     /// </summary>
     /// <param name="stat">The stat which value is returned</param>
     /// <returns></returns>
-    public int GetStat(string stat)
+    public float GetStat(string stat)
     {
-        int value;
+        float value;
         switch (stat)
         {
             case "exp":
@@ -186,6 +183,14 @@ public class StatScript : MonoBehaviour
 
             case "points":
                 value = points;
+                break;
+
+            case "enemy":
+                value = enemiesLeaked;
+                break;
+
+            case "enemyHealth":
+                value = bossHealth;
                 break;
 
             case "strength":
@@ -202,15 +207,8 @@ public class StatScript : MonoBehaviour
 
             default:
                 value = 0;
-=======
-            case "enemy":
-                enemiesLeaked += value;
                 break;
 
-            case "enemyHealth":
-                bossHealth += value;
->>>>>>> 739382bfb6b3559e007f2571d90ee42df7b0beaf
-                break;
         }
         return value;
     }
@@ -236,7 +234,14 @@ public class StatScript : MonoBehaviour
                 points = value;
                 break;
 
-<<<<<<< HEAD
+            case "enemy":
+                enemiesLeaked = value;
+                break;
+
+            case "enemyHealth":
+                bossHealth = value;
+                break;
+
             case "strength":
                 strength = value;
                 break;
@@ -249,17 +254,6 @@ public class StatScript : MonoBehaviour
                 speed = value;
                 break;
 
-
-=======
-            case "enemy":
-                enemiesLeaked = value;
-                break;
-
-            case "enemyHealth":
-                bossHealth = value;
-                break;
-
->>>>>>> 739382bfb6b3559e007f2571d90ee42df7b0beaf
             default:
                 Debug.Log(stat + "does not exist");
                 break;
@@ -268,13 +262,15 @@ public class StatScript : MonoBehaviour
     }
 
     /// <summary>
-    /// Resets all the stat to their default values (0)
+    /// Resets all the stat to their default values (0). Use with caution
     /// </summary>
     public void SetStatsToDefault()
     {
         exp = 0;
         gold = 0;
         points = 0;
+        enemiesLeaked = 0;
+        bossHealth = 0;
         strength = 0;
         vitality = 0;
         speed = 0;
@@ -282,21 +278,4 @@ public class StatScript : MonoBehaviour
         SaveStats();
     }
 
-    /// <summary>
-    /// Resets all saved stats to 0. Use with caution
-    /// </summary>
-    public void ResetStats()
-    {
-        PlayerPrefs.SetFloat("exp", 0);
-
-        PlayerPrefs.SetFloat("gold", 0);
-
-        PlayerPrefs.SetFloat("points", 0);
-
-        PlayerPrefs.SetFloat("enemiesLeaked", 0);
-
-        PlayerPrefs.SetFloat("bossHealth", 0);
-
-        PlayerPrefs.Save();
-    }
 }

@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\Button\ButtonMute.cs" />
      <Compile Include="Assets\Scripts\Button\ButtonSound.cs" />
      <Compile Include="Assets\Scripts\Button\ButtonSpriteControl.cs" />
+     <Compile Include="Assets\Scripts\Button\UpgradeHero.cs" />
      <Compile Include="Assets\Scripts\CameraFade_Script.cs" />
      <Compile Include="Assets\Scripts\EnemiesObjectPool\EnemyObjectPoolScript.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyHealthScript.cs" />
@@ -61,6 +62,7 @@
      <Compile Include="Assets\Scripts\Enemy\Healthbar\HealthBarScript.cs" />
      <Compile Include="Assets\Scripts\HighScoreScript.cs" />
      <Compile Include="Assets\Scripts\MainMenu_Script.cs" />
+     <Compile Include="Assets\Scripts\Stats\DisplayStats.cs" />
      <Compile Include="Assets\Scripts\Stats\StatScript.cs" />
      <Compile Include="Assets\Scripts\Tower\MoveEnemy.cs" />
      <Compile Include="Assets\Scripts\Tower\TowerBehavior.cs" />
@@ -79,10 +81,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.Sqlite">
- <HintPath>C:/Users/Benjamin/Desktop/Skole/Dania/TowerDefenceArena/TowerDefenceArena/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+ <HintPath>C:/Users/frede_000/Desktop/ArenaTD/TowerDefenceArena/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>C:/Users/Benjamin/Desktop/Skole/Dania/TowerDefenceArena/TowerDefenceArena/Assets/Plugins/System.Data.dll</HintPath>
+ <HintPath>C:/Users/frede_000/Desktop/ArenaTD/TowerDefenceArena/Assets/Plugins/System.Data.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
