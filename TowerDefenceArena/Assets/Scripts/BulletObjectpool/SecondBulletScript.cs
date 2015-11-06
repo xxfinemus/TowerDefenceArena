@@ -87,6 +87,10 @@ public class SecondBulletScript : MonoBehaviour
         TargetDistance();
         if (distance <= distanceTraveled)
         {
+            if (transform.position == target.position)
+            {
+                gameObject.SetActive(false);
+            }
             transform.position = target.position;
         }
         else
@@ -103,7 +107,7 @@ public class SecondBulletScript : MonoBehaviour
         if (collider.gameObject.tag == "enemy")
         {
             collider.GetComponent<EnemyHealthScript>().TakeDamage(damage);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
