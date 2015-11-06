@@ -17,7 +17,7 @@ public class TouchInput : MonoBehaviour
     private Text textToFade;
     private bool coroutineIsRunning;
     [SerializeField]
-    private GameObject buildMenu;
+    private GameObject buildMenu; 
     [SerializeField]
     private bool dontShowPointer;
     private Node _node;
@@ -38,6 +38,31 @@ public class TouchInput : MonoBehaviour
         //#region touch
         //ShowPointerPosition();
         //if (CameraControl.current.TouchThreshold(Input.GetTouch(0), 5) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        #region touch
+        ShowPointerPosition();
+        if (CameraControl.current.TouchThreshold(Input.GetTouch(0), 10) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100, mask.value))
+            {
+                _node = grid.NodeFromWorldPoint(hit.point);
+                ShowCanvasItems(_node);
+            }
+            else
+            {
+                dontShowPointer = false;
+                buildMenu.SetActive(false);
+            }
+        }
+        #endregion
+
+        //#region mouse
+        //ShowPointerPositionMouse();
+
+
+        //if (Input.GetKeyDown(KeyCode.Mouse0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+>>>>>>> 9e73f4a9b5cc30dfd234f876b36d8f01fcf8ba70
         //{
         //    Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
         //    RaycastHit hit;
