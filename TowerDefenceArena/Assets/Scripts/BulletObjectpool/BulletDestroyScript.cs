@@ -14,13 +14,7 @@ public class BulletDestroyScript : MonoBehaviour
     //    Invoke("Destroy", 3f);
     //}
 
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.gameObject.tag == "enemy")
-        {
-            Destroy();
-        }
-    }
+    
 
     //Set the bullet to Inactive = sends it back in the object pool.
     void Destroy()

@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class WaveControl : MonoBehaviour 
 {
+    [SerializeField]
+    private GameObject button;
     [SerializeField]
     private GameObject[] enemies;
     [SerializeField]
@@ -16,7 +19,7 @@ public class WaveControl : MonoBehaviour
     private bool waveRunning;
     private float enemyStatModifiyer;
     private List<GameObject> enemiesToSpawn;
-    private int enemiesRemaning;
+    private static int enemiesRemaning;
     private bool waveCanStart;
     private float timeToSpawn;
     [SerializeField]
@@ -27,9 +30,10 @@ public class WaveControl : MonoBehaviour
     public bool forceStartWave;
 
 
-    public int EnemiesRemaning
+    public static int EnemiesRemaning
     {
         set { enemiesRemaning = value; }
+        get { return enemiesRemaning; }
     }
 
     public bool WaveCanStart
@@ -54,22 +58,26 @@ public class WaveControl : MonoBehaviour
         waveRunning = false;
         enemiesRemaning = 0;
         forceStartWave = false;
+        enemiesToSpawn = new List<GameObject>();
         
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-        if (forceStartWave)
-        {
-            StartNextWave();
-            forceStartWave = false;
-        }
+        //if (forceStartWave)
+        //{
+        //    StartNextWave();
+        //    forceStartWave = false;
+        //}
         if (IsWaveDone())
         {
             WaveComplete();
         }
+        
         SpawnNextEnemy();
+        
+            
 
 	}
 
@@ -94,6 +102,8 @@ public class WaveControl : MonoBehaviour
                 return;
             }
             obj.transform.position = spawnPosition.transform.position;
+            obj.GetComponent<EnemyHealthScript>().MaxHealth = waveNumber * waveDificulty + 100;
+            obj.GetComponent<EnemyHealthScript>().Currenthealth = waveNumber * waveDificulty + 100;
             obj.SetActive(true);
             enemiesRemaning++;
             enemiesToSpawn.RemoveAt(0);
@@ -126,6 +136,7 @@ public class WaveControl : MonoBehaviour
 
     private void WaveComplete()
     {
+        button.GetComponent<Button>().interactable = true;
         waveRunning = false;
     }
 }

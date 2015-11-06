@@ -98,6 +98,14 @@ public class SecondBulletScript : MonoBehaviour
 
    
     }
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "enemy")
+        {
+            collider.GetComponent<EnemyHealthScript>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
+    }
 
 
     void TurnTowardsTarget()
