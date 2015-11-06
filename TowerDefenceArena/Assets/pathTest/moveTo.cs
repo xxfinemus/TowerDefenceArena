@@ -10,4 +10,11 @@ public class moveTo : MonoBehaviour
         Transform goal = GameObject.Find("Exit").transform;
         agent.destination = goal.position;
     }
+
+    void OnEnable()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        Transform goal = GameObject.Find("Exit").transform;
+        agent.destination = goal.position;
+    }
 }

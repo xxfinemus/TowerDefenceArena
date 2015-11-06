@@ -3,6 +3,8 @@ using System.Collections;
 
 public class StatScript : MonoBehaviour
 {
+    private static StatScript instance;
+
     private int exp;
     private int gold;
     private int points;
@@ -15,6 +17,10 @@ public class StatScript : MonoBehaviour
     float bossHealth;
     #region Properties
 
+    public static StatScript Instance
+    {
+        get { return instance ?? (instance = new GameObject("StatScriptObj").AddComponent<StatScript>()); }
+    }
     public int Points
     {
         get { return points; }
@@ -56,6 +62,16 @@ public class StatScript : MonoBehaviour
     }
     #endregion
 
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        instance = this;
+        DontDestroyOnLoad(this);
+        
+    }
     // Use this for initialization
     void Start()
     {
@@ -123,40 +139,40 @@ public class StatScript : MonoBehaviour
     /// </summary>
     /// <param name="stat">The name of the stat "exp", "gold", "points", "enemy", "enemyhealth"</param>
     /// <param name="value">The numerical value to change the stat by</param>
-    public void ChangeStat(string stat, int value)
+    public void ChangeStat(string stat, float value)
     {
         switch (stat)
         {
             case "exp":
-                exp += value;
+                exp += (int)value;
                 break;
 
             case "gold":
-                gold += value;
+                gold += (int)value;
                 break;
 
             case "points":
-                points += value;
+                points += (int)value;
                 break;
 
             case "enemy":
-                enemiesLeaked += value;
+                enemiesLeaked += (int)value;
                 break;
 
-            case "enemyHealth":
+            case "bossHealth":
                 bossHealth += value;
                 break;
 
             case "strength":
-                strength += value;
+                strength += (int)value;
                 break;
 
             case "vitality":
-                vitality += value;
+                vitality += (int)value;
                 break;
 
             case "speed":
-                speed += value;
+                speed += (int)value;
                 break;
         }
 
@@ -189,7 +205,7 @@ public class StatScript : MonoBehaviour
                 value = enemiesLeaked;
                 break;
 
-            case "enemyHealth":
+            case "bossHealth":
                 value = bossHealth;
                 break;
 
@@ -218,24 +234,24 @@ public class StatScript : MonoBehaviour
     /// </summary>
     /// <param name="stat">"exp", "gold", "points", "enemy", "enemyhealth"</param>
     /// <param name="value">The value you want the stat to be</param>
-    public void SetStat(string stat, int value)
+    public void SetStat(string stat, float value)
     {
         switch (stat)
         {
             case "exp":
-                exp = value;
+                exp = (int)value;
                 break;
 
             case "gold":
-                gold = value;
+                gold = (int)value;
                 break;
 
             case "points":
-                points = value;
+                points = (int)value;
                 break;
 
             case "enemy":
-                enemiesLeaked = value;
+                enemiesLeaked = (int)value;
                 break;
 
             case "enemyHealth":
@@ -243,15 +259,15 @@ public class StatScript : MonoBehaviour
                 break;
 
             case "strength":
-                strength = value;
+                strength = (int)value;
                 break;
 
             case "vitality":
-                vitality = value;
+                vitality = (int)value;
                 break;
 
             case "speed":
-                speed = value;
+                speed = (int)value;
                 break;
 
             default:

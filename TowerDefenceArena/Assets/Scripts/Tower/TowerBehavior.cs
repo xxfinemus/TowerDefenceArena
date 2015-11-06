@@ -15,9 +15,18 @@ public class TowerBehavior : MonoBehaviour {
 
     [SerializeField]
     private float rateOfFire;
-
+    private float cooldown;
     [SerializeField]
     private Queue<GameObject> enemies = new Queue<GameObject>();
+
+    private int damage;
+
+    public int Damage
+    {
+        get { return damage; }
+        set { damage = value; }
+    }
+
 
     public GameObject[] arrayEnemies;
 
@@ -31,6 +40,8 @@ public class TowerBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        damage = 20;
+        rateOfFire = 2;
         if (!objectPool)
         {
             objectPool = BulletObjectPoolScript.current;
@@ -116,16 +127,24 @@ public class TowerBehavior : MonoBehaviour {
         // bullet.GetComponent<FireScript>().Target(enemy);
         // bullet.GetComponent<FireScript>().Fire();
         //Gets a bullet from the object pool.
-        GameObject obj = BulletObjectPoolScript.current.GetPooledObject();
+        if (cooldown <= 0)
+        {
+            GameObject obj = BulletObjectPoolScript.current.GetPooledObject();
+            cooldown = rateOfFire;
+            //If there is not an object in the object pool and willGrow is not true,
+            //it will return null and we will not get a bullet.
+            if (obj == null) return;
 
-        //If there is not an object in the object pool and willGrow is not true,
-        //it will return null and we will not get a bullet.
-        if (obj == null) return;
-
-        //Creates the bullet at the transforms position.
-        obj.transform.position = transform.position;
-        obj.GetComponent<SecondBulletScript>().StartPosition = transform.position;
-        obj.GetComponent<SecondBulletScript>().Target = target.transform;
-        obj.SetActive(true);
+            //Creates the bullet at the transforms position.
+            obj.transform.position = transform.position;
+            obj.GetComponent<SecondBulletScript>().Damage = damage;
+            obj.GetComponent<SecondBulletScript>().StartPosition = transform.position;
+            obj.GetComponent<SecondBulletScript>().Target = target.transform;
+            obj.SetActive(true);            
+        }
+        else
+        {
+            cooldown -= Time.deltaTime;
+        }
     }
 }

@@ -39,10 +39,12 @@ public class EnemyHealthScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "bullet")
+        if (other.tag == "exit")
         {
-
-            //Insert code to get the bullets script and get the damage then call the TakeDamage function
+            //add to boss
+            WaveControl.EnemiesRemaning--;
+            StatScript.Instance.ChangeStat("bossHealth", (int)currenthealth);
+            gameObject.SetActive(false);
         }
     }
 
@@ -50,13 +52,20 @@ public class EnemyHealthScript : MonoBehaviour
     /// Takes a float and reduces health by it and updates the size of the healthbar
     /// </summary>
     /// <param name="dmg"></param>
-    void TakeDamage(float dmg)
+    public void TakeDamage(float dmg)
     {
         currenthealth -= dmg;
 
         if (healthBar != null)
         {
             healthBar.SetSize(currenthealth / maxHealth);
+        }
+        if (currenthealth <= 0)
+        {
+            StatScript.Instance.ChangeStat("gold", (int)(maxHealth / 50));
+            StatScript.Instance.ChangeStat("exp", (int)(maxHealth / 10));
+            WaveControl.EnemiesRemaning--;
+            gameObject.SetActive(false);
         }
     }
 }
