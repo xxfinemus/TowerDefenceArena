@@ -17,7 +17,7 @@ public class TouchInput : MonoBehaviour
     private Text textToFade;
     private bool coroutineIsRunning;
     [SerializeField]
-    private GameObject buildMenu;
+    private GameObject buildMenu; 
     [SerializeField]
     private bool dontShowPointer;
     private Node _node;
@@ -37,7 +37,7 @@ public class TouchInput : MonoBehaviour
     {
         #region touch
         ShowPointerPosition();
-        if (CameraControl.current.TouchThreshold(Input.GetTouch(0), 5) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        if (CameraControl.current.TouchThreshold(Input.GetTouch(0), 10) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             RaycastHit hit;
@@ -159,6 +159,7 @@ public class TouchInput : MonoBehaviour
     }
     void BuildMenuButtons(string buttonClick)
     {
+        Debug.Log(buttonClick);
         if (buttonClick == "catapult" && buildNode.Tower == null)
         {
             buildNode.walkable = false;
