@@ -102,9 +102,10 @@ public class WaveControl : MonoBehaviour
                 return;
             }
             obj.transform.position = spawnPosition.transform.position;
-            obj.GetComponent<EnemyHealthScript>().MaxHealth = waveNumber * waveDificulty + 100;
-            obj.GetComponent<EnemyHealthScript>().Currenthealth = waveNumber * waveDificulty + 100;
+            obj.GetComponent<EnemyHealthScript>().MaxHealth = enemyStatModifiyer * 20 + 100;
+            obj.GetComponent<EnemyHealthScript>().Currenthealth = enemyStatModifiyer * 20 + 100;
             obj.SetActive(true);
+            obj.GetComponent<EnemyHealthScript>().TakeDamage(0);
             enemiesRemaning++;
             enemiesToSpawn.RemoveAt(0);
         }

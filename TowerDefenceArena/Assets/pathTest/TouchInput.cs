@@ -35,6 +35,9 @@ public class TouchInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //#region touch
+        //ShowPointerPosition();
+        //if (CameraControl.current.TouchThreshold(Input.GetTouch(0), 5) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         #region touch
         ShowPointerPosition();
         if (CameraControl.current.TouchThreshold(Input.GetTouch(0), 10) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
@@ -59,13 +62,13 @@ public class TouchInput : MonoBehaviour
 
 
         //if (Input.GetKeyDown(KeyCode.Mouse0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+
         //{
-        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //    Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
         //    RaycastHit hit;
         //    if (Physics.Raycast(ray, out hit, 100, mask.value))
         //    {
         //        _node = grid.NodeFromWorldPoint(hit.point);
-        //        Debug.Log(_node.worldPosition + " click");
         //        ShowCanvasItems(_node);
         //    }
         //    else
@@ -75,6 +78,28 @@ public class TouchInput : MonoBehaviour
         //    }
         //}
         //#endregion
+
+        #region mouse
+        ShowPointerPositionMouse();
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100, mask.value))
+            {
+                _node = grid.NodeFromWorldPoint(hit.point);
+                Debug.Log(_node.worldPosition + " click");
+                ShowCanvasItems(_node);
+            }
+            else
+            {
+                dontShowPointer = false;
+                buildMenu.SetActive(false);
+            }
+        }
+        #endregion
 
     }
     private void ShowCanvasItems(Node _node)
@@ -157,9 +182,8 @@ public class TouchInput : MonoBehaviour
         textToFade.color = textToFade.color = new Color(textToFade.color.r, textToFade.color.g, textToFade.color.b, 0f);
         coroutineIsRunning = false;
     }
-    void BuildMenuButtons(string buttonClick)
+    public void BuildMenuButtons(string buttonClick)
     {
-        Debug.Log(buttonClick);
         if (buttonClick == "catapult" && buildNode.Tower == null)
         {
             buildNode.walkable = false;

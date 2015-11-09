@@ -65,6 +65,7 @@ public class EnemyHealthScript : MonoBehaviour
             StatScript.Instance.ChangeStat("gold", (int)(maxHealth / 50));
             StatScript.Instance.ChangeStat("exp", (int)(maxHealth / 10));
             WaveControl.EnemiesRemaning--;
+            transform.position = new Vector3(100, 100, 100);
             gameObject.SetActive(false);
         }
     }

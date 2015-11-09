@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class TowerBehavior : MonoBehaviour {
 
     [SerializeField]
-    private string name;
+    private string _name;
 
     [SerializeField]
     private BulletObjectPoolScript objectPool;
@@ -33,15 +33,15 @@ public class TowerBehavior : MonoBehaviour {
     [SerializeField]
     private GameObject target;
 
-    public string Name
+    public string _Name
     {
-        get { return name; }
+        get { return _name; }
     }
 	// Use this for initialization
 	void Start ()
     {
         damage = 20;
-        rateOfFire = 2;
+        
         if (!objectPool)
         {
             objectPool = BulletObjectPoolScript.current;
