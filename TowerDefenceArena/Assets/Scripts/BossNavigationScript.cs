@@ -22,6 +22,9 @@ public class BossNavigationScript : MonoBehaviour
 
     public void MoveToTarget()
     {
-        navAgent.destination = target.transform.position;
+        if (target != null)
+        {
+            navAgent.destination = target.transform.position;
+        }
     }
 }
