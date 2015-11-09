@@ -62,6 +62,7 @@ public class TouchInput : MonoBehaviour
 
 
         //if (Input.GetKeyDown(KeyCode.Mouse0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+
         //{
         //    Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
         //    RaycastHit hit;
