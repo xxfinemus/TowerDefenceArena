@@ -99,9 +99,6 @@
      <None Include="Assets\Shader\test shader.shader" />
      <None Include="Assets\UnityTestTools\LICENSE.txt" />
      <None Include="Assets\UnityTestTools\changelog.txt" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -116,9 +113,6 @@
  </Reference>
  <Reference Include="UnityEditor.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.Sqlite">
  <HintPath>C:/Users/frede_000/Desktop/ArenaTD/TowerDefenceArena/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
@@ -158,6 +152,24 @@
  </Reference>
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/macstandalonesupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="NSubstitute">
+ <HintPath>C:/Users/frede_000/Desktop/ArenaTD/TowerDefenceArena/Assets/UnityTestTools/UnitTesting/Editor/NSubstitute/NSubstitute.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Cecil">
+ <HintPath>C:/Users/frede_000/Desktop/ArenaTD/TowerDefenceArena/Assets/UnityTestTools/UnitTesting/Editor/NUnit/Libs/Mono.Cecil.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Cecil.Mdb">
+ <HintPath>C:/Users/frede_000/Desktop/ArenaTD/TowerDefenceArena/Assets/UnityTestTools/UnitTesting/Editor/NUnit/Libs/Mono.Cecil.Mdb.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.core">
+ <HintPath>C:/Users/frede_000/Desktop/ArenaTD/TowerDefenceArena/Assets/UnityTestTools/UnitTesting/Editor/NUnit/Libs/nunit.core.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.core.interfaces">
+ <HintPath>C:/Users/frede_000/Desktop/ArenaTD/TowerDefenceArena/Assets/UnityTestTools/UnitTesting/Editor/NUnit/Libs/nunit.core.interfaces.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>C:/Users/frede_000/Desktop/ArenaTD/TowerDefenceArena/Assets/UnityTestTools/UnitTesting/Editor/NUnit/Libs/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
