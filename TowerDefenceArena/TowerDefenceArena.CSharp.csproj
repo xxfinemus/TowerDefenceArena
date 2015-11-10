@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Database\dbscript.cs" />
+    <Compile Include="Assets\Scripts\BossHealthScript.cs" />
     <Compile Include="Assets\Scripts\BossNavigationScript.cs" />
     <Compile Include="Assets\Scripts\BulletObjectpool\BulletDestroyScript.cs" />
     <Compile Include="Assets\Scripts\BulletObjectpool\BulletFireScript.cs" />
@@ -98,8 +99,10 @@
     <Compile Include="Assets\Scripts\Enemy\Healthbar\CameraFacingBillboard_Script.cs" />
     <Compile Include="Assets\Scripts\Enemy\Healthbar\HealthBarScript.cs" />
     <Compile Include="Assets\Scripts\HighScoreScript.cs" />
+    <Compile Include="Assets\Scripts\Joystick\JoystickControl.cs" />
     <Compile Include="Assets\Scripts\MainMenu_Script.cs" />
     <Compile Include="Assets\Scripts\Pause.cs" />
+    <Compile Include="Assets\Scripts\PlayerAttackScript.cs" />
     <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
     <Compile Include="Assets\Scripts\Stats\DisplayStats.cs" />
     <Compile Include="Assets\Scripts\Stats\StatScript.cs" />
