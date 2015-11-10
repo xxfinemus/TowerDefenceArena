@@ -51,17 +51,11 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
@@ -89,9 +83,9 @@
     <Compile Include="Assets\Scripts\BulletObjectpool\BulletScript.cs" />
     <Compile Include="Assets\Scripts\BulletObjectpool\SecondBulletScript.cs" />
     <Compile Include="Assets\Scripts\Button\ButtonMute.cs" />
-    <Compile Include="Assets\Scripts\Button\ButtonSound.cs" />
+    <Compile Include="Assets\Scripts\Button\ButtonSoundSpecial.cs" />
+    <Compile Include="Assets\Scripts\Button\ButtonSounds.cs" />
     <Compile Include="Assets\Scripts\Button\ButtonSpriteControl.cs" />
-    <Compile Include="Assets\Scripts\Button\UpgradeHero.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
     <Compile Include="Assets\Scripts\CameraFade_Script.cs" />
     <Compile Include="Assets\Scripts\EnemiesObjectPool\EnemyObjectPoolScript.cs" />
@@ -108,6 +102,7 @@
     <Compile Include="Assets\Scripts\Stats\StatScript.cs" />
     <Compile Include="Assets\Scripts\Tower\MoveEnemy.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerBehavior.cs" />
+    <Compile Include="Assets\Scripts\UpgradeHero.cs" />
     <Compile Include="Assets\Scripts\Wall\WallBehaviorAgent.cs" />
     <Compile Include="Assets\Scripts\WaveControl.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />
