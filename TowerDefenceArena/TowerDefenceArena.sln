@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{203AC45C-F2F3-601E-4D06-850F42B119B2}") = "TowerDefenceArena", "Assembly-CSharp.csproj", "{0749E72F-E2CD-8725-F4F6-2BCCF6BFC429}"
 EndProject
+Project("{203AC45C-F2F3-601E-4D06-850F42B119B2}") = "TowerDefenceArena", "Assembly-CSharp-Editor.csproj", "{162C6A61-625D-688F-391B-E6A9B06717A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,11 +15,15 @@ Global
 		{0749E72F-E2CD-8725-F4F6-2BCCF6BFC429}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0749E72F-E2CD-8725-F4F6-2BCCF6BFC429}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0749E72F-E2CD-8725-F4F6-2BCCF6BFC429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{162C6A61-625D-688F-391B-E6A9B06717A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{162C6A61-625D-688F-391B-E6A9B06717A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{162C6A61-625D-688F-391B-E6A9B06717A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{162C6A61-625D-688F-391B-E6A9B06717A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																GlobalSection(MonoDevelopProperties) = preSolution
+												GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
