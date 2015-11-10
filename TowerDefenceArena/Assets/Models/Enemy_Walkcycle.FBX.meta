@@ -1,0 +1,305 @@
+fileFormatVersion: 2
+guid: 0245c876afeab1241b246c4a7105cad7
+timeCreated: 1447093385
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Bottom_Dummy
+    100002: Char_Enemy_Bottom_Bone
+    100004: Char_Enemy_Bottom_Nub
+    100006: Char_Enemy_Clav_L_Bone
+    100008: Char_Enemy_Clav_R_Bone
+    100010: Char_Enemy_Hand_Index_L_A01
+    100012: Char_Enemy_Hand_Index_L_B01
+    100014: Char_Enemy_Hand_Index_L_C01
+    100016: Char_Enemy_Hand_Index_R_A01
+    100018: Char_Enemy_Hand_Index_R_B01
+    100020: Char_Enemy_Hand_Index_R_C01
+    100022: Char_Enemy_Hand_Pinkie_L_A01
+    100024: Char_Enemy_Hand_Pinkie_L_B01
+    100026: Char_Enemy_Hand_Pinkie_L_C01
+    100028: Char_Enemy_Hand_Pinkie_R_A01
+    100030: Char_Enemy_Hand_Pinkie_R_B01
+    100032: Char_Enemy_Hand_Pinkie_R_C01
+    100034: Char_Enemy_Hand_Thomb_L_A01
+    100036: Char_Enemy_Hand_Thomb_L_B01
+    100038: Char_Enemy_Hand_Thomb_L_C01
+    100040: Char_Enemy_Hand_Thomb_R_A01
+    100042: Char_Enemy_Hand_Thomb_R_B01
+    100044: Char_Enemy_Hand_Thomb_R_C01
+    100046: Char_Enemy_Head_Bone
+    100048: Char_Enemy_Head_Nub
+    100050: Char_Enemy_Lowerarm_L_Bone
+    100052: Char_Enemy_Lowerarm_R_Bone
+    100054: Char_Enemy_Neck_Bone
+    100056: Char_Enemy_Spine1_Bone
+    100058: Char_Enemy_Spine2_Bone
+    100060: Char_Enemy_Spine3_Bone
+    100062: Char_Enemy_Spine4_Bone
+    100064: Char_Enemy_Spine5_Bone
+    100066: Char_Enemy_Spine6_Bone
+    100068: Char_Enemy_Spine_Nub
+    100070: Char_Enemy_Upperarm_L_Bone
+    100072: Char_Enemy_Upperarm_R_Bone
+    100074: Char_Enemy_Wrist_L_Bone
+    100076: Char_Enemy_Wrist_R_Bone
+    100078: //RootNode
+    100080: Group12352
+    100082: Head_Dummy
+    100084: Index_L_Dummy_A01
+    100086: Index_L_Dummy_B01
+    100088: Neck_Dummy
+    100090: Pinckie_L_Dummy_A01
+    100092: Pinckie_L_Dummy_B01
+    100094: SpineEnd_Dummy
+    100096: Thomb_L_Dummy_A01
+    100098: Thomb_L_Dummy_B01
+    100100: Wrist_L_Dummy
+    400000: Bottom_Dummy
+    400002: Char_Enemy_Bottom_Bone
+    400004: Char_Enemy_Bottom_Nub
+    400006: Char_Enemy_Clav_L_Bone
+    400008: Char_Enemy_Clav_R_Bone
+    400010: Char_Enemy_Hand_Index_L_A01
+    400012: Char_Enemy_Hand_Index_L_B01
+    400014: Char_Enemy_Hand_Index_L_C01
+    400016: Char_Enemy_Hand_Index_R_A01
+    400018: Char_Enemy_Hand_Index_R_B01
+    400020: Char_Enemy_Hand_Index_R_C01
+    400022: Char_Enemy_Hand_Pinkie_L_A01
+    400024: Char_Enemy_Hand_Pinkie_L_B01
+    400026: Char_Enemy_Hand_Pinkie_L_C01
+    400028: Char_Enemy_Hand_Pinkie_R_A01
+    400030: Char_Enemy_Hand_Pinkie_R_B01
+    400032: Char_Enemy_Hand_Pinkie_R_C01
+    400034: Char_Enemy_Hand_Thomb_L_A01
+    400036: Char_Enemy_Hand_Thomb_L_B01
+    400038: Char_Enemy_Hand_Thomb_L_C01
+    400040: Char_Enemy_Hand_Thomb_R_A01
+    400042: Char_Enemy_Hand_Thomb_R_B01
+    400044: Char_Enemy_Hand_Thomb_R_C01
+    400046: Char_Enemy_Head_Bone
+    400048: Char_Enemy_Head_Nub
+    400050: Char_Enemy_Lowerarm_L_Bone
+    400052: Char_Enemy_Lowerarm_R_Bone
+    400054: Char_Enemy_Neck_Bone
+    400056: Char_Enemy_Spine1_Bone
+    400058: Char_Enemy_Spine2_Bone
+    400060: Char_Enemy_Spine3_Bone
+    400062: Char_Enemy_Spine4_Bone
+    400064: Char_Enemy_Spine5_Bone
+    400066: Char_Enemy_Spine6_Bone
+    400068: Char_Enemy_Spine_Nub
+    400070: Char_Enemy_Upperarm_L_Bone
+    400072: Char_Enemy_Upperarm_R_Bone
+    400074: Char_Enemy_Wrist_L_Bone
+    400076: Char_Enemy_Wrist_R_Bone
+    400078: //RootNode
+    400080: Group12352
+    400082: Head_Dummy
+    400084: Index_L_Dummy_A01
+    400086: Index_L_Dummy_B01
+    400088: Neck_Dummy
+    400090: Pinckie_L_Dummy_A01
+    400092: Pinckie_L_Dummy_B01
+    400094: SpineEnd_Dummy
+    400096: Thomb_L_Dummy_A01
+    400098: Thomb_L_Dummy_B01
+    400100: Wrist_L_Dummy
+    4300000: Group12352
+    7400000: Walk
+    9500000: //RootNode
+    13700000: Group12352
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bottom_Dummy
+        weight: 1
+      - path: Bottom_Dummy/Char_Enemy_Bottom_Bone
+        weight: 1
+      - path: Bottom_Dummy/Char_Enemy_Bottom_Bone/Char_Enemy_Bottom_Nub
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Index_L_Dummy_A01
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Index_L_Dummy_A01/Char_Enemy_Hand_Index_R_A01
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Index_L_Dummy_A01/Index_L_Dummy_B01
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Index_L_Dummy_A01/Index_L_Dummy_B01/Char_Enemy_Hand_Index_R_B01
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Index_L_Dummy_A01/Index_L_Dummy_B01/Char_Enemy_Hand_Index_R_B01/Char_Enemy_Hand_Index_R_C01
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Pinckie_L_Dummy_A01
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Pinckie_L_Dummy_A01/Char_Enemy_Hand_Pinkie_R_A01
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Pinckie_L_Dummy_A01/Pinckie_L_Dummy_B01
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Pinckie_L_Dummy_A01/Pinckie_L_Dummy_B01/Char_Enemy_Hand_Pinkie_R_B01
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Pinckie_L_Dummy_A01/Pinckie_L_Dummy_B01/Char_Enemy_Hand_Pinkie_R_B01/Char_Enemy_Hand_Pinkie_R_C01
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Thomb_L_Dummy_A01
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Thomb_L_Dummy_A01/Char_Enemy_Hand_Thomb_R_A01
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Thomb_L_Dummy_A01/Thomb_L_Dummy_B01
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Thomb_L_Dummy_A01/Thomb_L_Dummy_B01/Char_Enemy_Hand_Thomb_R_B01
+        weight: 1
+      - path: Bottom_Dummy/Wrist_L_Dummy/Thomb_L_Dummy_A01/Thomb_L_Dummy_B01/Char_Enemy_Hand_Thomb_R_B01/Char_Enemy_Hand_Thomb_R_C01
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_L_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_L_Bone/Char_Enemy_Upperarm_L_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_L_Bone/Char_Enemy_Upperarm_L_Bone/Char_Enemy_Lowerarm_L_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_L_Bone/Char_Enemy_Upperarm_L_Bone/Char_Enemy_Lowerarm_L_Bone/Char_Enemy_Wrist_L_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_L_Bone/Char_Enemy_Upperarm_L_Bone/Char_Enemy_Lowerarm_L_Bone/Char_Enemy_Wrist_L_Bone/Char_Enemy_Hand_Index_L_A01
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_L_Bone/Char_Enemy_Upperarm_L_Bone/Char_Enemy_Lowerarm_L_Bone/Char_Enemy_Wrist_L_Bone/Char_Enemy_Hand_Index_L_A01/Char_Enemy_Hand_Index_L_B01
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_L_Bone/Char_Enemy_Upperarm_L_Bone/Char_Enemy_Lowerarm_L_Bone/Char_Enemy_Wrist_L_Bone/Char_Enemy_Hand_Index_L_A01/Char_Enemy_Hand_Index_L_B01/Char_Enemy_Hand_Index_L_C01
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_L_Bone/Char_Enemy_Upperarm_L_Bone/Char_Enemy_Lowerarm_L_Bone/Char_Enemy_Wrist_L_Bone/Char_Enemy_Hand_Pinkie_L_A01
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_L_Bone/Char_Enemy_Upperarm_L_Bone/Char_Enemy_Lowerarm_L_Bone/Char_Enemy_Wrist_L_Bone/Char_Enemy_Hand_Pinkie_L_A01/Char_Enemy_Hand_Pinkie_L_B01
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_L_Bone/Char_Enemy_Upperarm_L_Bone/Char_Enemy_Lowerarm_L_Bone/Char_Enemy_Wrist_L_Bone/Char_Enemy_Hand_Pinkie_L_A01/Char_Enemy_Hand_Pinkie_L_B01/Char_Enemy_Hand_Pinkie_L_C01
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_L_Bone/Char_Enemy_Upperarm_L_Bone/Char_Enemy_Lowerarm_L_Bone/Char_Enemy_Wrist_L_Bone/Char_Enemy_Hand_Thomb_L_A01
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_L_Bone/Char_Enemy_Upperarm_L_Bone/Char_Enemy_Lowerarm_L_Bone/Char_Enemy_Wrist_L_Bone/Char_Enemy_Hand_Thomb_L_A01/Char_Enemy_Hand_Thomb_L_B01
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_L_Bone/Char_Enemy_Upperarm_L_Bone/Char_Enemy_Lowerarm_L_Bone/Char_Enemy_Wrist_L_Bone/Char_Enemy_Hand_Thomb_L_A01/Char_Enemy_Hand_Thomb_L_B01/Char_Enemy_Hand_Thomb_L_C01
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_R_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_R_Bone/Char_Enemy_Upperarm_R_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_R_Bone/Char_Enemy_Upperarm_R_Bone/Char_Enemy_Lowerarm_R_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Clav_R_Bone/Char_Enemy_Upperarm_R_Bone/Char_Enemy_Lowerarm_R_Bone/Char_Enemy_Wrist_R_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Spine_Nub
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Spine_Nub/SpineEnd_Dummy
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Spine_Nub/SpineEnd_Dummy/Char_Enemy_Neck_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Spine_Nub/SpineEnd_Dummy/Neck_Dummy
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Spine_Nub/SpineEnd_Dummy/Neck_Dummy/Char_Enemy_Head_Bone
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Spine_Nub/SpineEnd_Dummy/Neck_Dummy/Head_Dummy
+        weight: 1
+      - path: Char_Enemy_Spine1_Bone/Char_Enemy_Spine2_Bone/Char_Enemy_Spine3_Bone/Char_Enemy_Spine4_Bone/Char_Enemy_Spine5_Bone/Char_Enemy_Spine6_Bone/Char_Enemy_Spine_Nub/SpineEnd_Dummy/Neck_Dummy/Head_Dummy/Char_Enemy_Head_Nub
+        weight: 1
+      - path: Group12352
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
