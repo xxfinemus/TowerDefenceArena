@@ -40,9 +40,35 @@ public class TouchInput : MonoBehaviour
         //if (CameraControl.current.TouchThreshold(Input.GetTouch(0), 5) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         #region touch
         ShowPointerPosition();
-        if (CameraControl.current.TouchThreshold(Input.GetTouch(0), 10) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+
+        if (Input.touchCount > 0) // Added this to avoid index out of bounds exception
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            if (CameraControl.current.TouchThreshold(Input.GetTouch(0), 10) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 100, mask.value))
+                {
+                    _node = grid.NodeFromWorldPoint(hit.point);
+                    ShowCanvasItems(_node);
+                }
+                else
+                {
+                    dontShowPointer = false;
+                    buildMenu.SetActive(false);
+                }
+            }
+        }
+        #endregion
+
+        //#region mouse
+        //ShowPointerPositionMouse();
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100, mask.value))
             {
@@ -55,28 +81,6 @@ public class TouchInput : MonoBehaviour
                 buildMenu.SetActive(false);
             }
         }
-        #endregion
-
-        //#region mouse
-        //ShowPointerPositionMouse();
-
-
-        //if (Input.GetKeyDown(KeyCode.Mouse0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-
-        //{
-        //    Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-        //    RaycastHit hit;
-        //    if (Physics.Raycast(ray, out hit, 100, mask.value))
-        //    {
-        //        _node = grid.NodeFromWorldPoint(hit.point);
-        //        ShowCanvasItems(_node);
-        //    }
-        //    else
-        //    {
-        //        dontShowPointer = false;
-        //        buildMenu.SetActive(false);
-        //    }
-        //}
         //#endregion
 
         #region mouse

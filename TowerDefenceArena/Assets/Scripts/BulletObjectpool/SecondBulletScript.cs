@@ -3,7 +3,6 @@ using System.Collections;
 
 public class SecondBulletScript : MonoBehaviour
 {
-    //The speed of the bullet;
     Vector2 start;
     Vector2 end;
     Vector2 mid;
