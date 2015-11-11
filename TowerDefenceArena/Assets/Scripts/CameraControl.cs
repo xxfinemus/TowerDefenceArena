@@ -48,7 +48,7 @@ public class CameraControl : MonoBehaviour
             float newDistance = Vector2.Distance((myTouches[0].position - myTouches[0].deltaPosition), (myTouches[1].position - myTouches[1].deltaPosition));
             float changeZoom = zoomDistance - newDistance;
             Debug.Log("Touch inputs: " + myTouches.Length);
-            if (transform.position.z > bottom && transform.position.z < top)
+            if ((changeZoom > 0 && transform.position.y > bottom) || (changeZoom < 0 && transform.position.y < top))
             {
                 transform.Translate(new Vector3(0, 0, changeZoom) * Time.deltaTime * 5);
             }
