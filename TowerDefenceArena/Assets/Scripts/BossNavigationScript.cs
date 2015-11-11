@@ -5,9 +5,6 @@ public class BossNavigationScript : MonoBehaviour
 {
     NavMeshAgent navAgent;
 
-    [SerializeField]
-    GameObject target;
-
     // Use this for initialization
     void Start()
     {
@@ -20,11 +17,8 @@ public class BossNavigationScript : MonoBehaviour
 
     }
 
-    public void MoveToTarget()
+    public void SetTarget(GameObject target)
     {
-        if (target != null)
-        {
-            navAgent.destination = target.transform.position;
-        }
+        navAgent.SetDestination(target.transform.position);
     }
 }
