@@ -12,20 +12,28 @@ public class TouchInput : MonoBehaviour
     [SerializeField]
     private LayerMask mask;
     [SerializeField]
-    private GameObject makerObject;
+    private GameObject markerObject;
+    private Vector3 markerObjectIdlePosition;
     [SerializeField]
     private Text textToFade;
     private bool coroutineIsRunning;
     [SerializeField]
-    private GameObject buildMenu; 
+    private GameObject buildMenu;
+    [SerializeField]
+    private GameObject DeleteUpgradeMenu;
     [SerializeField]
     private bool dontShowPointer;
-    private Node _node;
-    private Node buildNode;
+    private GameObject buildObject;
+    private Node nodeIsPressed;
+
+
+
 
     // Use this for initialization
     void Start()
     {
+
+        markerObjectIdlePosition = new Vector3(0, -50, 0);
         path = GetComponent<Pathfinding>();
         grid = GetComponent<Grid>();
         textToFade = GameObject.Find("CantBuildText").GetComponent<Text>();
@@ -35,129 +43,70 @@ public class TouchInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //#region touch
-        //ShowPointerPosition();
-        //if (CameraControl.current.TouchThreshold(Input.GetTouch(0), 5) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-        #region touch
-        ShowPointerPosition();
-
-        if (Input.touchCount > 0) // Added this to avoid index out of bounds exception
+        if (buildObject != null)
         {
-            if (CameraControl.current.TouchThreshold(Input.GetTouch(0), 10) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 100, mask.value))
-                {
-                    _node = grid.NodeFromWorldPoint(hit.point);
-                    ShowCanvasItems(_node);
-                }
-                else
-                {
-                    dontShowPointer = false;
-                    buildMenu.SetActive(false);
-                }
-            }
+            BuildTower();
         }
-        #endregion
-
-        //#region mouse
-        //ShowPointerPositionMouse();
-
-
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-
+        //Debug.Log(KeyUpInsideGrid());
+        if (DeleteUpgradeMenu.activeInHierarchy && Deselect())
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100, mask.value))
+            markerObjectPosition(markerObjectIdlePosition);
+            buildMenu.SetActive(true);
+            DeleteUpgradeMenu.SetActive(false);
+        }
+        if (PressedOnTower())
+        {
+            if (nodeIsPressed.Tower != null)
             {
-                _node = grid.NodeFromWorldPoint(hit.point);
-                ShowCanvasItems(_node);
-            }
-            else
-            {
-                dontShowPointer = false;
                 buildMenu.SetActive(false);
+                DeleteUpgradeMenu.SetActive(true);
+                markerObjectPosition(nodeIsPressed.worldPosition);
             }
         }
-        //#endregion
 
-        #region mouse
-        ShowPointerPositionMouse();
+    }
 
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+
+    void markerObjectPosition(Vector3 position)
+    {
+        markerObject.transform.position = position;
+    }
+
+    private bool Deselect()
+    {
+        if (Input.touchCount > 0 && Camera.main.GetComponent<CameraControl>().TouchThreshold(Input.GetTouch(0), 2))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100, mask.value))
+            if (Physics.Raycast(ray, out hit))
             {
-                _node = grid.NodeFromWorldPoint(hit.point);
-                Debug.Log(_node.worldPosition + " click");
-                ShowCanvasItems(_node);
-            }
-            else
-            {
-                dontShowPointer = false;
-                buildMenu.SetActive(false);
+                float distance = Vector3.Distance(nodeIsPressed.worldPosition, hit.point);
+                if (distance > 2)
+                {
+                    return true;
+                }
             }
         }
-        #endregion
+        return false;
+    }
 
-    }
-    private void ShowCanvasItems(Node _node)
+    private bool PressedOnTower()
     {
-        if (!buildMenu.activeInHierarchy)
+        if (Input.touchCount > 0 && Camera.main.GetComponent<CameraControl>().TouchThreshold(Input.GetTouch(0), 2))
         {
-            if (path.CheckIfPathIsValid(_node))
+            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 200, mask))
             {
-                buildNode = _node;
-                dontShowPointer = true;
-                buildMenu.SetActive(true);
-                buildMenu.transform.position = new Vector3(_node.worldPosition.x, _node.worldPosition.y, _node.worldPosition.z);
-                buildMenu.transform.localPosition = new Vector3(buildMenu.transform.localPosition.x - 50, buildMenu.transform.localPosition.y, buildMenu.transform.localPosition.z -50);
-            }
-            else if (!coroutineIsRunning)
-            {
-                StartCoroutine("Fade", "You can't block the path");
+                nodeIsPressed = grid.NodeFromWorldPoint(hit.point);
+                return true;
+
             }
         }
+        return false;
     }
-    void ShowPointerPositionMouse()
-    {
-        if (!dontShowPointer)
-        {
-            RaycastHit hitInfo;
-            Ray raym = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(raym, out hitInfo, mask))
-            {
-                Node node = grid.NodeFromWorldPoint(hitInfo.point);
-                makerObject.transform.position = new Vector3(node.worldPosition.x, 0, node.worldPosition.z);
-            }
-            else
-            {
-                makerObject.transform.position = new Vector3(0, -500, 0);
-            }
-        }
-    }
-    void ShowPointerPosition()
-    {
-        RaycastHit hitInfo;
-        if (Input.touchCount > 0)
-        {
-            makerObject.transform.position = new Vector3(0, -500, 0);
-        }
-        if (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Stationary || Input.GetTouch(0).phase == TouchPhase.Moved))
-        {
-            Ray raym = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-            if (Physics.Raycast(raym, out hitInfo, mask))
-            {
-                Node node = grid.NodeFromWorldPoint(hitInfo.point);
-                makerObject.transform.position = node.worldPosition;
-            }
-        }
-    }
+
     private IEnumerator Fade(object text)
     {
         textToFade.text = (string)text;
@@ -169,7 +118,6 @@ public class TouchInput : MonoBehaviour
             c = textToFade.color;
             c.a = f;
             textToFade.color = c;
-            Debug.Log(f);
             yield return new WaitForSeconds(.05f);
         }
         textToFade.color = new Color(textToFade.color.r, textToFade.color.g, textToFade.color.b, 1f);
@@ -180,7 +128,6 @@ public class TouchInput : MonoBehaviour
             c = textToFade.color;
             c.a = f;
             textToFade.color = c;
-            Debug.Log(f);
             yield return new WaitForSeconds(.05f);
         }
         textToFade.color = textToFade.color = new Color(textToFade.color.r, textToFade.color.g, textToFade.color.b, 0f);
@@ -188,21 +135,66 @@ public class TouchInput : MonoBehaviour
     }
     public void BuildMenuButtons(string buttonClick)
     {
-        if (buttonClick == "catapult" && buildNode.Tower == null)
+        if (buttonClick == "catapult")
         {
-            buildNode.walkable = false;
-            GameObject _tower = (GameObject)Instantiate(objToSpawn, buildNode.worldPosition, transform.rotation);
-            buildNode.Tower = (GameObject)_tower;
+            Quaternion rotation = Quaternion.identity;
+            rotation.eulerAngles = new Vector3(0, 0, 0);
+            buildObject = (GameObject)Instantiate(objToSpawn, Vector3.zero, rotation);
+            Camera.main.GetComponent<CameraControl>().IsBuilding = true;
         }
-        if (buttonClick == "delete" && buildNode.Tower != null)
+    }
+    private void BuildTower()
+    {
+        float distance_to_screen = Camera.main.WorldToScreenPoint(buildObject.transform.position).z;
+        Vector3 pos_move = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance_to_screen));
+        Node node = grid.NodeFromWorldPoint(new Vector3(pos_move.x, 0, pos_move.z));
+        buildObject.transform.position = node.worldPosition;
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            Debug.Log(_node.worldPosition + " destroy");
-            Debug.Log("no tower to destroy");
-            Destroy(buildNode.Tower);
-            buildNode.Tower = null;
-            buildNode.walkable = true;
+            bool validPath = path.CheckIfPathIsValid(node);
+            //Debug.Log("validPath " + validPath);
+            if (validPath && node.Tower == null)
+            {
+                
+                node.walkable = false;
+                node.Tower = buildObject;
+                buildObject.GetComponent<NavMeshObstacle>().carving = true;
+                buildObject = null;
+                //Husk først at aktiverer bulletscripts efter tårnet er blevet placeret!
+
+            }
+            else if (node.Tower != null)
+            {
+                if (!coroutineIsRunning)
+                {
+                    StartCoroutine("Fade", "Space Occupied by tower");
+                }
+                Destroy(buildObject);
+            }
+            else if (!validPath)
+            {
+                if (!coroutineIsRunning)
+                {
+                    StartCoroutine("Fade", "You can't block the path");
+                }
+                Destroy(buildObject);
+            }
+            Camera.main.GetComponent<CameraControl>().IsBuilding = false;
+            buildObject = null;
         }
-        buildMenu.SetActive(false);
-        dontShowPointer = false;
+    }
+    public void DeleteTower()
+    {
+        markerObjectPosition(markerObjectIdlePosition);
+        Destroy(nodeIsPressed.Tower);
+        nodeIsPressed.walkable = true;
+        nodeIsPressed = null;
+        buildMenu.SetActive(true);
+        DeleteUpgradeMenu.SetActive(false);
+    }
+    public void UpgradeTower()
+    {
+
     }
 }
