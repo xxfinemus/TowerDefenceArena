@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraControl : MonoBehaviour 
+public class CameraControl : MonoBehaviour
 {
     [SerializeField]
     private float top, bottom, left, right, front, back;
@@ -28,15 +28,15 @@ public class CameraControl : MonoBehaviour
         right += startPos.z;
         front += startPos.x;
         back += startPos.x;
-	}
-	
-	// Update is called once per frame
-	void Update () 
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         Move();
         Zoom();
         ConfineToBounds();
-	}
+    }
     void OnGUI()
     {
         //Vector3[] p_corners = GetVertices(plane);
@@ -57,6 +57,11 @@ public class CameraControl : MonoBehaviour
             float changeZoom = zoomDistance - newDistance;
             Debug.Log("zoom");
             transform.Translate(new Vector3(0, 0, changeZoom) * Time.deltaTime * 5);
+            Debug.Log("Touch inputs: " + myTouches.Length);
+            if ((changeZoom > 0 && transform.position.y > bottom) || (changeZoom < 0 && transform.position.y < top))
+            {
+                transform.Translate(new Vector3(0, 0, changeZoom) * Time.deltaTime * 5);
+            }
         }
     }
 
@@ -76,7 +81,7 @@ public class CameraControl : MonoBehaviour
         float distance = (Vector2.Distance(touch.position, touchStartPos));
         if (touch.phase == TouchPhase.Began)
         {
-            touchStartPos = touch.position;  
+            touchStartPos = touch.position;
         }
 
         else if (touch.phase == TouchPhase.Moved)
