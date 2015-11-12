@@ -7,6 +7,7 @@ public class BossAttack : MonoBehaviour
     private GameObject meleeCollider;
 
     private Animator bossAnimator;
+    private bool specialAttackInProgress = false;
 
     // Use this for initialization
     void Start()
@@ -17,6 +18,18 @@ public class BossAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    void FixedUpdate()
+    {
+
+        LogicSpecialAttack1();
+
+        if (specialAttackInProgress)
+        {
+
+        }
 
     }
 
@@ -33,6 +46,38 @@ public class BossAttack : MonoBehaviour
         {
             meleeCollider.SetActive(true);
         }
+    }
+
+    /// <summary>
+    /// This methode is heaviely inspiered by "alucardj's" answer to the folowing post:
+    /// http://answers.unity3d.com/questions/362763/raycast-over-arc.html
+    /// </summary>
+    public void LogicSpecialAttack1()
+    {
+        float distance = 5;
+        int angle = 360;
+
+        int segments = 45;
+        int angleStep = angle / segments;
+        Vector3 defaultPos = transform.position + new Vector3(0, 0.2f, 0);
+        Vector3 tagetPos = Vector3.zero;
+
+        RaycastHit hit;
+
+        for (int i = 0; i <= 360; i += 2)
+        {
+            tagetPos = (Quaternion.Euler(0, i, 0) * transform.up).normalized * distance;
+            tagetPos += new Vector3(0, 0.2f, 0);
+
+            Debug.DrawLine(defaultPos, tagetPos, Color.green);
+        }
+
+        if (Physics.Linecast(defaultPos, tagetPos, out hit))
+        {
+
+        }
+
+           
     }
 
     /// <summary>
