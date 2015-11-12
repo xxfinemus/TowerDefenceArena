@@ -29,6 +29,8 @@ public class TowerBehavior : MonoBehaviour {
         get { return damage; }
         set { damage = value; }
     }
+    [SerializeField]
+    private int towerCost;
 
 
     public GameObject[] arrayEnemies;
@@ -40,8 +42,17 @@ public class TowerBehavior : MonoBehaviour {
     {
         get { return _name; }
     }
-	// Use this for initialization
-	void Start ()
+
+    public int GetTowerCost
+    {
+        get
+        {
+            return towerCost;
+        }
+    }
+
+    // Use this for initialization
+    void Start ()
     {
         damage = 20;
         cooldown = 0;

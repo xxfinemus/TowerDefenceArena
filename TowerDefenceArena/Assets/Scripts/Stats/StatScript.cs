@@ -76,14 +76,9 @@ public class StatScript : MonoBehaviour
     void Start()
     {
         LoadStats();
+        ChangeStat("gold", 20);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    
     public void LoadStats()
     {
         exp = PlayerPrefs.GetInt("exp");

@@ -68,6 +68,15 @@ public class Grid : MonoBehaviour
 
         int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
         int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
+
+        if (x == 0)
+        {
+            x++;
+        }
+        if (x == gridSizeX -1)
+        {
+            x--;
+        }
         return grid[x, y];
     }
     void OnDrawGizmos()
