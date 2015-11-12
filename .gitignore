@@ -30,3 +30,7 @@ obj/
 .Trashes
 ehthumbs.db
 Thumbs.db
+TowerDefenceArena/Assembly-CSharp-Editor.csproj
+TowerDefenceArena/TowerDefenceArena.sln
+TowerDefenceArena/TowerDefenceArena.CSharp.Editor.csproj
+TowerDefenceArena/TowerDefenceArena.CSharp.csproj

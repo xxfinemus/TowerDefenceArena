@@ -75,7 +75,6 @@ public class Pathfinding : MonoBehaviour
         path.Reverse();
 
         this.path = path;
-        //SimplifyPath();
 
     }
 
@@ -95,7 +94,6 @@ public class Pathfinding : MonoBehaviour
         node.walkable = false;
         FindPath(seeker.position, target.position);
         node.walkable = walkabletemp;
-        //Debug.Log(path.Count);
         if (path.Count == 0)
         {
             return false;
@@ -124,13 +122,6 @@ public class Pathfinding : MonoBehaviour
                 Gizmos.DrawCube(array[i].worldPosition, Vector3.one);
                 Debug.DrawLine(array[i].worldPosition, array[i + 1].worldPosition);
             }
-        }
-        RaycastHit hit;
-        Ray raym = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(raym, out hit))
-        {
-            Node node = grid.NodeFromWorldPoint(hit.point);
-            Gizmos.DrawSphere(node.worldPosition, 1); 
         }
     }
 }
