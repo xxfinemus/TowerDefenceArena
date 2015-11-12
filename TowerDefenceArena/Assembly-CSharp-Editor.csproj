@@ -96,7 +96,6 @@
      <Compile Include="Assets\Tests\UnityTestTools\UnitTesting\Editor\TestRunner\UnitTestView.cs" />
      <Compile Include="Assets\Tests\UnityTestTools\UnitTesting\Editor\UnitTestsRunnerSettings.cs" />
      <Compile Include="Assets\Tests\UnityTestTools\UnitTesting\Editor\UnityUnitTest.cs" />
-     <None Include="Assets\Shader\test shader.shader" />
      <None Include="Assets\Tests\UnityTestTools\LICENSE.txt" />
      <None Include="Assets\Tests\UnityTestTools\changelog.txt" />
  <Reference Include="UnityEditor.Advertisements">

@@ -47,12 +47,10 @@
   <ItemGroup>
      <Compile Include="Assets\Database\dbscript.cs" />
      <Compile Include="Assets\Scripts\BossAIScript.cs" />
+     <Compile Include="Assets\Scripts\BossAttack.cs" />
      <Compile Include="Assets\Scripts\BossHealthScript.cs" />
      <Compile Include="Assets\Scripts\BossNavigationScript.cs" />
-     <Compile Include="Assets\Scripts\BulletObjectpool\BulletDestroyScript.cs" />
-     <Compile Include="Assets\Scripts\BulletObjectpool\BulletFireScript.cs" />
      <Compile Include="Assets\Scripts\BulletObjectpool\BulletObjectPoolScript.cs" />
-     <Compile Include="Assets\Scripts\BulletObjectpool\BulletScript.cs" />
      <Compile Include="Assets\Scripts\BulletObjectpool\SecondBulletScript.cs" />
      <Compile Include="Assets\Scripts\Button\ButtonMute.cs" />
      <Compile Include="Assets\Scripts\Button\ButtonSoundSpecial.cs" />
@@ -119,7 +117,6 @@
      <Compile Include="Assets\pathTest\Pathfinding.cs" />
      <Compile Include="Assets\pathTest\TouchInput.cs" />
      <Compile Include="Assets\pathTest\moveTo.cs" />
-     <None Include="Assets\Shader\test shader.shader" />
      <None Include="Assets\Tests\UnityTestTools\LICENSE.txt" />
      <None Include="Assets\Tests\UnityTestTools\changelog.txt" />
  <Reference Include="UnityEngine.UI">

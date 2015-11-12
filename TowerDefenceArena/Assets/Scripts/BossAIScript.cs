@@ -22,11 +22,16 @@ public class BossAIScript : MonoBehaviour
     float health;
 
     float cooldown;
+
     BossNavigationScript navScript;
+
+    BossAttack attackScript;
     // Use this for initialization
     void Start()
     {
         navScript = GetComponent<BossNavigationScript>();
+
+        attackScript = GetComponent<BossAttack>();
 
         cooldown = attackSpeed;
     }
@@ -40,14 +45,7 @@ public class BossAIScript : MonoBehaviour
         }
         else if (cooldown <= 0)
         {
-            //placeholder code until attacks are in place
-            int rnd = Random.Range(1, 2);
-            if (rnd == 1)
-            {
-                Attack();
-            }
-            else
-                SpecialAttack();
+            Attack();
         }
 
         if (cooldown >= 0)
@@ -67,11 +65,11 @@ public class BossAIScript : MonoBehaviour
 
     void Attack()
     {
-        cooldown = attackSpeed;
-    }
-
-    void SpecialAttack()
-    {
-        cooldown = attackSpeed;
+        if (Random.value > 0.5f)
+        {
+            attackScript.MeleeAttack();
+        }
+        else
+            attackScript.SpecialAttack1();
     }
 }
