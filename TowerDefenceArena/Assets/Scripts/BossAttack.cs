@@ -4,6 +4,9 @@ using System.Collections;
 public class BossAttack : MonoBehaviour
 {
     [SerializeField]
+    float damage;
+
+    [SerializeField]
     private GameObject meleeCollider;
 
     [SerializeField]
@@ -95,7 +98,7 @@ public class BossAttack : MonoBehaviour
             {
                 if (hit.collider.gameObject.tag == "Player")
                 {
-                    // Player was hit
+                    hit.collider.gameObject.GetComponent<PlayerHealthScript>().TakeDamage(damage);
                     Debug.Log("The player was hit");
                 }
             }

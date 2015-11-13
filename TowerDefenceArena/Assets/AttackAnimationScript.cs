@@ -18,14 +18,12 @@ public class AttackAnimationScript : StateMachineBehaviour
     //}
 
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    BossAttack attackScript = animator.GetComponentInParent<BossAttack>();
-    //    BossAIScript aiScript = animator.GetComponentInParent<BossAIScript>();
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        BossAIScript aiScript = animator.GetComponentInParent<BossAIScript>();
 
-    //    aiScript.Attacking = false;
-    //    attackScript.ToggleMeleeCollider();
-    //}
+        aiScript.Attacking = false;
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
