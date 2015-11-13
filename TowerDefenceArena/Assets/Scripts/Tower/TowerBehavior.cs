@@ -51,6 +51,14 @@ public class TowerBehavior : MonoBehaviour {
         }
     }
 
+    public float Range
+    {
+        get
+        {
+            return range;
+        }
+    }
+
     // Use this for initialization
     void Start ()
     {
@@ -101,7 +109,7 @@ public class TowerBehavior : MonoBehaviour {
         {
             if (!enemies.Contains(enemy))
             {
-                if (Vector3.Distance(transform.position, enemy.transform.position) < range)
+                if (Vector3.Distance(transform.position, enemy.transform.position) < Range)
                 {
                     enemies.Enqueue(enemy);
                     arrayEnemies = enemies.ToArray();
@@ -113,7 +121,7 @@ public class TowerBehavior : MonoBehaviour {
     private void DequeueEnemy()
     { 
         Transform _enemy = enemies.Peek().transform;
-        if (Vector3.Distance(transform.position, _enemy.position) > range)
+        if (Vector3.Distance(transform.position, _enemy.position) > Range)
         {
             enemies.Dequeue();
         }
@@ -135,7 +143,7 @@ public class TowerBehavior : MonoBehaviour {
         {
             foreach (GameObject obj in enemies)
             {
-                if (Vector3.Distance(transform.position, obj.transform.position) < range)
+                if (Vector3.Distance(transform.position, obj.transform.position) < Range)
                 {
                     return;
                 }

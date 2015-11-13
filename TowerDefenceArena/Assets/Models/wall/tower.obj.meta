@@ -1,23 +1,22 @@
 fileFormatVersion: 2
-guid: 51ea0c86a0a6d25429d93a7b5333eb3e
-timeCreated: 1446636149
+guid: 3b74d31ee4549494d9e8cc320f5d18ce
+timeCreated: 1447412564
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: Wall
-    100002: Wall_Pillar
-    100004: //RootNode
-    400000: Wall
-    400002: Wall_Pillar
-    400004: //RootNode
+    100000: //RootNode
+    100002: Wall
+    100004: Wall_Pillar
+    400000: //RootNode
+    400002: Wall
+    400004: Wall_Pillar
     2300000: Wall
     2300002: Wall_Pillar
     3300000: Wall
     3300002: Wall_Pillar
     4300000: Wall
     4300002: Wall_Pillar
-    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -41,7 +40,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: .00999999978
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -76,7 +75,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
