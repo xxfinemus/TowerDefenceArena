@@ -66,7 +66,7 @@ public class WallBehaviorAgent : MonoBehaviour {
         }
 	}
     // When instantiating a new wall
-    private void InstantiateWall(Vector3 pos)
+    public void InstantiateWall(Vector3 pos)
     {
         GameObject _wall = Instantiate(wallModel, pos, Quaternion.identity) as GameObject;
         _wall.transform.localEulerAngles = new Vector3(270, 0, 0);
