@@ -1,27 +1,53 @@
 fileFormatVersion: 2
-guid: f45fc88eb55a9ce4fb3c2ab7ff2eed7a
-timeCreated: 1447147084
+guid: 57c1111b883e24749b61676fb04eb848
+timeCreated: 1447234781
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Catapult_Base
-    100004: Catapult_Body
-    100006: Catapult_Rock
-    400000: //RootNode
-    400002: Catapult_Base
-    400004: Catapult_Body
-    400006: Catapult_Rock
+    100000: Bone001
+    100002: Bone002
+    100004: Bone003
+    100006: Bone004
+    100008: Bone005
+    100010: Bone006
+    100012: Bone007
+    100014: Bone008
+    100016: Bone009
+    100018: Bone010
+    100020: Bone011
+    100022: Bone012
+    100024: Bone013
+    100026: //RootNode
+    100028: Catapult_Base
+    100030: Catapult_Body
+    100032: CatapultRock
+    400000: Bone001
+    400002: Bone002
+    400004: Bone003
+    400006: Bone004
+    400008: Bone005
+    400010: Bone006
+    400012: Bone007
+    400014: Bone008
+    400016: Bone009
+    400018: Bone010
+    400020: Bone011
+    400022: Bone012
+    400024: Bone013
+    400026: //RootNode
+    400028: Catapult_Base
+    400030: Catapult_Body
+    400032: CatapultRock
     2300000: Catapult_Base
-    2300002: Catapult_Body
-    2300004: Catapult_Rock
     3300000: Catapult_Base
-    3300002: Catapult_Body
-    3300004: Catapult_Rock
     4300000: Catapult_Body
-    4300002: Catapult_Rock
+    4300002: CatapultRock
     4300004: Catapult_Base
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Catapult_Body
+    13700002: CatapultRock
   materials:
     importMaterials: 1
     materialName: 0
@@ -80,7 +106,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -4,11 +4,14 @@ using System.Collections.Generic;
 
 public class TowerBehavior : MonoBehaviour {
 
-    [SerializeField]
+    //[SerializeField]
     private string _name;
 
-    [SerializeField]
+    //[SerializeField]
     private BulletObjectPoolScript objectPool;
+
+    [SerializeField]
+    private GameObject stone;
 
     [SerializeField]
     private float range;
@@ -26,6 +29,8 @@ public class TowerBehavior : MonoBehaviour {
         get { return damage; }
         set { damage = value; }
     }
+    [SerializeField]
+    private int towerCost;
 
 
     public GameObject[] arrayEnemies;
@@ -37,11 +42,21 @@ public class TowerBehavior : MonoBehaviour {
     {
         get { return _name; }
     }
-	// Use this for initialization
-	void Start ()
+
+    public int GetTowerCost
+    {
+        get
+        {
+            return towerCost;
+        }
+    }
+
+    // Use this for initialization
+    void Start ()
     {
         damage = 20;
-        
+        cooldown = 0;
+
         if (!objectPool)
         {
             objectPool = BulletObjectPoolScript.current;
@@ -55,11 +70,20 @@ public class TowerBehavior : MonoBehaviour {
         AddToQueue();
         ClearQueue();
         target = SetTarget();
-        if (target != null)
-        {
-            Attack(target);
-        }
 
+        if (cooldown <= 0)
+        {
+            if (target != null)
+            {
+                GetComponent<Animator>().SetTrigger("fire");
+
+                cooldown = rateOfFire;
+            }
+        }
+        else
+        {
+            cooldown -= Time.deltaTime;
+        }
 	}
     private void LockToTarget()
     {
@@ -119,32 +143,36 @@ public class TowerBehavior : MonoBehaviour {
             enemies.Clear();
         }
     }
-    private void Attack(GameObject enemy)
+    private void Attack()
     {
-
         //GameObject bullet = objectPool.GetPooledObject();
         //bullet.transform.position = transform.position;
         // bullet.GetComponent<FireScript>().Target(enemy);
         // bullet.GetComponent<FireScript>().Fire();
         //Gets a bullet from the object pool.
-        if (cooldown <= 0)
-        {
-            GameObject obj = BulletObjectPoolScript.current.GetPooledObject();
-            cooldown = rateOfFire;
-            //If there is not an object in the object pool and willGrow is not true,
-            //it will return null and we will not get a bullet.
-            if (obj == null) return;
+        GameObject obj = BulletObjectPoolScript.current.GetPooledObject();
 
-            //Creates the bullet at the transforms position.
-            obj.transform.position = transform.position;
-            obj.GetComponent<SecondBulletScript>().Damage = damage;
-            obj.GetComponent<SecondBulletScript>().StartPosition = transform.position;
-            obj.GetComponent<SecondBulletScript>().Target = target.transform;
-            obj.SetActive(true);            
+        //If there is not an object in the object pool and willGrow is not true,
+        //it will return null and we will not get a bullet.
+        if (obj == null) return;
+
+        //Creates the bullet at the transforms position.
+        obj.transform.position = transform.position;
+        obj.GetComponent<SecondBulletScript>().Damage = damage;
+        obj.GetComponent<SecondBulletScript>().StartPosition = transform.position;
+        obj.GetComponent<SecondBulletScript>().Target = target.transform;
+        obj.SetActive(true);
+    }
+
+    private void AnimToggleStone()
+    {
+        if (stone.activeSelf == true)
+        {
+            stone.SetActive(false);
         }
         else
         {
-            cooldown -= Time.deltaTime;
+            stone.SetActive(true);
         }
     }
 }
