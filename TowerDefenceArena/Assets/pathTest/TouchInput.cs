@@ -43,9 +43,24 @@ public class TouchInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Debug.Log("tilbage knappen er trykket på");
+        }
+
+
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            StatScript.Instance.ChangeStat("gold", 100);
+            StatScript.Instance.ChangeStat("exp", 100);
+        }
+
         if (buildObject != null)
         {
-            BuildTower();
+            Node node = BuildTowerPosition();
+            BuildTower(node);
         }
         //Debug.Log(KeyUpInsideGrid());
         if (DeleteUpgradeMenu.activeInHierarchy && Deselect())
@@ -63,11 +78,7 @@ public class TouchInput : MonoBehaviour
                 markerObjectPosition(nodeIsPressed.worldPosition);
             }
         }
-
     }
-
-
-
     void markerObjectPosition(Vector3 position)
     {
         markerObject.transform.position = position;
@@ -143,28 +154,48 @@ public class TouchInput : MonoBehaviour
             Camera.main.GetComponent<CameraControl>().IsBuilding = true;
         }
     }
-    private void BuildTower()
+
+    private Node BuildTowerPosition()
     {
         float distance_to_screen = Camera.main.WorldToScreenPoint(buildObject.transform.position).z;
         Vector3 pos_move = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance_to_screen));
         Node node = grid.NodeFromWorldPoint(new Vector3(pos_move.x, 0, pos_move.z));
         buildObject.transform.position = node.worldPosition;
+        return node;
+    }
+
+    private void BuildTower(Node node)
+    {
+
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             bool validPath = path.CheckIfPathIsValid(node);
             //Debug.Log("validPath " + validPath);
-            if (validPath && node.Tower == null)
+            if (validPath && node.walkable == true && StatScript.Instance.GetStat("gold") >= buildObject.GetComponentInChildren<TowerBehavior>().GetTowerCost)
             {
-                
+
+                StatScript.Instance.ChangeStat("gold", -buildObject.GetComponentInChildren<TowerBehavior>().GetTowerCost);
+
                 node.walkable = false;
                 node.Tower = buildObject;
-                buildObject.GetComponent<NavMeshObstacle>().carving = true;
-                buildObject = null;
-                //Husk først at aktiverer bulletscripts efter tårnet er blevet placeret!
+                buildObject.GetComponent<NavMeshObstacle>().enabled = true;
 
+                buildObject.GetComponentInChildren<TowerBehavior>().enabled = true;
+                buildObject = null;
+
+                //Husk først at aktiverer bulletscripts efter tårnet er blevet placeret!
             }
-            else if (node.Tower != null)
+            
+            else if (StatScript.Instance.GetStat("gold") <= buildObject.GetComponentInChildren<TowerBehavior>().GetTowerCost)
+            {
+                if (!coroutineIsRunning)
+                {
+                    StartCoroutine("Fade", "You don't have enough gold");
+                }
+                Destroy(buildObject);
+            }
+            else if (node.Tower != null || node.walkable == false)
             {
                 if (!coroutineIsRunning)
                 {
@@ -189,9 +220,12 @@ public class TouchInput : MonoBehaviour
         markerObjectPosition(markerObjectIdlePosition);
         Destroy(nodeIsPressed.Tower);
         nodeIsPressed.walkable = true;
+        StatScript.Instance.ChangeStat("gold", (int)(nodeIsPressed.Tower.GetComponentInChildren<TowerBehavior>().GetTowerCost / 2));
         nodeIsPressed = null;
         buildMenu.SetActive(true);
         DeleteUpgradeMenu.SetActive(false);
+
+
     }
     public void UpgradeTower()
     {
