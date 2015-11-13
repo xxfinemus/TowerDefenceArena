@@ -52,6 +52,11 @@ public class BossAttack : MonoBehaviour
 
     }
 
+    public void ToggleSpecialAttack1()
+    {
+        specialAttackInProgress = !specialAttackInProgress;
+    }
+
     /// <summary>
     /// Toggles the melee attack collider on the boss. This methode should be called in an animation event.
     /// </summary>
