@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TowerBehavior : MonoBehaviour {
+public class TowerBehavior : MonoBehaviour
+{
 
     //[SerializeField]
     private string _name;
@@ -60,7 +61,7 @@ public class TowerBehavior : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         damage = 20;
         cooldown = 0;
@@ -69,10 +70,10 @@ public class TowerBehavior : MonoBehaviour {
         {
             objectPool = BulletObjectPoolScript.current;
         }
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         LockToTarget();
         AddToQueue();
@@ -92,7 +93,7 @@ public class TowerBehavior : MonoBehaviour {
         {
             cooldown -= Time.deltaTime;
         }
-	}
+    }
     private void LockToTarget()
     {
         if (target != null)
@@ -110,32 +111,36 @@ public class TowerBehavior : MonoBehaviour {
             if (!enemies.Contains(enemy))
             {
                 if (Vector3.Distance(transform.position, enemy.transform.position) < Range)
-                Vector3 targetPos = new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z);
-                
-                if (Vector3.Distance(transform.position, targetPos) < range)
                 {
-                    enemies.Enqueue(enemy);
-                    arrayEnemies = enemies.ToArray();
+                    Vector3 targetPos = new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z);
+
+                    if (Vector3.Distance(transform.position, targetPos) < range)
+                    {
+                        enemies.Enqueue(enemy);
+                        arrayEnemies = enemies.ToArray();
+                    }
                 }
             }
         }
     }
     // If the front enemy is out of range, then put in the back of the queue
     private void DequeueEnemy()
-    { 
+    {
         Transform _enemy = enemies.Peek().transform;
         if (Vector3.Distance(transform.position, _enemy.position) > Range)
-        Vector3 targetPos = new Vector3(_enemy.position.x, transform.position.y, _enemy.position.z);
-
-        if (Vector3.Distance(transform.position, targetPos) > range)
         {
-            enemies.Dequeue();
+            Vector3 targetPos = new Vector3(_enemy.position.x, transform.position.y, _enemy.position.z);
+
+            if (Vector3.Distance(transform.position, targetPos) > range)
+            {
+                enemies.Dequeue();
+            }
         }
     }
     // Set target equal to front element of queue
     private GameObject SetTarget()
     {
-        if(enemies.Count > 0)
+        if (enemies.Count > 0)
         {
             DequeueEnemy();
             return enemies.Peek();
@@ -150,11 +155,13 @@ public class TowerBehavior : MonoBehaviour {
             foreach (GameObject obj in enemies)
             {
                 if (Vector3.Distance(transform.position, obj.transform.position) < Range)
-                Vector3 targetPos = new Vector3(obj.transform.position.x, transform.position.y, obj.transform.position.z);
-
-                if (Vector3.Distance(transform.position, targetPos) < range)
                 {
-                    return;
+                    Vector3 targetPos = new Vector3(obj.transform.position.x, transform.position.y, obj.transform.position.z);
+
+                    if (Vector3.Distance(transform.position, targetPos) < range)
+                    {
+                        return;
+                    }
                 }
             }
             enemies.Clear();
