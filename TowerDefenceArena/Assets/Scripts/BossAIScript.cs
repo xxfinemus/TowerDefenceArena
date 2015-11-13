@@ -4,7 +4,7 @@ using System.Collections;
 public class BossAIScript : MonoBehaviour
 {
     [SerializeField]
-    GameObject target;
+    private GameObject target;
 
     public GameObject Target
     {
@@ -13,19 +13,19 @@ public class BossAIScript : MonoBehaviour
     }
 
     [SerializeField]
-    float attackSpeed;
+    private float attackSpeed;
     [SerializeField]
-    float attackRange;
+    private float attackRange;
     [SerializeField]
-    float damage;
+    private float damage;
     [SerializeField]
-    float health;
+    private float health;
 
-    float cooldown;
+    private float cooldown;
 
-    BossNavigationScript navScript;
+    private BossNavigationScript navScript;
 
-    BossAttack attackScript;
+    private BossAttack attackScript;
     // Use this for initialization
     void Start()
     {
@@ -41,10 +41,12 @@ public class BossAIScript : MonoBehaviour
     {
         if (!InRange(transform.position, target.transform.position, attackRange))
         {
+            navScript.StartChasing();
             navScript.SetTarget(target);
         }
         else if (cooldown <= 0)
         {
+            navScript.StopChasing();
             Attack();
         }
 
@@ -54,16 +56,12 @@ public class BossAIScript : MonoBehaviour
         }
     }
 
-    bool InRange(Vector3 a, Vector3 b, float range)
+    private bool InRange(Vector3 a, Vector3 b, float range)
     {
-        if (Vector3.Distance(a, b) <= range)
-        {
-            return true;
-        }
-        else return false;
+        return (Vector3.Distance(a, b) <= range);
     }
 
-    void Attack()
+    private void Attack()
     {
         if (Random.value > 0.5f)
         {
