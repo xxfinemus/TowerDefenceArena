@@ -68,6 +68,14 @@ public class TouchInput : MonoBehaviour
             markerObjectPosition(markerObjectIdlePosition);
             buildMenu.SetActive(true);
             DeleteUpgradeMenu.SetActive(false);
+
+            foreach (Transform child in nodeIsPressed.Tower.gameObject.transform)
+            {
+                if (child.name == "RangeFinder")
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
         }
         if (PressedOnTower())
         {
@@ -76,12 +84,20 @@ public class TouchInput : MonoBehaviour
                 buildMenu.SetActive(false);
                 DeleteUpgradeMenu.SetActive(true);
                 markerObjectPosition(nodeIsPressed.worldPosition);
+
+                foreach (Transform child in nodeIsPressed.Tower.gameObject.transform)
+                {
+                    if (child.name == "RangeFinder")
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                }
             }
         }
     }
     void markerObjectPosition(Vector3 position)
     {
-        markerObject.transform.position = position;
+        markerObject.transform.position = position + new Vector3(0,2.5f,0);
     }
 
     private bool Deselect()
@@ -160,14 +176,21 @@ public class TouchInput : MonoBehaviour
         float distance_to_screen = Camera.main.WorldToScreenPoint(buildObject.transform.position).z;
         Vector3 pos_move = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance_to_screen));
         Node node = grid.NodeFromWorldPoint(new Vector3(pos_move.x, 0, pos_move.z));
-        buildObject.transform.position = node.worldPosition;
+        buildObject.transform.position =  new Vector3(node.worldPosition.x, 2, node.worldPosition.z);
+
+        foreach (Transform child in buildObject.gameObject.transform)
+        {
+            if (child.name == "RangeFinder")
+            {
+                child.lossyScale.Set(buildObject.GetComponentInChildren<TowerBehavior>().Range * 2, buildObject.GetComponentInChildren<TowerBehavior>().Range * 2, buildObject.GetComponentInChildren<TowerBehavior>().Range * 2);
+                child.position = new Vector3(child.position.x, 0 , child.position.z);
+            }
+        }
         return node;
     }
 
     private void BuildTower(Node node)
     {
-
-
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             bool validPath = path.CheckIfPathIsValid(node);
@@ -181,12 +204,20 @@ public class TouchInput : MonoBehaviour
                 node.Tower = buildObject;
                 buildObject.GetComponent<NavMeshObstacle>().enabled = true;
 
+                foreach (Transform child in buildObject.gameObject.transform)
+                {
+                    if (child.name == "RangeFinder")
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                }
+
                 buildObject.GetComponentInChildren<TowerBehavior>().enabled = true;
                 buildObject = null;
 
                 //Husk først at aktiverer bulletscripts efter tårnet er blevet placeret!
             }
-            
+
             else if (StatScript.Instance.GetStat("gold") <= buildObject.GetComponentInChildren<TowerBehavior>().GetTowerCost)
             {
                 if (!coroutineIsRunning)

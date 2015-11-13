@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BossNavigationScript : MonoBehaviour
 {
-    NavMeshAgent navAgent;
+    public NavMeshAgent navAgent;
 
     // Use this for initialization
     void Start()
@@ -20,5 +20,15 @@ public class BossNavigationScript : MonoBehaviour
     public void SetTarget(GameObject target)
     {
         navAgent.SetDestination(target.transform.position);
+    }
+
+    public void StopChasing()
+    {
+        navAgent.Stop();
+        Debug.Log("Boss Stopped chasing the Hero!");
+    }
+    public void StartChasing()
+    {
+        navAgent.Resume();
     }
 }

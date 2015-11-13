@@ -28,21 +28,21 @@ public class WallBehaviorAgent : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            InstantiateWall(new Vector3(-3, 0, -3));
+            InstantiateWall(new Vector3(-2.7f, 0, -2.7f));
         }
-        else if (Input.GetKeyDown(KeyCode.Keypad2))
+        else if (Input.GetKeyDown(KeyCode.W))
         {
-            InstantiateWall(new Vector3(0, 0, -3));
+            InstantiateWall(new Vector3(0, 0, -2.8f));
         }
-        else if (Input.GetKeyDown(KeyCode.Keypad3))
+        else if (Input.GetKeyDown(KeyCode.D))
         {
-            InstantiateWall(new Vector3(3, 0, -3));
+            InstantiateWall(new Vector3(2.8f, 0, -2.8f));
         }
-        else if (Input.GetKeyDown(KeyCode.Keypad4))
+        else if (Input.GetKeyDown(KeyCode.S))
         {
-            InstantiateWall(new Vector3(-3, 0, 0));
+            InstantiateWall(new Vector3(-2.8f, 0, 0));
         }
         else if (Input.GetKeyDown(KeyCode.Keypad5))
         {
@@ -66,9 +66,11 @@ public class WallBehaviorAgent : MonoBehaviour {
         }
 	}
     // When instantiating a new wall
-    private void InstantiateWall(Vector3 pos)
+    public void InstantiateWall(Vector3 pos)
     {
         GameObject _wall = Instantiate(wallModel, pos, Quaternion.identity) as GameObject;
+        _wall.transform.localEulerAngles = new Vector3(270, 0, 0);
+
         GameObject[] _neighbours = GetNeighbours(_wall);    // Neighbours of the wall
         Transform[] _corners = GetCornersInWall(_wall);     // Corners of the wall
         // Get all neighbours from wall individualy
@@ -79,7 +81,7 @@ public class WallBehaviorAgent : MonoBehaviour {
             {
                 foreach (Transform t_corner in _corners)
                 {
-                    if (Vector3.Distance(t_corner.position, n_corner.position) < 0.5f)
+                    if (Vector3.Distance(t_corner.position, n_corner.position) < 5f)
                     {
                         Destroy(t_corner.gameObject);
                     }

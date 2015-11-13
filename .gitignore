@@ -44,3 +44,4 @@ TowerDefenceArena/Assets/Tests/UnityTestTools/UnitTesting/Editor/NUnit/Libs/nuni
 TowerDefenceArena/Assets/Tests/UnityTestTools/UnitTesting/Editor/NUnit/Libs/nunit.framework.dll.meta
 TowerDefenceArena/Assets/UnityTestTools/UnitTesting/Editor/NSubstitute.meta
 TowerDefenceArena/Assets/UnityTestTools/UnitTesting/Editor/NUnit/Libs.meta
+*.meta
