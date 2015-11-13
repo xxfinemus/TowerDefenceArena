@@ -110,7 +110,7 @@ public class TowerBehavior : MonoBehaviour
         {
             if (!enemies.Contains(enemy))
             {
-                if (Vector3.Distance(transform.position, enemy.transform.position) < Range)
+                if (Vector3.Distance(transform.position, enemy.transform.position) < Range && enemy.GetComponent<EnemyHealthScript>().Currenthealth > 0)
                 {
                     Vector3 targetPos = new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z);
 
@@ -127,7 +127,7 @@ public class TowerBehavior : MonoBehaviour
     private void DequeueEnemy()
     {
         Transform _enemy = enemies.Peek().transform;
-        if (Vector3.Distance(transform.position, _enemy.position) > Range)
+        if (Vector3.Distance(transform.position, _enemy.position) > Range || _enemy.GetComponent<EnemyHealthScript>().Currenthealth <= 0)
         {
             Vector3 targetPos = new Vector3(_enemy.position.x, transform.position.y, _enemy.position.z);
 
