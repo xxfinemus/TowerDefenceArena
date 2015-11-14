@@ -2,14 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TowerBehavior : MonoBehaviour
+public class BalistaBehavior : MonoBehaviour
 {
 
     //[SerializeField]
     private string _name;
 
     //[SerializeField]
-    private BulletObjectPoolScript objectPool;
+    private BoltObjectPool objectPool;
 
     [SerializeField]
     private GameObject stone;
@@ -69,7 +69,7 @@ public class TowerBehavior : MonoBehaviour
 
         if (!objectPool)
         {
-            objectPool = BulletObjectPoolScript.current;
+            objectPool = BoltObjectPool.current;
         }
     }
 
@@ -176,7 +176,7 @@ public class TowerBehavior : MonoBehaviour
         // bullet.GetComponent<FireScript>().Target(enemy);
         // bullet.GetComponent<FireScript>().Fire();
         //Gets a bullet from the object pool.
-        GameObject obj = BulletObjectPoolScript.current.GetPooledObject();
+        GameObject obj = BoltObjectPool.current.GetPooledObject();
 
         //If there is not an object in the object pool and willGrow is not true,
         //it will return null and we will not get a bullet.
@@ -184,21 +184,11 @@ public class TowerBehavior : MonoBehaviour
 
         //Creates the bullet at the transforms position.
         obj.transform.position = transform.position;
-        obj.GetComponent<SecondBulletScript>().Damage = damage;
-        obj.GetComponent<SecondBulletScript>().StartPosition = transform.position;
-        obj.GetComponent<SecondBulletScript>().Target = tempTarget.transform;
+        obj.GetComponent<BoltBehavior>().Damage = damage;
+        obj.GetComponent<BoltBehavior>().StartPosition = transform.position;
+        obj.GetComponent<BoltBehavior>().Target = tempTarget.transform;
         obj.SetActive(true);
     }
 
-    private void AnimToggleStone()
-    {
-        if (stone.activeSelf == true)
-        {
-            stone.SetActive(false);
-        }
-        else
-        {
-            stone.SetActive(true);
-        }
-    }
+
 }
