@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovementScript : MonoBehaviour
 {
@@ -15,11 +16,11 @@ public class PlayerMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+        Move(new Vector3(CrossPlatformInputManager.GetAxis("Left_Horizontal"), 0, CrossPlatformInputManager.GetAxis("Left_Vertical")));
     }
 
-    public void Move(Vector2 direction)
+    public void Move(Vector3 direction)
     {
-        transform.position += new Vector3(direction.x * (speed * Time.deltaTime), 0, direction.y * (speed * Time.deltaTime));
+        transform.position += new Vector3(direction.x * (speed * Time.deltaTime), 0, direction.z * (speed * Time.deltaTime));
     }
 }

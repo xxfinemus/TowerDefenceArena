@@ -24,7 +24,12 @@ public class BossHealthScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        healthBar = GetComponentInChildren<HealthBarScript>();
+        healthBar = transform.parent.GetComponentInChildren<HealthBarScript>();
+
+        if (healthBar == null)
+        {
+            Debug.Log("ASS");
+        }
     }
 
     // Update is called once per frame

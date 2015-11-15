@@ -12,6 +12,14 @@ public class BossAIScript : MonoBehaviour
         set { target = value; }
     }
 
+    private bool attacking;
+
+    public bool Attacking
+    {
+        get { return attacking; }
+        set { attacking = value; }
+    }
+
     [SerializeField]
     private float attackSpeed;
     [SerializeField]
@@ -39,20 +47,23 @@ public class BossAIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!InRange(transform.position, target.transform.position, attackRange))
+        if (!attacking)
         {
-            navScript.StartChasing();
-            navScript.SetTarget(target);
-        }
-        else if (cooldown <= 0)
-        {
-            navScript.StopChasing();
-            Attack();
-        }
+            if (!InRange(transform.position, target.transform.position, attackRange))
+            {
+                navScript.StartChasing();
+                navScript.SetTarget(target);
+            }
+            else if (cooldown <= 0)
+            {
+                navScript.StopChasing();
+                Attack();
+            }
 
-        if (cooldown >= 0)
-        {
-            cooldown -= Time.deltaTime;
+            if (cooldown >= 0)
+            {
+                cooldown -= Time.deltaTime;
+            }
         }
     }
 
@@ -63,6 +74,8 @@ public class BossAIScript : MonoBehaviour
 
     private void Attack()
     {
+        attacking = true;
+
         if (Random.value > 0.5f)
         {
             attackScript.MeleeAttack();
