@@ -92,7 +92,7 @@ public class BossAttack : MonoBehaviour
 
         for (int i = 0; i <= 360; i += 2)
         {
-            tagetPos = ((Quaternion.Euler(0, i, 0) * transform.forward).normalized * distance) + defaultPos;
+            tagetPos = ((Quaternion.Euler(0, i, 0) * transform.forward).normalized * distance);
 
             if (Physics.Raycast(defaultPos, tagetPos, out hit, distance))
             {
