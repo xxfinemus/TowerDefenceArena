@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BossAttack : MonoBehaviour
 {
+    [SerializeField]
+    float damage;
+
     [SerializeField]
     private GameObject meleeCollider;
 
@@ -11,6 +15,15 @@ public class BossAttack : MonoBehaviour
 
     [SerializeField]
     private GameObject fireSystem;
+
+    private GameObject[] fireSystems;
+
+
+    [SerializeField]
+    private List<Vector3> tagetPositions;
+
+    [SerializeField]
+    private float[] distances;
 
     private Animator bossAnimator;
 
@@ -22,6 +35,15 @@ public class BossAttack : MonoBehaviour
     void Start()
     {
         bossAnimator = GetComponent<Animator>();
+        tagetPositions = new List<Vector3>();
+        distances = new float[181];
+
+        fireSystems = new GameObject[180];
+
+        for (int i = 0; i < 180; i++)
+        {
+            fireSystems[i] = (GameObject)Instantiate(fireSystem, Vector3.zero, Quaternion.identity);
+        }
     }
 
     // Update is called once per frame
@@ -42,14 +64,46 @@ public class BossAttack : MonoBehaviour
                 specialAttack1Range += 1 * (specialAttackSpeed / 1000);
 
                 LogicSpecialAttack1(specialAttack1Range);
+
+                //if (fireSystems == null)
+                //{
+                //    fireSystems = new GameObject[180];
+
+                //    for (int i = 0; i < tagetPositions.Count - 1; i++)
+                //    {
+                //        fireSystems[i] = (GameObject)Instantiate(fireSystem, tagetPositions[i], Quaternion.identity);
+                //    }
+                //}
+                //else
+                //{
+                for (int i = 0; i < tagetPositions.Count - 1; i++)
+                {
+                    if (!fireSystems[i].activeSelf)
+                    {
+                        fireSystems[i].SetActive(true);
+                    }
+
+                    fireSystems[i].transform.position = tagetPositions[i];
+                }
+                //}
             }
             else
             {
                 specialAttack1Range = 0;
                 specialAttackInProgress = false;
-            }  
+
+                foreach (var system in fireSystems)
+                {
+                    system.SetActive(false);
+                }
+            }
         }
 
+    }
+
+    public void ToggleSpecialAttack1()
+    {
+        specialAttackInProgress = !specialAttackInProgress;
     }
 
     /// <summary>
@@ -77,26 +131,43 @@ public class BossAttack : MonoBehaviour
 
         int segments = 45;
         int angleStep = angle / segments;
-        Vector3 defaultPos = transform.position  + new Vector3(0, 0.2f, 0);
-        Vector3 tagetPos = defaultPos;
+        Vector3 defaultPos = transform.position + new Vector3(0, 0.2f, 0);
+        Vector3 tagetPos = Vector3.zero;
 
         RaycastHit hit;
 
+        tagetPositions.Clear();
+
         for (int i = 0; i <= 360; i += 2)
         {
-            tagetPos = ((Quaternion.Euler(0, i, 0) * transform.forward).normalized * distance) + defaultPos;
 
             if (Physics.Raycast(defaultPos, tagetPos, out hit, distance))
             {
                 if (hit.collider.gameObject.tag == "Player")
                 {
-                    // Player was hit
-                    Debug.Log("The player was hit");
+                    hit.collider.gameObject.GetComponent<PlayerHealthScript>().TakeDamage(damage);
+                    distances[i / 2] = Vector3.Distance(defaultPos, hit.point);
+                }
+
+                if (hit.collider.gameObject.tag == "wall")
+                {
+                    distances[i / 2] = Vector3.Distance(defaultPos, hit.point);
                 }
             }
 
+            if (distances[i / 2] == 0)
+            {
+                tagetPos = ((Quaternion.Euler(0, i, 0) * transform.forward).normalized * distance);
+            }
+            else
+            {
+                tagetPos = ((Quaternion.Euler(0, i, 0) * transform.forward).normalized * distances[i / 2]);
+            }
+
+            tagetPositions.Add(tagetPos + defaultPos);
+
             Debug.DrawRay(defaultPos, tagetPos, Color.green);
-        }           
+        }
     }
 
     /// <summary>

@@ -23,6 +23,7 @@ public class TowerBehavior : MonoBehaviour
     [SerializeField]
     private Queue<GameObject> enemies = new Queue<GameObject>();
 
+    [SerializeField]
     private int damage;
 
     public int Damage
@@ -30,26 +31,16 @@ public class TowerBehavior : MonoBehaviour
         get { return damage; }
         set { damage = value; }
     }
-    [SerializeField]
-    private int towerCost;
-
 
     public GameObject[] arrayEnemies;
 
     [SerializeField]
     private GameObject target;
+    private GameObject tempTarget;
 
     public string _Name
     {
         get { return _name; }
-    }
-
-    public int GetTowerCost
-    {
-        get
-        {
-            return towerCost;
-        }
     }
 
     public float Range
@@ -57,6 +48,10 @@ public class TowerBehavior : MonoBehaviour
         get
         {
             return range;
+        }
+        set
+        {
+            range = value;
         }
     }
 
@@ -84,6 +79,7 @@ public class TowerBehavior : MonoBehaviour
         {
             if (target != null)
             {
+                tempTarget = target;
                 GetComponent<Animator>().SetTrigger("fire");
 
                 cooldown = rateOfFire;
@@ -110,7 +106,7 @@ public class TowerBehavior : MonoBehaviour
         {
             if (!enemies.Contains(enemy))
             {
-                if (Vector3.Distance(transform.position, enemy.transform.position) < Range && enemy.GetComponent<EnemyHealthScript>().Currenthealth > 0)
+                if (Vector3.Distance(transform.position, enemy.transform.position) < Range && enemy.GetComponent<EnemyHealthScript>().CurrentHealth > 0)
                 {
                     Vector3 targetPos = new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z);
 
@@ -127,7 +123,7 @@ public class TowerBehavior : MonoBehaviour
     private void DequeueEnemy()
     {
         Transform _enemy = enemies.Peek().transform;
-        if (Vector3.Distance(transform.position, _enemy.position) > Range || _enemy.GetComponent<EnemyHealthScript>().Currenthealth <= 0)
+        if (Vector3.Distance(transform.position, _enemy.position) > Range || _enemy.GetComponent<EnemyHealthScript>().CurrentHealth <= 0)
         {
             Vector3 targetPos = new Vector3(_enemy.position.x, transform.position.y, _enemy.position.z);
 
@@ -184,7 +180,7 @@ public class TowerBehavior : MonoBehaviour
         obj.transform.position = transform.position;
         obj.GetComponent<SecondBulletScript>().Damage = damage;
         obj.GetComponent<SecondBulletScript>().StartPosition = transform.position;
-        obj.GetComponent<SecondBulletScript>().Target = target.transform;
+        obj.GetComponent<SecondBulletScript>().Target = tempTarget.transform;
         obj.SetActive(true);
     }
 

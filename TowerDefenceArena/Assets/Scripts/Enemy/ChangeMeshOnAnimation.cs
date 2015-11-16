@@ -9,42 +9,40 @@ public class ChangeMeshOnAnimation : MonoBehaviour
     [SerializeField]
     private GameObject deathModel;
 
-    private float health;
+    private Animator deathAnimator;
 
-    public float Health
+    public GameObject DeathModel
     {
-        get { return health; }
-        set { health = value; }
+        get { return deathModel; }
     }
 
-
-    // Use this for initialization
-    void Start()
+    public GameObject WalkingModel
     {
-        
+        get { return walkingModel; }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        health = GetComponent<EnemyHealthScript>().Currenthealth;
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            health = 0;
-        }
-
-        if (health <= 0)
-        {
-            ChangeModel();
-        }
+        deathAnimator = deathModel.GetComponent<Animator>();
     }
 
     public void ChangeModel()
     {
-        walkingModel.SetActive(false);
-        deathModel.SetActive(true);
+        if (walkingModel.activeSelf)
+        {
+            walkingModel.SetActive(false);
+            deathModel.SetActive(true);
 
-        deathModel.GetComponent<Animator>().SetTrigger("die");
+            deathAnimator.SetTrigger("die");
+            GetComponent<NavMeshAgent>().enabled = false;
+        }
+        else
+        {
+            walkingModel.SetActive(true);
+            deathModel.SetActive(false);
+
+            deathAnimator.SetTrigger("reset");
+            GetComponent<NavMeshAgent>().enabled = true;
+        }
     }
 }

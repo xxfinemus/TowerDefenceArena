@@ -103,7 +103,7 @@ public class WaveControl : MonoBehaviour
             }
             obj.transform.position = spawnPosition.transform.position;
             obj.GetComponent<EnemyHealthScript>().MaxHealth = enemyStatModifiyer * 20 + 100;
-            obj.GetComponent<EnemyHealthScript>().Currenthealth = enemyStatModifiyer * 20 + 100;
+            obj.GetComponent<EnemyHealthScript>().CurrentHealth = enemyStatModifiyer * 20 + 100;
             obj.SetActive(true);
             obj.GetComponent<EnemyHealthScript>().TakeDamage(0);
             enemiesRemaning++;
