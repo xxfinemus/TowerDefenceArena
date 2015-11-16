@@ -81,7 +81,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AttackAnimationScript.cs" />
-    <Compile Include="Assets\Database\dbscript.cs" />
     <Compile Include="Assets\Scripts\Arena\Hero.cs" />
     <Compile Include="Assets\Scripts\BossAIScript.cs" />
     <Compile Include="Assets\Scripts\BossAttack.cs" />
@@ -119,6 +118,7 @@
     <Compile Include="Assets\Scripts\UpgradeHero.cs" />
     <Compile Include="Assets\Scripts\Wall\WallBehaviorAgent.cs" />
     <Compile Include="Assets\Scripts\WaveControl.cs" />
+    <Compile Include="Assets\Scripts\dbscript.cs" />
     <Compile Include="Assets\SpecialAttackAnimationScript.cs" />
     <Compile Include="Assets\Tests\UnityTestTools\Assertions\AssertionComponent.cs" />
     <Compile Include="Assets\Tests\UnityTestTools\Assertions\AssertionException.cs" />

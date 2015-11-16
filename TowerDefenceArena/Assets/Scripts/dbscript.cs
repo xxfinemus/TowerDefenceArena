@@ -3,22 +3,25 @@ using System.Collections;
 using Mono.Data.Sqlite;
 using System.Data;
 using System;
+using System.IO;
 
 public class dbscript : MonoBehaviour {
 
     private static SqliteConnection dbconn;
     void Start () {
         string connection;
-
+        string filePath = Application.persistentDataPath + "/" + "towerdefDB.s3db";
         //filen skal hentes et andet sted fra hvis man kører android
         if (Application.platform == RuntimePlatform.Android)
         {
-            connection = "URI=file:" + Application.persistentDataPath + "/Database/towerdefDB.s3db";
+            if (!File.Exists(filePath))
+            {
+                WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/" + "towerdefDB.s3db");
+                while (!loadDB.isDone) { }
+                File.WriteAllBytes(filePath, loadDB.bytes);
+            }
         }
-        else
-        {
-            connection = "URI=file:" + Application.dataPath + "/Database/towerdefDB.s3db";
-        }  
+        connection = "URI=file:" + filePath;
         dbconn = new SqliteConnection(connection);
     }
     public static object[,] GetTopScores()
