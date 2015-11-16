@@ -55,7 +55,6 @@ public class TouchInput : MonoBehaviour
     void Update()
     {
         #region rightbaremenu
-        array
         if (ShowDeleteUpgradeMenu)
         {
             ShowDeleteMenuBar();
@@ -68,8 +67,6 @@ public class TouchInput : MonoBehaviour
         {
             rightBarObject.transform.localPosition = Vector3.Lerp(rightBarObject.transform.localPosition, RightMenuBarStartPos, Time.deltaTime * 3f);
         }
-
-        Debug.Log("build " + ShowBuildMenu + "upgrade " + ShowDeleteUpgradeMenu);
         #endregion
 
         if (Input.GetKey(KeyCode.Escape))
