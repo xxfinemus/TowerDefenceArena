@@ -9,14 +9,15 @@ public class ChangeMeshOnAnimation : MonoBehaviour
     [SerializeField]
     private GameObject deathModel;
 
-    private float health;
-
-    public float Health
+    public GameObject DeathModel
     {
-        get { return health; }
-        set { health = value; }
+        get { return deathModel; }
     }
 
+    public GameObject WalkingModel
+    {
+        get { return walkingModel; }
+    }
 
     // Use this for initialization
     void Start()
@@ -27,24 +28,24 @@ public class ChangeMeshOnAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        health = GetComponent<EnemyHealthScript>().Currenthealth;
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            health = 0;
-        }
-
-        if (health <= 0)
-        {
-            ChangeModel();
-        }
+        
     }
 
     public void ChangeModel()
     {
-        walkingModel.SetActive(false);
-        deathModel.SetActive(true);
+        if (walkingModel.activeSelf)
+        {
+            walkingModel.SetActive(false);
+            deathModel.SetActive(true);
 
-        deathModel.GetComponent<Animator>().SetTrigger("die");
+            deathModel.GetComponent<Animator>().SetTrigger("die");
+        }
+        else
+        {
+            walkingModel.SetActive(true);
+            deathModel.SetActive(false);
+
+            deathModel.GetComponent<Animator>().SetTrigger("reset");
+        }
     }
 }

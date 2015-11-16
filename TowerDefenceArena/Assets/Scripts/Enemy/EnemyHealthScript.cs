@@ -5,9 +5,11 @@ using UnityEngine.UI;
 public class EnemyHealthScript : MonoBehaviour
 {
     [SerializeField]
-    float maxHealth;
+    private float maxHealth;
 
-    float currenthealth;
+    private float currentHealth;
+
+    private ChangeMeshOnAnimation changeMeshScript;
 
     public float MaxHealth
     {
@@ -15,10 +17,10 @@ public class EnemyHealthScript : MonoBehaviour
         set { maxHealth = value; }
     }
 
-    public float Currenthealth
+    public float CurrentHealth
     {
-        get { return currenthealth; }
-        set { currenthealth = value; }
+        get { return currentHealth; }
+        set { currentHealth = value; }
     }
 
     HealthBarScript healthBar;
@@ -26,7 +28,9 @@ public class EnemyHealthScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        currenthealth = maxHealth;
+        currentHealth = maxHealth;
+
+        changeMeshScript = GetComponent<ChangeMeshOnAnimation>();
 
         healthBar = GetComponentInChildren<HealthBarScript>();
     }
@@ -43,7 +47,7 @@ public class EnemyHealthScript : MonoBehaviour
         {
             //add to boss
             WaveControl.EnemiesRemaning--;
-            StatScript.Instance.ChangeStat("bossHealth", (int)currenthealth);
+            StatScript.Instance.ChangeStat("bossHealth", (int)currentHealth);
             gameObject.SetActive(false);
         }
     }
@@ -54,11 +58,21 @@ public class EnemyHealthScript : MonoBehaviour
     /// <param name="dmg"></param>
     public void TakeDamage(float dmg)
     {
-        currenthealth -= dmg;
+        currentHealth -= dmg;
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+
+            if (!changeMeshScript.DeathModel.activeSelf)
+            {
+                changeMeshScript.ChangeModel();
+            }
+        }
 
         if (healthBar != null)
         {
-            healthBar.SetSize(currenthealth / maxHealth);
+            healthBar.SetSize(currentHealth / maxHealth);
         }
 
         //if (currenthealth <= 0)
@@ -78,5 +92,7 @@ public class EnemyHealthScript : MonoBehaviour
         WaveControl.EnemiesRemaning--;
 
         gameObject.SetActive(false);
+        GetComponent<EnemyHealthScript>().currentHealth = maxHealth;
+        changeMeshScript.ChangeModel();
     }
 }

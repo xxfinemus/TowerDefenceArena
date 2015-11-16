@@ -64,7 +64,7 @@ public class BalistaBehavior : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        damage = 20;
+        damage = 50;
         cooldown = 0;
 
         if (!objectPool)
@@ -86,7 +86,8 @@ public class BalistaBehavior : MonoBehaviour
             if (target != null)
             {
                 tempTarget = target;
-                GetComponent<Animator>().SetTrigger("fire");
+                //GetComponent<Animator>().SetTrigger("fire");
+                Attack();
 
                 cooldown = rateOfFire;
             }
@@ -183,9 +184,9 @@ public class BalistaBehavior : MonoBehaviour
         if (obj == null) return;
 
         //Creates the bullet at the transforms position.
-        obj.transform.position = transform.position;
+        obj.transform.position = transform.position + new Vector3(0, 1, 0);
         obj.GetComponent<BoltBehavior>().Damage = damage;
-        obj.GetComponent<BoltBehavior>().StartPosition = transform.position;
+        obj.GetComponent<BoltBehavior>().StartPosition = transform.position + new Vector3( 0, 1, 0);
         obj.GetComponent<BoltBehavior>().Target = tempTarget.transform;
         obj.SetActive(true);
     }
