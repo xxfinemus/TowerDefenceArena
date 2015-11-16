@@ -23,6 +23,7 @@ public class TowerBehavior : MonoBehaviour
     [SerializeField]
     private Queue<GameObject> enemies = new Queue<GameObject>();
 
+    [SerializeField]
     private int damage;
 
     public int Damage

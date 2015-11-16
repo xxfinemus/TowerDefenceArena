@@ -76,7 +76,7 @@ public class StatScript : MonoBehaviour
     void Start()
     {
         LoadStats();
-        ChangeStat("gold", 20);
+        ChangeStat("gold", 2000);
     }
     
     public void LoadStats()
