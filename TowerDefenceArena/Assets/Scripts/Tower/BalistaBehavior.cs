@@ -59,6 +59,10 @@ public class BalistaBehavior : MonoBehaviour
         {
             return range;
         }
+        set
+        {
+            range = value;
+        }
     }
 
     // Use this for initialization
@@ -113,7 +117,7 @@ public class BalistaBehavior : MonoBehaviour
         {
             if (!enemies.Contains(enemy))
             {
-                if (Vector3.Distance(transform.position, enemy.transform.position) < Range && enemy.GetComponent<EnemyHealthScript>().Currenthealth > 0)
+                if (Vector3.Distance(transform.position, enemy.transform.position) < Range && enemy.GetComponent<EnemyHealthScript>().CurrentHealth > 0)
                 {
                     Vector3 targetPos = new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z);
 
@@ -130,7 +134,7 @@ public class BalistaBehavior : MonoBehaviour
     private void DequeueEnemy()
     {
         Transform _enemy = enemies.Peek().transform;
-        if (Vector3.Distance(transform.position, _enemy.position) > Range || _enemy.GetComponent<EnemyHealthScript>().Currenthealth <= 0)
+        if (Vector3.Distance(transform.position, _enemy.position) > Range || _enemy.GetComponent<EnemyHealthScript>().CurrentHealth <= 0)
         {
             Vector3 targetPos = new Vector3(_enemy.position.x, transform.position.y, _enemy.position.z);
 

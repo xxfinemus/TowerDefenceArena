@@ -114,7 +114,7 @@
     <Compile Include="Assets\Scripts\Tower\BalistaBehavior.cs" />
     <Compile Include="Assets\Scripts\Tower\MoveEnemy.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerBehavior.cs" />
-    <Compile Include="Assets\Scripts\TowerCost.cs" />
+    <Compile Include="Assets\Scripts\TowerVars.cs" />
     <Compile Include="Assets\Scripts\UpgradeHero.cs" />
     <Compile Include="Assets\Scripts\Wall\WallBehaviorAgent.cs" />
     <Compile Include="Assets\Scripts\WaveControl.cs" />

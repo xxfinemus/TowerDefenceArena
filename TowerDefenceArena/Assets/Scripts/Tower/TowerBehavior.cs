@@ -31,9 +31,6 @@ public class TowerBehavior : MonoBehaviour
         get { return damage; }
         set { damage = value; }
     }
-    [SerializeField]
-    private int towerCost;
-
 
     public GameObject[] arrayEnemies;
 
@@ -46,19 +43,15 @@ public class TowerBehavior : MonoBehaviour
         get { return _name; }
     }
 
-    public int GetTowerCost
-    {
-        get
-        {
-            return towerCost;
-        }
-    }
-
     public float Range
     {
         get
         {
             return range;
+        }
+        set
+        {
+            range = value;
         }
     }
 

@@ -145,7 +145,7 @@ public class TouchInput : MonoBehaviour
     }
     void markerObjectPosition(Vector3 position)
     {
-        markerObject.transform.position = position + new Vector3(0,2.5f,0);
+        markerObject.transform.position = position + new Vector3(0, 2.5f, 0);
     }
     private bool Deselect()
     {
@@ -211,7 +211,7 @@ public class TouchInput : MonoBehaviour
         {
             Quaternion rotation = Quaternion.identity;
             rotation.eulerAngles = new Vector3(0, 0, 0);
-            
+
             buildObject = (GameObject)Instantiate(catapultPrefab, Vector3.zero, rotation);
             Camera.main.GetComponent<CameraControl>().IsBuilding = true;
         }
@@ -223,23 +223,61 @@ public class TouchInput : MonoBehaviour
             buildObject = (GameObject)Instantiate(wallPrefab, Vector3.zero, rotation);
             Camera.main.GetComponent<CameraControl>().IsBuilding = true;
         }
+        if (buttonClick == "balista")
+        {
+            Quaternion rotation = Quaternion.identity;
+            rotation.eulerAngles = new Vector3(0, 0, 0);
+
+            buildObject = (GameObject)Instantiate(balistaPrefab, Vector3.zero, rotation);
+            Camera.main.GetComponent<CameraControl>().IsBuilding = true;
+        }
     }
     private Node BuildTowerPosition()
     {
         float distance_to_screen = Camera.main.WorldToScreenPoint(buildObject.transform.position).z;
         Vector3 pos_move = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance_to_screen));
         Node node = grid.NodeFromWorldPoint(new Vector3(pos_move.x, 0, pos_move.z));
-        buildObject.transform.position =  new Vector3(node.worldPosition.x, 2, node.worldPosition.z);
+        buildObject.transform.position = new Vector3(node.worldPosition.x, 2, node.worldPosition.z);
 
         foreach (Transform child in buildObject.gameObject.transform)
         {
             if (child.name == "RangeFinder")
             {
-                child.lossyScale.Set(buildObject.GetComponentInChildren<TowerBehavior>().Range * 2, buildObject.GetComponentInChildren<TowerBehavior>().Range * 2, buildObject.GetComponentInChildren<TowerBehavior>().Range * 2);
-                child.position = new Vector3(child.position.x, 0 , child.position.z);
+                if (buildObject.gameObject.GetComponentInChildren<TowerBehavior>() != null)
+                {
+                    Debug.Log(buildObject.GetComponentInChildren<TowerBehavior>().Range);
+
+                    child.localScale = ChangeTowerAttackRangeSphereIndiator(buildObject);
+
+                    child.position = new Vector3(child.position.x, 0, child.position.z);
+                }
+                if (buildObject.gameObject.GetComponentInChildren<BalistaBehavior>() != null)
+                {
+                    child.localScale = ChangeTowerAttackRangeSphereIndiator(buildObject);
+
+                    child.position = new Vector3(child.position.x, 0, child.position.z);
+                }
             }
         }
         return node;
+    }
+    private Vector3 ChangeTowerAttackRangeSphereIndiator(GameObject obj)
+    {
+        Vector3 vec3 = Vector3.zero;
+        if (obj.GetComponentInChildren<TowerBehavior>() != null)
+        {
+            vec3 = new Vector3(obj.GetComponentInChildren<TowerBehavior>().Range * 2,
+obj.GetComponentInChildren<TowerBehavior>().Range * 2,
+obj.GetComponentInChildren<TowerBehavior>().Range * 2);
+        }
+        if (obj.GetComponentInChildren<BalistaBehavior>() != null)
+        {
+            vec3 = new Vector3(obj.GetComponentInChildren<BalistaBehavior>().Range * 2,
+obj.GetComponentInChildren<BalistaBehavior>().Range * 2,
+obj.GetComponentInChildren<BalistaBehavior>().Range * 2);
+        }
+
+        return vec3;
     }
     private void BuildTower(Node node)
     {
@@ -247,9 +285,9 @@ public class TouchInput : MonoBehaviour
         {
             bool validPath = path.CheckIfPathIsValid(node);
             //Debug.Log("validPath " + validPath);
-            if (validPath && node.walkable == true && StatScript.Instance.GetStat("gold") >= buildObject.GetComponent<TowerCost>().Cost)
+            if (validPath && node.walkable == true && StatScript.Instance.GetStat("gold") >= buildObject.GetComponent<TowerVars>().Cost)
             {
-                StatScript.Instance.ChangeStat("gold", -buildObject.GetComponent<TowerCost>().Cost);
+                StatScript.Instance.ChangeStat("gold", -buildObject.GetComponent<TowerVars>().Cost);
 
                 node.walkable = false;
                 node.Tower = buildObject;
@@ -257,9 +295,11 @@ public class TouchInput : MonoBehaviour
                 if (buildObject.GetComponentInChildren<TowerBehavior>() != null)
                 {
                     buildObject.GetComponentInChildren<TowerBehavior>().enabled = true;
-                    Debug.Log("enabled tower beha");
                 }
-
+                else if (buildObject.GetComponentInChildren<BalistaBehavior>() != null)
+                {
+                    buildObject.GetComponentInChildren<BalistaBehavior>().enabled = true;
+                }
                 foreach (Transform child in buildObject.gameObject.transform)
                 {
                     if (child.name == "RangeFinder")
@@ -269,11 +309,9 @@ public class TouchInput : MonoBehaviour
                 }
 
                 buildObject = null;
-
-                //Husk først at aktiverer bulletscripts efter tårnet er blevet placeret!
             }
 
-            else if (StatScript.Instance.GetStat("gold") <= buildObject.GetComponent<TowerCost>().Cost)
+            else if (StatScript.Instance.GetStat("gold") <= buildObject.GetComponent<TowerVars>().Cost)
             {
                 if (!coroutineIsRunning)
                 {
@@ -307,7 +345,7 @@ public class TouchInput : MonoBehaviour
         Destroy(nodeIsPressed.Tower);
         nodeIsPressed.walkable = true;
 
-        StatScript.Instance.ChangeStat("gold", (int)(nodeIsPressed.Tower.GetComponent<TowerCost>().Cost / 2));
+        StatScript.Instance.ChangeStat("gold", (int)(nodeIsPressed.Tower.GetComponent<TowerVars>().Cost / 2));
         nodeIsPressed = null;
         ShowBuildMenu = true;
 
@@ -317,20 +355,71 @@ public class TouchInput : MonoBehaviour
     {
         if (StatScript.Instance.GetStat("gold") >= 10)
         {
-            if (nodeIsPressed.Tower.GetComponentInChildren<TowerBehavior>() != null)
+            if (nodeIsPressed.Tower.GetComponent<TowerVars>().CurrentLevel < nodeIsPressed.Tower.GetComponent<TowerVars>().MaxLevel)
             {
-                nodeIsPressed.Tower.GetComponentInChildren<TowerBehavior>().Damage++;
-                StatScript.Instance.ChangeStat("gold", -10);
-                StartCoroutine("Fade", "Tower Upgraded");
+                if (nodeIsPressed.Tower.GetComponentInChildren<TowerBehavior>() != null)
+                {
+                    nodeIsPressed.Tower.GetComponentInChildren<TowerBehavior>().Damage += nodeIsPressed.Tower.GetComponent<TowerVars>().DamageUpgradeStat;
+                    nodeIsPressed.Tower.GetComponentInChildren<TowerBehavior>().Range += nodeIsPressed.Tower.GetComponent<TowerVars>().RangeUpgradeStat;
+                    nodeIsPressed.Tower.GetComponent<TowerVars>().CurrentLevel++;
+                    StatScript.Instance.ChangeStat("gold", -10);
+
+                    foreach (Transform child in nodeIsPressed.Tower.transform)
+                    {
+                        if (child.name == "RangeFinder")
+                        {
+                            child.localScale = ChangeTowerAttackRangeSphereIndiator(nodeIsPressed.Tower);
+                        }
+                    }
+                            
+                    if (!coroutineIsRunning)
+                    {
+                        StartCoroutine("Fade", "Tower Upgraded to level " + nodeIsPressed.Tower.GetComponent<TowerVars>().CurrentLevel);
+                        
+                    }
+                }
+                else if (nodeIsPressed.Tower.GetComponentInChildren<BalistaBehavior>() != null)
+                {
+                    nodeIsPressed.Tower.GetComponentInChildren<BalistaBehavior>().Damage += nodeIsPressed.Tower.GetComponent<TowerVars>().DamageUpgradeStat;
+                    nodeIsPressed.Tower.GetComponentInChildren<BalistaBehavior>().Range += nodeIsPressed.Tower.GetComponent<TowerVars>().RangeUpgradeStat;
+                    nodeIsPressed.Tower.GetComponent<TowerVars>().CurrentLevel++;
+                    StatScript.Instance.ChangeStat("gold", -15);
+
+                    foreach (Transform child in nodeIsPressed.Tower.transform)
+                    {
+                        if (child.name == "RangeFinder")
+                        {
+                            child.localScale = ChangeTowerAttackRangeSphereIndiator(nodeIsPressed.Tower);
+                        }
+                    }
+
+                    if (!coroutineIsRunning)
+                    {
+                        StartCoroutine("Fade", "Tower Upgraded to level " + nodeIsPressed.Tower.GetComponent<TowerVars>().CurrentLevel);
+                    }
+                }
+                else
+                {
+                    if (!coroutineIsRunning)
+                    {
+                        StartCoroutine("Fade", "You Can't upgrade this type of tower");
+                    }                   
+                }
             }
             else
             {
-                StartCoroutine("Fade", "You Can't upgrade this type of tower");
+                if (!coroutineIsRunning)
+                {
+                    StartCoroutine("Fade", "Tower is at max level");
+                }
             }
         }
         else
         {
-            StartCoroutine("Fade", "You don't have enough money to upgrade");
+            if (!coroutineIsRunning)
+            {
+                StartCoroutine("Fade", "You don't have enough money to upgrade");
+            }
         }
     }
 }
