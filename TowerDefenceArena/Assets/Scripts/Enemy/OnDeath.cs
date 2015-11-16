@@ -22,7 +22,7 @@ public class OnDeath : MonoBehaviour
             else
             {
                 transform.parent.GetComponent<EnemyHealthScript>().OnDeath();
-
+                
                 die = false;
                 counter = 0;
             }
