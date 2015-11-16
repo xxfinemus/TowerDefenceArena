@@ -60,9 +60,11 @@
      <Compile Include="Assets\Scripts\CameraControl.cs" />
      <Compile Include="Assets\Scripts\CameraFade_Script.cs" />
      <Compile Include="Assets\Scripts\EnemiesObjectPool\EnemyObjectPoolScript.cs" />
+     <Compile Include="Assets\Scripts\Enemy\ChangeMeshOnAnimation.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyHealthScript.cs" />
      <Compile Include="Assets\Scripts\Enemy\Healthbar\CameraFacingBillboard_Script.cs" />
      <Compile Include="Assets\Scripts\Enemy\Healthbar\HealthBarScript.cs" />
+     <Compile Include="Assets\Scripts\Enemy\OnDeath.cs" />
      <Compile Include="Assets\Scripts\HighScoreScript.cs" />
      <Compile Include="Assets\Scripts\Joystick\JoystickControl.cs" />
      <Compile Include="Assets\Scripts\MainMenu_Script.cs" />
@@ -74,6 +76,7 @@
      <Compile Include="Assets\Scripts\Tower\MoveEnemy.cs" />
      <Compile Include="Assets\Scripts\Tower\TowerBehavior.cs" />
      <Compile Include="Assets\Scripts\UpgradeHero.cs" />
+     <Compile Include="Assets\Scripts\Wall\NewWallBehaviorAgent.cs" />
      <Compile Include="Assets\Scripts\Wall\WallBehaviorAgent.cs" />
      <Compile Include="Assets\Scripts\WaveControl.cs" />
      <Compile Include="Assets\Tests\UnityTestTools\Assertions\AssertionComponent.cs" />
