@@ -7,6 +7,9 @@ public class EnemyHealthScript : MonoBehaviour
     [SerializeField]
     private float maxHealth;
 
+    [SerializeField]
+    private AudioClip impactSound;
+
     private float currentHealth;
 
     private ChangeMeshOnAnimation changeMeshScript;
@@ -35,12 +38,6 @@ public class EnemyHealthScript : MonoBehaviour
         healthBar = GetComponentInChildren<HealthBarScript>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "exit")
@@ -49,6 +46,14 @@ public class EnemyHealthScript : MonoBehaviour
             WaveControl.EnemiesRemaning--;
             StatScript.Instance.ChangeStat("bossHealth", (int)currentHealth);
             gameObject.SetActive(false);
+        }
+    }
+
+    public void UpdateHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.SetSize(currentHealth / maxHealth);
         }
     }
 
@@ -70,10 +75,9 @@ public class EnemyHealthScript : MonoBehaviour
             }
         }
 
-        if (healthBar != null)
-        {
-            healthBar.SetSize(currentHealth / maxHealth);
-        }
+        UpdateHealthBar();
+
+        PlayImpactSound();
 
         //if (currenthealth <= 0)
         //{
@@ -83,6 +87,11 @@ public class EnemyHealthScript : MonoBehaviour
 
         //    gameObject.SetActive(false);
         //}
+    }
+
+    private void PlayImpactSound()
+    {
+        GetComponent<AudioSource>().PlayOneShot(impactSound);
     }
 
     public void OnDeath()

@@ -15,6 +15,9 @@ public class BalistaBehavior : MonoBehaviour
     private GameObject stone;
 
     [SerializeField]
+    private AudioClip fireSound;
+
+    [SerializeField]
     private float range;
 
     [SerializeField]
@@ -174,6 +177,12 @@ public class BalistaBehavior : MonoBehaviour
             enemies.Clear();
         }
     }
+
+    private void PlayFireSound()
+    {
+        GetComponent<AudioSource>().PlayOneShot(fireSound);
+    }
+
     private void Attack()
     {
         //GameObject bullet = objectPool.GetPooledObject();
