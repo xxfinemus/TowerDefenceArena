@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AttackAnimationScript.cs" />
+    <Compile Include="Assets\Scripts\AnimatedWater.cs" />
     <Compile Include="Assets\Scripts\Arena\Hero.cs" />
     <Compile Include="Assets\Scripts\BossAIScript.cs" />
     <Compile Include="Assets\Scripts\BossAttack.cs" />

@@ -72,8 +72,8 @@ public class CameraControl : MonoBehaviour
     private Vector2 ScreenPercentage(Vector2 touchDelta )
     {
 
-        touchDelta.x = (touchDelta.x / Screen.width) * 7;
-        touchDelta.y = (touchDelta.y / Screen.height) * 7;
+        touchDelta.x = (touchDelta.x / Screen.width) * 10;
+        touchDelta.y = (touchDelta.y / Screen.height) * 10;
         return touchDelta;
     }
 
