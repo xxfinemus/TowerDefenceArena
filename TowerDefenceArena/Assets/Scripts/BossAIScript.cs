@@ -41,6 +41,8 @@ public class BossAIScript : MonoBehaviour
 
         attackScript = GetComponent<BossAttack>();
 
+        attackScript.Damage = damage;
+
         cooldown = attackSpeed;
     }
 

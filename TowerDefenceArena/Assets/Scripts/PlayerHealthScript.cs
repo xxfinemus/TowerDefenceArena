@@ -19,8 +19,8 @@ public class PlayerHealthScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Begin();
         healthBar = GetComponentInChildren<HealthBarScript>();
+        Begin();
     }
 
     public void Begin()
@@ -33,7 +33,7 @@ public class PlayerHealthScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer >= 0)
+        if (timer > 0)
         {
             timer -= Time.deltaTime;
         }
