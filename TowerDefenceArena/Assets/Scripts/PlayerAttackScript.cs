@@ -12,6 +12,7 @@ public class PlayerAttackScript : MonoBehaviour
     public float Damage
     {
         get { return damage; }
+        set { damage = value; }
     }
 
     // Use this for initialization

@@ -46,6 +46,12 @@ public class BossAIScript : MonoBehaviour
         cooldown = attackSpeed;
     }
 
+    public void Begin()
+    {
+        GetComponent<BossHealthScript>().Begin(StatScript.Instance.BossHealth * 10);
+        GetComponent<BossAttack>().Damage = StatScript.Instance.EnemiesLeaked * 10;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -85,7 +91,6 @@ public class BossAIScript : MonoBehaviour
 
     public void BeginFight()
     {
-        GetComponent<BossHealthScript>().Begin(StatScript.Instance.BossHealth * 10);
-        GetComponent<BossAttack>().Damage = StatScript.Instance.EnemiesLeaked * 10;
+        
     }
 }

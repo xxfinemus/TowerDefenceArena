@@ -25,6 +25,8 @@ public class PlayerHealthScript : MonoBehaviour
 
     public void Begin()
     {
+        GetComponent<PlayerAttackScript>().Damage = StatScript.Instance.Strength;
+        GetComponent<PlayerMovementScript>().Speed = StatScript.Instance.Speed;
         maxHealth = 100 + (StatScript.Instance.Vitality * 10);
         currentHealth = maxHealth;
         healthBar.SetSize(1);
