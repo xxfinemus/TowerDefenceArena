@@ -71,7 +71,7 @@ public class TouchInput : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Escape))
         {
-            Debug.Log("tilbage knappen er trykket på");
+            gameObject.GetComponent<UpgradeHero>().OpenHeroUpgrade();
         }
 
 
@@ -101,28 +101,30 @@ public class TouchInput : MonoBehaviour
                 }
             }
         }
+
         if (PressedOnTower())
         {
             if (nodeIsPressed.Tower != null)
             {
-
+                ShowBuildMenu = false;
                 markerObjectPosition(nodeIsPressed.worldPosition);
                 ShowDeleteUpgradeMenu = true;
                 foreach (Transform child in nodeIsPressed.Tower.gameObject.transform)
                 {
                     if (child.name == "RangeFinder")
                     {
-
                         child.gameObject.SetActive(true);
                     }
                 }
             }
         }
     }
+
     void ShowDeleteMenuBar()
     {
         ShowDeleteUpgradeMenu = true;
-        rightBarObject.transform.localPosition = Vector3.Lerp(rightBarObject.transform.localPosition, RightMenuBarEndPos, Time.deltaTime * 3f);
+        rightBarObject.transform.localPosition = Vector3.Lerp(rightBarObject.transform.localPosition, 
+            RightMenuBarEndPos, Time.deltaTime * 5f);
 
         if (RightMenuBarEndPos.y - rightBarObject.transform.localPosition.y < 50)
         {
@@ -134,7 +136,8 @@ public class TouchInput : MonoBehaviour
     void ShowBuildMenuBar()
     {
         ShowBuildMenu = true;
-        rightBarObject.transform.localPosition = Vector3.Lerp(rightBarObject.transform.localPosition, RightMenuBarEndPos, Time.deltaTime * 3f);
+        rightBarObject.transform.localPosition = Vector3.Lerp(rightBarObject.transform.localPosition, 
+            RightMenuBarEndPos, Time.deltaTime * 5f);
 
         if (RightMenuBarEndPos.y - rightBarObject.transform.localPosition.y < 50)
         {
@@ -143,6 +146,7 @@ public class TouchInput : MonoBehaviour
             DeleteUpgradeMenu.SetActive(false);
         }
     }
+
     void markerObjectPosition(Vector3 position)
     {
         markerObject.transform.position = position + new Vector3(0, 2.5f, 0);
@@ -153,9 +157,10 @@ public class TouchInput : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray,  out hit, 2000f))
             {
                 float distance = Vector3.Distance(nodeIsPressed.worldPosition, hit.point);
+                Debug.Log(distance + " " + hit.point);
                 if (distance > 2)
                 {
                     return true;
@@ -174,7 +179,6 @@ public class TouchInput : MonoBehaviour
             {
                 nodeIsPressed = grid.NodeFromWorldPoint(hit.point);
                 return true;
-
             }
         }
         return false;
@@ -344,12 +348,9 @@ obj.GetComponentInChildren<BalistaBehavior>().Range * 2);
         markerObjectPosition(markerObjectIdlePosition);
         Destroy(nodeIsPressed.Tower);
         nodeIsPressed.walkable = true;
-
         StatScript.Instance.ChangeStat("gold", (int)(nodeIsPressed.Tower.GetComponent<TowerVars>().Cost / 2));
         nodeIsPressed = null;
         ShowBuildMenu = true;
-
-
     }
     public void UpgradeTower()
     {
