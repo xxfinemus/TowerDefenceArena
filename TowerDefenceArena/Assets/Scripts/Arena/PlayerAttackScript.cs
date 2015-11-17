@@ -32,6 +32,11 @@ public class PlayerAttackScript : MonoBehaviour
         {
             cooldown -= Time.deltaTime;
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Attack();
+        }
     }
 
     void Attack()
