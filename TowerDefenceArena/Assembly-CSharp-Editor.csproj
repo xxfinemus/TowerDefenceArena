@@ -99,9 +99,6 @@
      <Compile Include="Assets\Tests\UnityTestTools\UnitTesting\Editor\UnityUnitTest.cs" />
      <None Include="Assets\Tests\UnityTestTools\LICENSE.txt" />
      <None Include="Assets\Tests\UnityTestTools\changelog.txt" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -116,9 +113,6 @@
  </Reference>
  <Reference Include="UnityEditor.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.Sqlite">
  <HintPath>C:/Users/frede_000/Desktop/ArenaTD/TowerDefenceArena/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>

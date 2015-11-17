@@ -19,14 +19,21 @@ public class PlayerHealthScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        currentHealth = maxHealth;
         healthBar = GetComponentInChildren<HealthBarScript>();
+        Begin();
+    }
+
+    public void Begin()
+    {
+        maxHealth = 100 + (StatScript.Instance.Vitality * 10);
+        currentHealth = maxHealth;
+        healthBar.SetSize(1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer >= 0)
+        if (timer > 0)
         {
             timer -= Time.deltaTime;
         }

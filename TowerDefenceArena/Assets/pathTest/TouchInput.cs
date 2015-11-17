@@ -124,7 +124,7 @@ public class TouchInput : MonoBehaviour
     {
         ShowDeleteUpgradeMenu = true;
         rightBarObject.transform.localPosition = Vector3.Lerp(rightBarObject.transform.localPosition, 
-            RightMenuBarEndPos, Time.deltaTime * 5f);
+            RightMenuBarEndPos, Time.deltaTime * 8f);
 
         if (RightMenuBarEndPos.y - rightBarObject.transform.localPosition.y < 50)
         {
@@ -137,7 +137,7 @@ public class TouchInput : MonoBehaviour
     {
         ShowBuildMenu = true;
         rightBarObject.transform.localPosition = Vector3.Lerp(rightBarObject.transform.localPosition, 
-            RightMenuBarEndPos, Time.deltaTime * 5f);
+            RightMenuBarEndPos, Time.deltaTime * 8f);
 
         if (RightMenuBarEndPos.y - rightBarObject.transform.localPosition.y < 50)
         {
@@ -249,7 +249,6 @@ public class TouchInput : MonoBehaviour
             {
                 if (buildObject.gameObject.GetComponentInChildren<TowerBehavior>() != null)
                 {
-                    Debug.Log(buildObject.GetComponentInChildren<TowerBehavior>().Range);
 
                     child.localScale = ChangeTowerAttackRangeSphereIndiator(buildObject);
 
