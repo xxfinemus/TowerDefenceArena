@@ -7,6 +7,7 @@ public class BossAttack : MonoBehaviour
     [SerializeField]
     float damage;
 
+
     [SerializeField]
     private GameObject meleeCollider;
 
@@ -30,6 +31,11 @@ public class BossAttack : MonoBehaviour
     private bool specialAttackInProgress = false;
     private float specialAttack1Range = 0;
     private float specialAttack1MaxRange = 50;
+    public float Damage
+    {
+        get { return damage; }
+        set { damage = value; }
+    }
 
     // Use this for initialization
     void Start()

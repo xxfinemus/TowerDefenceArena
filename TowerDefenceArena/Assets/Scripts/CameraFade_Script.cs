@@ -11,14 +11,34 @@ public class CameraFade_Script : MonoBehaviour
 
     bool sceneStarting;
 
+    bool arenaSceneEnding;
+    bool tdSceneEnding;
     bool sceneEnding;
 
-    [SerializeField]
-    string levelToLoad;
     public bool SceneEnding
     {
         get { return sceneEnding; }
         set { sceneEnding = value; }
+    }
+
+    [SerializeField]
+    string levelToLoad;
+
+    public bool ArenaSceneEnding
+    {
+        get { return arenaSceneEnding; }
+        set { arenaSceneEnding = value; }
+    }
+
+    public bool SceneStarting
+    {
+        get { return sceneStarting; }
+        set { sceneStarting = value; }
+    }
+    public bool TDSceneEnding
+    {
+        get { return tdSceneEnding; }
+        set { tdSceneEnding = value; }
     }
 
     public string LevelToLoad
@@ -29,8 +49,8 @@ public class CameraFade_Script : MonoBehaviour
 
     void Awake()
     {
-        sceneStarting = true;
-        sceneEnding = false;
+        sceneStarting = true;        
+        tdSceneEnding = false;
 
         fader = GetComponentInChildren<Image>();
 
@@ -53,10 +73,18 @@ public class CameraFade_Script : MonoBehaviour
         {
             EndScene();
         }
+        if (tdSceneEnding)
+        {
+            EndTDScene();
+        }
+        if (ArenaSceneEnding)
+        {
+            EndArenaScene();
+        }
     }
 
     /// <summary>
-    /// Called at the start of the scene
+    /// Called at the staTrt of the scene
     /// </summary>
     void StartScene()
     {
@@ -76,12 +104,32 @@ public class CameraFade_Script : MonoBehaviour
     /// <summary>
     /// Call this to end the scene, fade to black and load a new scene
     /// </summary>
+    public void EndTDScene()
+    {
+        if (fader != null)
+        {
+            //Garbage test code delete later or decide to keep it so you only have to call this function once to start the fadeout
+            tdSceneEnding = true;
+
+            fader.enabled = true;
+
+            FadeToBlack();
+
+            if (fader.color.a >= 0.95f)
+            {
+                fader.color = Color.black;
+
+                PhaseChange.EnterArena();
+                sceneStarting = true;
+            }
+        }
+    }
     public void EndScene()
     {
         if (fader != null)
         {
             //Garbage test code delete later or decide to keep it so you only have to call this function once to start the fadeout
-            sceneEnding = true;
+            tdSceneEnding = true;
 
             fader.enabled = true;
 
@@ -92,6 +140,26 @@ public class CameraFade_Script : MonoBehaviour
                 fader.color = Color.black;
 
                 Application.LoadLevel(levelToLoad);
+            }
+        }
+    }
+    public void EndArenaScene()
+    {
+        if (fader != null)
+        {
+            //Garbage test code delete later or decide to keep it so you only have to call this function once to start the fadeout
+            tdSceneEnding = true;
+
+            fader.enabled = true;
+
+            FadeToBlack();
+
+            if (fader.color.a >= 0.95f)
+            {
+                fader.color = Color.black;
+
+                PhaseChange.EnterTD();
+                sceneStarting = true;
             }
         }
     }

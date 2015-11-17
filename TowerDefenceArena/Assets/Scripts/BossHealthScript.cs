@@ -25,11 +25,12 @@ public class BossHealthScript : MonoBehaviour
     void Start()
     {
         healthBar = transform.parent.GetComponentInChildren<HealthBarScript>();
+    }
 
-        if (healthBar == null)
-        {
-            Debug.Log("ASS");
-        }
+    public void Begin(float maxHealth)
+    {
+        this.maxHealth = maxHealth;
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
