@@ -49,7 +49,7 @@ public class CameraFade_Script : MonoBehaviour
 
     void Awake()
     {
-        sceneStarting = true;
+        sceneStarting = true;        
         tdSceneEnding = false;
 
         fader = GetComponentInChildren<Image>();
@@ -77,7 +77,7 @@ public class CameraFade_Script : MonoBehaviour
         {
             EndTDScene();
         }
-        if (tdSceneEnding)
+        if (ArenaSceneEnding)
         {
             EndArenaScene();
         }

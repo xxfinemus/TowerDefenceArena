@@ -8,6 +8,7 @@ public class EnemyObjectPoolScript : MonoBehaviour
     public static EnemyObjectPoolScript current;
     public GameObject pooledObject;
     public int pooledAmount = 20; //size of the pool.
+    GameObject parent;
 
     //Makes the size of the pool grow as needed. It remains that size, it does not become smaller.
     public bool WillGrow = true;
@@ -24,10 +25,12 @@ public class EnemyObjectPoolScript : MonoBehaviour
     /// </summary>
     void Start()
     {
+        parent = GameObject.Find("TD");
         pooledObjects = new List<GameObject>();
         for (int i = 0; i < pooledAmount; i++)
         {
             GameObject obj = (GameObject)Instantiate(pooledObject);
+            obj.transform.parent = parent.transform;
             obj.SetActive(false);
             pooledObjects.Add(obj);
         }
@@ -46,6 +49,7 @@ public class EnemyObjectPoolScript : MonoBehaviour
         if (WillGrow)
         {
             GameObject obj = (GameObject)Instantiate(pooledObject);
+            obj.transform.parent = parent.transform;
             pooledObjects.Add(obj);
             return obj;
         }
