@@ -47,24 +47,23 @@ public class BossAIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!attacking)
-        {
-            if (!InRange(transform.position, target.transform.position, attackRange))
-            {
-                navScript.StartChasing();
-                navScript.SetTarget(target);
-            }
-            else if (cooldown <= 0)
-            {
-                navScript.StopChasing();
-                Attack();
-            }
 
-            if (cooldown >= 0)
-            {
-                cooldown -= Time.deltaTime;
-            }
+        if (!InRange(transform.position, target.transform.position, attackRange))
+        {
+            navScript.StartChasing();
+            navScript.SetTarget(target);
         }
+        else if (cooldown <= 0)
+        {
+            navScript.StopChasing();
+            Attack();
+        }
+
+        if (cooldown >= 0)
+        {
+            cooldown -= Time.deltaTime;
+        }
+
     }
 
     private bool InRange(Vector3 a, Vector3 b, float range)
@@ -74,13 +73,17 @@ public class BossAIScript : MonoBehaviour
 
     private void Attack()
     {
-        attacking = true;
-
         if (Random.value > 0.5f)
         {
             attackScript.MeleeAttack();
         }
         else
             attackScript.SpecialAttack1();
+    }
+
+    public void BeginFight()
+    {
+        GetComponent<BossHealthScript>().Begin(StatScript.Instance.BossHealth * 10);
+        GetComponent<BossAttack>().Damage = StatScript.Instance.EnemiesLeaked * 10;
     }
 }
