@@ -16,17 +16,20 @@ public class PlayerHealthScript : MonoBehaviour
 
     float timer;
 
+    private Animator characterAnimator;
+
     // Use this for initialization
     void Start()
     {
+        characterAnimator = GetComponentInChildren<Animator>();
         healthBar = GetComponentInChildren<HealthBarScript>();
         Begin();
     }
 
     public void Begin()
     {
-        GetComponent<PlayerAttackScript>().Damage = StatScript.Instance.Strength;
-        GetComponent<PlayerMovementScript>().Speed = StatScript.Instance.Speed;
+        GetComponentInChildren<PlayerAttackScript>().Damage = StatScript.Instance.Strength * 10;
+        GetComponent<PlayerMovementScript>().Speed = StatScript.Instance.Speed * 10;
         maxHealth = 100 + (StatScript.Instance.Vitality * 10);
         currentHealth = maxHealth;
         healthBar.SetSize(1);
@@ -48,6 +51,8 @@ public class PlayerHealthScript : MonoBehaviour
             currentHealth -= damage;
             healthBar.SetSize(currentHealth / maxHealth);
             timer = invulnerabilityTime;
+
+            characterAnimator.SetTrigger("hit");
         }
     }
 }

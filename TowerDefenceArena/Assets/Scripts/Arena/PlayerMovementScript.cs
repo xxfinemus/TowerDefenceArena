@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Hero : MonoBehaviour
+public class PlayerMovementScript : MonoBehaviour
 {
     private enum Device { touch, pc };
     [SerializeField]
@@ -11,6 +11,12 @@ public class Hero : MonoBehaviour
     private Device device = Device.pc;
 
     private Animator characterAnimator;
+
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
 
     // Use this for initialization
     void Start()

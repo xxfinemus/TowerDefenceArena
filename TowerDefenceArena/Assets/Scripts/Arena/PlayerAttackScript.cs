@@ -9,6 +9,10 @@ public class PlayerAttackScript : MonoBehaviour
     float attackSpeed;
     float cooldown;
 
+    private Animator characterAnimator;
+    [SerializeField]
+    private BoxCollider meleeCollider;
+
     public float Damage
     {
         get { return damage; }
@@ -18,7 +22,7 @@ public class PlayerAttackScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        characterAnimator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -35,9 +39,14 @@ public class PlayerAttackScript : MonoBehaviour
         if (cooldown <= 0)
         {
             //Insert code to attack here
+            characterAnimator.SetTrigger("attack");
 
             cooldown = attackSpeed;
         }
     }
 
+    public void ToggleMeleeCollider()
+    {
+        meleeCollider.enabled = !meleeCollider.enabled;
+    }
 }
