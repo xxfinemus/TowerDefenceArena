@@ -19,7 +19,18 @@ public class PhaseChange : MonoBehaviour {
 	
 	}
 
-
+    public static void FindParents()
+    {
+        if (TDParent == null)
+        {
+            TDParent = GameObject.Find("TD");
+        }
+        if (ArenaParent == null)
+        {
+            ArenaParent = GameObject.Find("ARENA");
+        }
+        ArenaParent.SetActive(false);
+    }
     public static void EnterArena()
     {
         if (TDParent == null)

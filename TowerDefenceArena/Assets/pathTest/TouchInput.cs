@@ -14,6 +14,7 @@ public class TouchInput : MonoBehaviour
     [SerializeField]
     private GameObject balistaPrefab;
 
+    GameObject parent;
 
     private Pathfinding path;
     private Grid grid;
@@ -45,7 +46,7 @@ public class TouchInput : MonoBehaviour
 
     void Start()
     {
-
+        parent = GameObject.Find("TD");
         markerObjectIdlePosition = new Vector3(0, -50, 0);
         path = GetComponent<Pathfinding>();
         grid = GetComponent<Grid>();
@@ -217,6 +218,7 @@ public class TouchInput : MonoBehaviour
             rotation.eulerAngles = new Vector3(0, 0, 0);
 
             buildObject = (GameObject)Instantiate(catapultPrefab, Vector3.zero, rotation);
+            buildObject.transform.parent = parent.transform;
             Camera.main.GetComponent<CameraControl>().IsBuilding = true;
         }
         if (buttonClick == "wall")
@@ -225,6 +227,7 @@ public class TouchInput : MonoBehaviour
             rotation.eulerAngles = new Vector3(0, 0, 0);
 
             buildObject = (GameObject)Instantiate(wallPrefab, Vector3.zero, rotation);
+            buildObject.transform.parent = parent.transform;
             Camera.main.GetComponent<CameraControl>().IsBuilding = true;
         }
         if (buttonClick == "balista")
@@ -233,6 +236,7 @@ public class TouchInput : MonoBehaviour
             rotation.eulerAngles = new Vector3(0, 0, 0);
 
             buildObject = (GameObject)Instantiate(balistaPrefab, Vector3.zero, rotation);
+            buildObject.transform.parent = parent.transform;
             Camera.main.GetComponent<CameraControl>().IsBuilding = true;
         }
     }

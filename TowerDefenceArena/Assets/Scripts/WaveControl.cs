@@ -25,7 +25,7 @@ public class WaveControl : MonoBehaviour
     [SerializeField]
     private GameObject spawnPosition;
 
-
+    GameObject fader;
     //test
     public bool forceStartWave;
 
@@ -52,8 +52,15 @@ public class WaveControl : MonoBehaviour
         get { return waveNumber; }
     }
 	// Use this for initialization
+    void OnEnable()
+    {
+        button.GetComponent<Button>().interactable = true;
+    }
+
 	void Start () 
     {
+        PhaseChange.FindParents();
+        fader = GameObject.Find("Fader");
         waveCanStart = true;
         waveRunning = false;
         enemiesRemaning = 0;
@@ -70,12 +77,16 @@ public class WaveControl : MonoBehaviour
         //    StartNextWave();
         //    forceStartWave = false;
         //}
-        if (IsWaveDone())
+        if (IsWaveDone() && waveRunning)
         {
             WaveComplete();
+
+            fader.GetComponent<CameraFade_Script>().EndTDScene();
         }
         
         SpawnNextEnemy();
+
+
         
             
 
@@ -137,7 +148,7 @@ public class WaveControl : MonoBehaviour
 
     private void WaveComplete()
     {
-        button.GetComponent<Button>().interactable = true;
+        
         waveRunning = false;
     }
 }
