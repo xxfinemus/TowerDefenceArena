@@ -15,6 +15,9 @@ public class TowerBehavior : MonoBehaviour
     private GameObject stone;
 
     [SerializeField]
+    private AudioClip fireSound;
+
+    [SerializeField]
     private float range;
 
     [SerializeField]
@@ -90,6 +93,7 @@ public class TowerBehavior : MonoBehaviour
             cooldown -= Time.deltaTime;
         }
     }
+
     private void LockToTarget()
     {
         if (target != null)
@@ -98,6 +102,7 @@ public class TowerBehavior : MonoBehaviour
             transform.LookAt(targetPos);
         }
     }
+
     // Add enemy to queue
     private void AddToQueue()
     {
@@ -119,6 +124,7 @@ public class TowerBehavior : MonoBehaviour
             }
         }
     }
+
     // If the front enemy is out of range, then put in the back of the queue
     private void DequeueEnemy()
     {
@@ -133,6 +139,7 @@ public class TowerBehavior : MonoBehaviour
             }
         }
     }
+
     // Set target equal to front element of queue
     private GameObject SetTarget()
     {
@@ -143,6 +150,7 @@ public class TowerBehavior : MonoBehaviour
         }
         return null;
     }
+
     // Clear queue
     private void ClearQueue()
     {
@@ -182,6 +190,11 @@ public class TowerBehavior : MonoBehaviour
         obj.GetComponent<SecondBulletScript>().StartPosition = transform.position;
         obj.GetComponent<SecondBulletScript>().Target = tempTarget.transform;
         obj.SetActive(true);
+    }
+
+    private void PlayFireSound()
+    {
+        GetComponent<AudioSource>().PlayOneShot(fireSound);
     }
 
     private void AnimToggleStone()

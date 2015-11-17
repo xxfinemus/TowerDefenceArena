@@ -105,7 +105,7 @@ public class WaveControl : MonoBehaviour
             obj.GetComponent<EnemyHealthScript>().MaxHealth = enemyStatModifiyer * 20 + 100;
             obj.GetComponent<EnemyHealthScript>().CurrentHealth = enemyStatModifiyer * 20 + 100;
             obj.SetActive(true);
-            obj.GetComponent<EnemyHealthScript>().TakeDamage(0);
+            obj.GetComponent<EnemyHealthScript>().UpdateHealthBar();
             enemiesRemaning++;
             enemiesToSpawn.RemoveAt(0);
         }

@@ -9,6 +9,8 @@ public class ChangeMeshOnAnimation : MonoBehaviour
     [SerializeField]
     private GameObject deathModel;
 
+    private Animator deathAnimator;
+
     public GameObject DeathModel
     {
         get { return deathModel; }
@@ -19,16 +21,9 @@ public class ChangeMeshOnAnimation : MonoBehaviour
         get { return walkingModel; }
     }
 
-    // Use this for initialization
-    void Start()
+    private void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        deathAnimator = deathModel.GetComponent<Animator>();
     }
 
     public void ChangeModel()
@@ -38,14 +33,16 @@ public class ChangeMeshOnAnimation : MonoBehaviour
             walkingModel.SetActive(false);
             deathModel.SetActive(true);
 
-            deathModel.GetComponent<Animator>().SetTrigger("die");
+            deathAnimator.SetTrigger("die");
+            GetComponent<NavMeshAgent>().enabled = false;
         }
         else
         {
             walkingModel.SetActive(true);
             deathModel.SetActive(false);
 
-            deathModel.GetComponent<Animator>().SetTrigger("reset");
+            deathAnimator.SetTrigger("reset");
+            GetComponent<NavMeshAgent>().enabled = true;
         }
     }
 }
