@@ -81,12 +81,12 @@ public class BossAIScript : MonoBehaviour
 
     private void Attack()
     {
-        if (Random.value > 0.5f)
-        {
+        //if (Random.value > 0.5f)
+        //{
             attackScript.MeleeAttack();
-        }
-        else
-            attackScript.SpecialAttack1();
+        //}
+        //else
+        //    attackScript.SpecialAttack1();
     }
 
     public void BeginFight()

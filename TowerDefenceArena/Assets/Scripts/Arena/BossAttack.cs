@@ -149,9 +149,9 @@ public class BossAttack : MonoBehaviour
 
             if (Physics.Raycast(defaultPos, tagetPos, out hit, distance))
             {
-                if (hit.collider.gameObject.tag == "Player")
+                if (hit.collider.transform.parent.tag == "Player")
                 {
-                    hit.collider.gameObject.GetComponent<PlayerHealthScript>().TakeDamage(damage);
+                    hit.collider.gameObject.GetComponentInParent<PlayerHealthScript>().TakeDamage(damage);
                     distances[i / 2] = Vector3.Distance(defaultPos, hit.point);
                 }
 

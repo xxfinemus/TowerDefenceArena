@@ -47,11 +47,15 @@
   <ItemGroup>
      <Compile Include="Assets\AttackAnimationScript.cs" />
      <Compile Include="Assets\Scripts\AnimatedWater.cs" />
-     <Compile Include="Assets\Scripts\Arena\Hero.cs" />
-     <Compile Include="Assets\Scripts\BossAIScript.cs" />
-     <Compile Include="Assets\Scripts\BossAttack.cs" />
-     <Compile Include="Assets\Scripts\BossHealthScript.cs" />
-     <Compile Include="Assets\Scripts\BossNavigationScript.cs" />
+     <Compile Include="Assets\Scripts\Arena\BossAIScript.cs" />
+     <Compile Include="Assets\Scripts\Arena\BossAttack.cs" />
+     <Compile Include="Assets\Scripts\Arena\BossHealthScript.cs" />
+     <Compile Include="Assets\Scripts\Arena\BossMeleeColliderScript.cs" />
+     <Compile Include="Assets\Scripts\Arena\BossNavigationScript.cs" />
+     <Compile Include="Assets\Scripts\Arena\PlayerAttackScript.cs" />
+     <Compile Include="Assets\Scripts\Arena\PlayerHealthScript.cs" />
+     <Compile Include="Assets\Scripts\Arena\PlayerMovementScript.cs" />
+     <Compile Include="Assets\Scripts\Arena\PlayerSounds.cs" />
      <Compile Include="Assets\Scripts\BulletObjectpool\BoltBehavior.cs" />
      <Compile Include="Assets\Scripts\BulletObjectpool\BoltObjectPool.cs" />
      <Compile Include="Assets\Scripts\BulletObjectpool\BulletObjectPoolScript.cs" />
@@ -73,9 +77,6 @@
      <Compile Include="Assets\Scripts\MainMenu_Script.cs" />
      <Compile Include="Assets\Scripts\Pause.cs" />
      <Compile Include="Assets\Scripts\PhaseChange.cs" />
-     <Compile Include="Assets\Scripts\PlayerAttackScript.cs" />
-     <Compile Include="Assets\Scripts\PlayerHealthScript.cs" />
-     <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
      <Compile Include="Assets\Scripts\Stats\DisplayStats.cs" />
      <Compile Include="Assets\Scripts\Stats\StatScript.cs" />
      <Compile Include="Assets\Scripts\Tower\BalistaBehavior.cs" />
@@ -132,17 +133,11 @@
      <Compile Include="Assets\pathTest\moveTo.cs" />
      <None Include="Assets\Tests\UnityTestTools\LICENSE.txt" />
      <None Include="Assets\Tests\UnityTestTools\changelog.txt" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Data.Sqlite">
  <HintPath>C:/Users/frede_000/Desktop/ArenaTD/TowerDefenceArena/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>

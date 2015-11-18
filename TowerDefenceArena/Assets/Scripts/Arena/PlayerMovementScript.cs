@@ -54,6 +54,6 @@ public class PlayerMovementScript : MonoBehaviour
 
         characterAnimator.transform.LookAt(dir + characterAnimator.transform.position);
 
-        transform.Translate(dir * Time.deltaTime * speed);
+        transform.Translate(dir * (Time.deltaTime * speed));
     }
 }
