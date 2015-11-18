@@ -34,6 +34,8 @@ public class BossAIScript : MonoBehaviour
     private BossNavigationScript navScript;
 
     private BossAttack attackScript;
+
+    float timer;
     // Use this for initialization
     void Start()
     {
@@ -48,30 +50,36 @@ public class BossAIScript : MonoBehaviour
 
     public void Begin()
     {
+        transform.parent.position = new Vector3(0, 0, -10);
         GetComponent<BossHealthScript>().Begin(StatScript.Instance.BossHealth * 10);
-        GetComponent<BossAttack>().Damage = StatScript.Instance.EnemiesLeaked * 10;
+        GetComponent<BossAttack>().Damage = StatScript.Instance.EnemiesLeaked * 1.5f;
+        timer = 2;
+        navScript.StopChasing();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (!InRange(transform.position, target.transform.position, attackRange))
+        if (timer <= 0)
         {
-            navScript.StartChasing();
-            navScript.SetTarget(target);
-        }
-        else if (cooldown <= 0)
-        {
-            navScript.StopChasing();
-            Attack();
-        }
+            if (!InRange(transform.position, target.transform.position, attackRange))
+            {
+                navScript.StartChasing();
+                navScript.SetTarget(target);
+            }
+            else if (cooldown <= 0)
+            {
+                navScript.StopChasing();
+                Attack();
+            }
 
-        if (cooldown >= 0)
-        {
-            cooldown -= Time.deltaTime;
-        }
+            if (cooldown >= 0)
+            {
+                cooldown -= Time.deltaTime;
+            }
 
+        }
+        timer -= Time.deltaTime;
     }
 
     private bool InRange(Vector3 a, Vector3 b, float range)
@@ -83,7 +91,7 @@ public class BossAIScript : MonoBehaviour
     {
         //if (Random.value > 0.5f)
         //{
-            attackScript.MeleeAttack();
+        attackScript.MeleeAttack();
         //}
         //else
         //    attackScript.SpecialAttack1();
@@ -91,6 +99,6 @@ public class BossAIScript : MonoBehaviour
 
     public void BeginFight()
     {
-        
+
     }
 }
